@@ -1,0 +1,169 @@
+package com.accenture.service;
+
+import com.accenture.exception.AdministrateurException;
+import com.accenture.exception.ClientException;
+import com.accenture.repository.AdministrateurDao;
+import com.accenture.repository.Entity.Administrateur;
+import com.accenture.service.dto.AdministrateurRequestDto;
+import com.accenture.service.dto.AdministrateurResponseDto;
+import com.accenture.service.mapper.AdministrateurMapper;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@ExtendWith(MockitoExtension.class)
+class AdministrateurServiceImplTest {
+
+    @Mock
+    AdministrateurDao administrateurDaoMock;
+    @Mock
+    AdministrateurMapper administrateurMapperMock;
+    @InjectMocks
+    AdministrateurServiceImpl administrateurService;
+
+    @DisplayName("""
+            Test la méthode ajouter si null lui est passé""")
+    @Test
+    void ajouterNull() {
+        assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(null));
+    }
+
+    @DisplayName("""
+            Test Méthode ajouter si email null
+            """)
+    @Test
+    void ajouterAvecEmailNull() {
+        AdministrateurRequestDto administrateurRequestDto = new AdministrateurRequestDto(null, "fdsfds@Z23", "Gerard", "Gerard", "CDI");
+        assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(administrateurRequestDto));
+    }
+
+    @DisplayName("""
+            Test Méthode ajouter si email blank
+            """)
+    @Test
+    void ajouterAvecEmailBlank() {
+        AdministrateurRequestDto administrateurRequestDto = new AdministrateurRequestDto("", "fdsfds@Z23", "Gerard", "Gerard", "CDI");
+        assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(administrateurRequestDto));
+    }
+
+    @DisplayName("""
+            Test Méthode ajouter si email ne corresponds aux conditions;
+            """)
+    @Test
+    void ajouterAvecEmailNotMatchingRegex() {
+        AdministrateurRequestDto administrateurRequestDto = new AdministrateurRequestDto("dgfgdg", "fdsfds@Z23", "Gerard", "Gerard", "CDI");
+        AdministrateurException ex = assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(administrateurRequestDto));
+        assertEquals("L'adresse email doit être valide", ex.getMessage());
+    }
+
+
+    @DisplayName("""
+            Test Méthode ajouter si le mot de passe ne correspond pas à la regex;
+            """)
+    @Test
+    void ajouterAvecPasswordNotMatchingRegex() {
+        AdministrateurRequestDto administrateurRequestDto = new AdministrateurRequestDto("Gerard@goatmail.com", "fdsfd23", "Gerard", "Gerard", "CDI");
+        AdministrateurException ex = assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(administrateurRequestDto));
+        assertEquals("Le mot de passe ne respecte pas les conditions", ex.getMessage());
+    }
+
+    @DisplayName("""
+            Test Méthode ajouter si le mot de passe est null;
+            """)
+    @Test
+    void ajouterAvecPasswordNull() {
+        AdministrateurRequestDto administrateurRequestDto = new AdministrateurRequestDto("Gerard@goatmail.com", null, "Gerard", "Gerard", "CDI");
+        assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(administrateurRequestDto));
+    }
+
+    @DisplayName("""
+            Test Méthode ajouter si le mot de passe est blank;
+            """)
+    @Test
+    void ajouterAvecPasswordBlank() {
+        AdministrateurRequestDto administrateurRequestDto = new AdministrateurRequestDto("Gerard@goatmail.com", "", "Gerard", "Gerard", "CDI");
+        assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(administrateurRequestDto));
+    }
+
+    @DisplayName("""
+            Test Méthode ajouter si le nom est null;
+            """)
+    @Test
+    void ajouterAvecnomNull() {
+        AdministrateurRequestDto administrateurRequestDto = new AdministrateurRequestDto("Gerard@goatmail.com", "fdsf@ggfdZ23", null, "Gerard", "CDI");
+        assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(administrateurRequestDto));
+    }
+
+    @DisplayName("""
+            Test Méthode ajouter si le nom est blank;
+            """)
+    @Test
+    void ajouterAvecnomBlank() {
+        AdministrateurRequestDto administrateurRequestDto = new AdministrateurRequestDto("Gerard@goatmail.com", "fdsfds@Z23", "", "Gerard", "CDI");
+        assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(administrateurRequestDto));
+    }
+
+    @DisplayName("""
+            Test Méthode ajouter si le prenom est null;
+            """)
+    @Test
+    void ajouterAvecPrenomNull() {
+        AdministrateurRequestDto administrateurRequestDto = new AdministrateurRequestDto("Gerard@goatmail.com", "fdsfds@Z23", "Gerard", null, "CDI");
+        assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(administrateurRequestDto));
+    }
+
+    @DisplayName("""
+            Test Méthode ajouter si le prenom est blank;
+            """)
+    @Test
+    void ajouterAvecPrenomBlank() {
+        AdministrateurRequestDto administrateurRequestDto = new AdministrateurRequestDto("Gerard@goatmail.com", "fdsfds@Z23", "Gerard", "", "CDI");
+        assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(administrateurRequestDto));
+    }
+
+    @DisplayName("""
+            Test Méthode ajouter si la fonction est null;
+            """)
+    @Test
+    void ajouterAvecFonctionNull() {
+        AdministrateurRequestDto administrateurRequestDto = new AdministrateurRequestDto("Gerard@goatmail.com", "fdsfds@Z23", "Gerard", "Gerard", null);
+        assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(administrateurRequestDto));
+    }
+
+    @DisplayName("""
+            Test Méthode ajouter si la fonction est blank;
+            """)
+    @Test
+    void ajouterAvecFonctionBlank() {
+        AdministrateurRequestDto administrateurRequestDto = new AdministrateurRequestDto("Gerard@goatmail.com", "fdsfds@Z23", "Gerard", "Gerard", "");
+        assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(administrateurRequestDto));
+    }
+@DisplayName(
+        """
+     Verifie si l'ajout se fait bien si tout les critères sont ok.
+             """
+)
+    @Test
+    void ajouterIsOk(){
+    AdministrateurRequestDto administrateurRequestDto = new AdministrateurRequestDto("Gerard@goatmail.com", "fdsfds@Z23", "Gerard", "Gerard", "Hr");
+    Administrateur adminAvantEnreg = gerard();
+    Administrateur adminApresEnreg = gerard();
+    AdministrateurResponseDto administrateurResponseDto = new AdministrateurResponseDto("Gerard@goatmail.com",  "Gerard", "Gerard", "Hr");
+    Mockito.when(administrateurMapperMock.toAdministrateur(administrateurRequestDto)).thenReturn(adminAvantEnreg);
+    Mockito.when(administrateurDaoMock.save(adminAvantEnreg)).thenReturn(adminApresEnreg);
+    Mockito.when(administrateurMapperMock.toAdministrateurResponseDto(adminApresEnreg)).thenReturn(administrateurResponseDto);
+    assertSame(administrateurResponseDto, administrateurService.ajouter(administrateurRequestDto));
+    Mockito.verify(administrateurDaoMock).save(adminAvantEnreg);
+    }
+
+ private  Administrateur gerard(){
+        return new Administrateur("Gerard@goatmail.com", "fdsfds@Z23", "Gerard", "Gerard","Hr");
+ }
+
+}

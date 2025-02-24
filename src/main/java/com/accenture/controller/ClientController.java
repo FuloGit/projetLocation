@@ -13,7 +13,7 @@ import java.net.URI;
 import java.util.List;
 
 /**
- * <p>Gére les clients</p>
+ * Gére les clients
  */
 @RestController
 @RequestMapping("/clients")
@@ -26,13 +26,13 @@ public class ClientController {
     }
 
 
-    @GetMapping("/{id}")
-    ResponseEntity<ClientResponseDtoForClient> client(@PathVariable("id") String id) {
-        ClientResponseDtoForClient trouve = clientService.trouver(id);
+    @GetMapping("/infos")
+    ResponseEntity<ClientResponseDtoForClient> afficherInfos(@RequestParam String id, @RequestParam String password) {
+        ClientResponseDtoForClient trouve = clientService.trouver(id, password);
         return ResponseEntity.ok(trouve);
     }
 
-    @PostMapping("/")
+    @PostMapping
     ResponseEntity<Void> ajouter(@RequestBody ClientRequestDto clientRequestDto){
         ClientResponseDtoForClient clientEnreg = clientService.ajouter(clientRequestDto);
         URI location = ServletUriComponentsBuilder
@@ -42,4 +42,11 @@ public class ClientController {
                 .toUri();
         return ResponseEntity.created(location).build();
     }
+@DeleteMapping
+    ResponseEntity<ClientResponseDtoForClient>  suppression(@RequestParam String id, String password){
+        clientService.supprimer(id,  password);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+
+}
+
 }

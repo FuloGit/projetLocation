@@ -6,13 +6,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * <p>Entity complémentaire au Client, sera associé en OneToOne à celui-ci</p>
+ * Entity complémentaire au Client, sera associé en OneToOne à celui-ci
  */
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name ="adreses")
+@Table(name ="adresses")
 public class Adresse {
 
     @Id

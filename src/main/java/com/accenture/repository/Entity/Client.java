@@ -10,9 +10,9 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
- *<p> Le client qui utilisera la base de donnée le service de location.
+ *Le client qui utilisera la base de donnée le service de location.
  * La date d'inscription est générée automatiquement
- * Le desactivé est automatiquement false, le compte est actif à sa création mais pourra être désactiver plus tard</p>
+ * Le desactivé est automatiquement false, le compte est actif à sa création mais pourra être désactiver plus tard
  */
 @Entity
 @AllArgsConstructor
@@ -23,18 +23,15 @@ public class Client extends UtilisateurConnecte {
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn
     private Adresse adresse;
-    private LocalDate DateDeNaissance;
-    private LocalDate Dateinscription = LocalDate.now();
+    private LocalDate dateDeNaissance;
+    private LocalDate dateinscription = LocalDate.now();
     private List<Permis> permis;
     private Boolean desactive = false;
 
-
-    public Client(String mail, String password, String nom, String prenom, Adresse adresse, LocalDate naissance, List<Permis> permis) {
+    public Client(String mail, String password, String nom, String prenom, Adresse adresse, LocalDate dateDeNaissance, List<Permis> permis) {
         super(mail, password, nom, prenom);
         this.adresse = adresse;
-        this.DateDeNaissance = naissance;
+        this.dateDeNaissance = dateDeNaissance;
         this.permis = permis;
-        this.Dateinscription = LocalDate.now();
-
     }
 }

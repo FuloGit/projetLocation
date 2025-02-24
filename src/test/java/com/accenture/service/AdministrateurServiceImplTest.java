@@ -4,9 +4,12 @@ import com.accenture.exception.AdministrateurException;
 import com.accenture.exception.ClientException;
 import com.accenture.repository.AdministrateurDao;
 import com.accenture.repository.Entity.Administrateur;
+import com.accenture.repository.Entity.Client;
 import com.accenture.service.dto.AdministrateurRequestDto;
 import com.accenture.service.dto.AdministrateurResponseDto;
+import com.accenture.service.dto.ClientResponseDtoForClient;
 import com.accenture.service.mapper.AdministrateurMapper;
+import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,6 +17,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -162,8 +167,81 @@ class AdministrateurServiceImplTest {
     Mockito.verify(administrateurDaoMock).save(adminAvantEnreg);
     }
 
- private  Administrateur gerard(){
+    @DisplayName("""
+            Verifie méthode trouver qui doit renvoyer une EntityNotFoundException lorsque l'administrateur n'existe pas
+            """)
+    @Test
+    void trouverExistePas(){
+        Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.empty());
+        EntityNotFoundException ex = assertThrows(EntityNotFoundException.class, () -> administrateurService.trouver("Gerard@goatmail.com", "fdsfds@Z23"));
+        assertEquals("Email ou password erroné", ex.getMessage());
+    }
+
+    @DisplayName("""
+            Verifie méthode trouver qui doit renvoyer une EntityNotFoundException lorsque le password est invalid
+            """)
+    @Test
+    void trouverPassWordInvalid(){
+        Administrateur administrateur = gerard();
+        Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.of(administrateur));
+        EntityNotFoundException ex = assertThrows(EntityNotFoundException.class, () -> administrateurService.trouver("Gerard@goatmail.com", "fdsfds23"));
+        assertEquals("Email ou password erroné", ex.getMessage());
+    }
+
+
+    @DisplayName("""
+            Verifie méthode trouver qui doit renvoyer un Administrateur.
+            """)
+    @Test
+    void trouverExiste(){
+        Administrateur administrateur = gerard();
+       Optional<Administrateur> optionalAdministrateur = Optional.of(administrateur);
+        AdministrateurResponseDto administrateurResponseDto = gerardResponse();
+        Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(optionalAdministrateur);
+        Mockito.when(administrateurMapperMock.toAdministrateurResponseDto(gerard())).thenReturn(administrateurResponseDto);
+        assertSame(administrateurResponseDto , administrateurService.trouver("Gerard@goatmail.com", "fdsfds@Z23"));
+    }
+
+    @DisplayName("""
+            Verifie methode supprimer si clientOptional est vide, renvoie ClientException
+            """)
+    @Test
+    void supprimerClientOptionnalVide() {
+        Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.empty());
+        AdministrateurException ex = assertThrows(AdministrateurException.class, () -> administrateurService.supprimer("Gerard@goatmail.com", "fdsfds@Z23"));
+        assertSame("Email ou password erroné", ex.getMessage());
+    }
+
+    @DisplayName("""
+            Verifie methode supprimer si Password invalid, renvoie ClientException
+            """)
+    @Test
+    void supprimerPassWordInvalid() {
+        Administrateur administrateur = gerard();
+        Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.of(administrateur));
+        AdministrateurException ex = assertThrows(AdministrateurException.class, () -> administrateurService.supprimer("Gerard@goatmail.com", "fdsfds@Z23"));
+        assertSame("Email ou password erroné", ex.getMessage());
+    }
+
+    @DisplayName("""
+            Verifie methode supprimer fonctionne correctement et passe par deleteById
+            """)
+    @Test
+    void supprimerOk() {
+        Administrateur administrateur = gerard();
+        Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.of(administrateur));
+        administrateurService.supprimer("Gerard@goatmail.com", "fdsfds@Z23");
+        Mockito.verify(administrateurDaoMock).deleteById("Gerard@goatmail.com");
+    }
+
+
+    private  Administrateur gerard(){
         return new Administrateur("Gerard@goatmail.com", "fdsfds@Z23", "Gerard", "Gerard","Hr");
  }
-
+private AdministrateurResponseDto gerardResponse(){
+        return new AdministrateurResponseDto("Gerard@goatmail.com", "Gerard", "Gerard","Hr");
+}
+ private AdministrateurRequestDto gerardRequest(){
+        return  new AdministrateurRequestDto("Gerard@goatmail.com", "fdsfds@Z23", "Gerard", "Gerard","Hr");
+ }
 }

@@ -114,7 +114,7 @@ class ClientServiceImplTest {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", "44300", "Nantes");
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", "Pierre", "Pierre", adresseRequestDto, null);
         ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
-        assertEquals("Date de DateDeNaissance absente", ex.getMessage());
+        assertEquals("La date de naissance est absente", ex.getMessage());
     }
 
     @DisplayName("""
@@ -258,32 +258,71 @@ class ClientServiceImplTest {
     }
 
     @DisplayName("""
-            Verifie méthode trouver qui doit renvoyer une EntityNotFoundException lorsque la tache n'existe pas
+            Verifie méthode trouver qui doit renvoyer une EntityNotFoundException lorsque le client n'existe pas
             """)
     @Test
-    void trouverExistePas(){
+    void trouverExistePas() {
         Mockito.when(clientDAOMock.findById("Pierre@yahoo.fr")).thenReturn(Optional.empty());
-        EntityNotFoundException ex = assertThrows(EntityNotFoundException.class, () -> clientService.trouver("Pierre@yahoo.fr"));
-        assertEquals("Id non présent", ex.getMessage());
+        EntityNotFoundException ex = assertThrows(EntityNotFoundException.class, () -> clientService.trouver("Pierre@yahoo.fr", "Rsgfssfd2@"));
+        assertEquals("Email ou password erroné", ex.getMessage());
     }
 
     @DisplayName("""
-            Verifie méthode trouver qui doit renvoyer une tache.
+            Verifie méthode trouver qui doit renvoyer une EntityNotFoundException lorsque le password est invalid
             """)
     @Test
-    void trouverExiste(){
+    void trouverPassWordInvalid() {
+        Client client = creactionClient();
+        Mockito.when(clientDAOMock.findById("Pierre@yahoo.fr")).thenReturn(Optional.of(client));
+        EntityNotFoundException ex = assertThrows(EntityNotFoundException.class, () -> clientService.trouver("Pierre@yahoo.fr", "Rsgfssfd"));
+        assertEquals("Email ou password erroné", ex.getMessage());
+    }
+
+
+    @DisplayName("""
+            Verifie méthode trouver qui doit renvoyer un Client.
+            """)
+    @Test
+    void trouverExiste() {
         Client client = creactionClient();
         Optional<Client> optionalClient = Optional.of(client);
         ClientResponseDtoForClient clientResponseDtoForClient = creationClientResponseDtoForClient();
         Mockito.when(clientDAOMock.findById("Pierre@yahoo.fr")).thenReturn(optionalClient);
         Mockito.when(clientMapperMock.toClientResponseDtoForCLient(client)).thenReturn(clientResponseDtoForClient);
-        assertSame((clientResponseDtoForClient), clientService.trouver("Pierre@yahoo.fr"));
+        assertSame((clientResponseDtoForClient), clientService.trouver("Pierre@yahoo.fr", "Rsgfssfd2@"));
     }
 
+    @DisplayName("""
+            Verifie methode supprimer si clientOptional est vide, renvoie ClientException
+            """)
+    @Test
+    void supprimerClientOptionnalVide() {
+        Mockito.when(clientDAOMock.findById("Pierre@yahoo.fr")).thenReturn(Optional.empty());
+        ClientException ex = assertThrows(ClientException.class, () -> clientService.supprimer("Pierre@yahoo.fr", "Rsgfssfd2@"));
+        assertSame("Email ou password erroné", ex.getMessage());
+    }
 
+    @DisplayName("""
+            Verifie methode supprimer si Password invalid, renvoie ClientException
+            """)
+    @Test
+    void supprimerPassWordInvalid() {
+        Client pierre = creactionClient();
+        Mockito.when(clientDAOMock.findById("Pierre@yahoo.fr")).thenReturn(Optional.of(pierre));
+        ClientException ex = assertThrows(ClientException.class, () -> clientService.supprimer("Pierre@yahoo.fr", "Rsgfssfd"));
+        assertSame("Email ou password erroné", ex.getMessage());
+    }
 
-
-
+    @DisplayName("""
+            Verifie methode supprimer fonctionne correctement et passe par deleteById
+            """)
+    @Test
+    void supprimerOk() {
+        Client pierre = creactionClient();
+        Mockito.when(clientDAOMock.findById("Pierre@yahoo.fr")).thenReturn(Optional.of(pierre));
+        clientService.supprimer("Pierre@yahoo.fr", "Rsgfssfd2@");
+        Mockito.verify(clientDAOMock).deleteById("Pierre@yahoo.fr");
+    }
 
 
 
@@ -291,14 +330,14 @@ class ClientServiceImplTest {
 
     private static ClientRequestDto creationClientRequestDto() {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", "44300", "Nantes");
-        ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", "Pierre", "Pierre", adresseRequestDto,LocalDate.of(1990, 12, 12 ));
+        ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", "Pierre", "Pierre", adresseRequestDto, LocalDate.of(1990, 12, 12));
         return clientRequestDto;
     }
 
     private static ClientResponseDtoForClient creationClientResponseDtoForClient() {
-        AdresseDto adresseResponseDto = new AdresseDto( "Lelasseur", "44300", "Nantes");
+        AdresseDto adresseResponseDto = new AdresseDto("Lelasseur", "44300", "Nantes");
         List<Permis> permis = new ArrayList<>();
-        ClientResponseDtoForClient clientResponseDtoForClient = new ClientResponseDtoForClient("Pierre", "Pierre", "Pierre@yahoo.fr", adresseResponseDto, LocalDate.of(1990, 12, 12), LocalDate.of(1990, 12, 12) , permis);
+        ClientResponseDtoForClient clientResponseDtoForClient = new ClientResponseDtoForClient("Pierre", "Pierre", "Pierre@yahoo.fr", adresseResponseDto, LocalDate.of(1990, 12, 12), LocalDate.of(1990, 12, 12), permis);
         return clientResponseDtoForClient;
     }
 
@@ -310,11 +349,11 @@ class ClientServiceImplTest {
         clientAvantEnreg.getAdresse().setCodePostal("44300");
         clientAvantEnreg.getAdresse().setVille("Nantes");
         clientAvantEnreg.getAdresse().setId(1);
-        clientAvantEnreg.getAdresse().setRue("Longchamps");
-        clientAvantEnreg.setNom("Jean");
-        clientAvantEnreg.setPrenom("Marcel");
-        clientAvantEnreg.setEmail("Jonh@Marcel.com");
-        clientAvantEnreg.setPassword("Rfdsfds@12");
+        clientAvantEnreg.getAdresse().setRue("Lelasseur");
+        clientAvantEnreg.setNom("Pierre");
+        clientAvantEnreg.setPrenom("Pierre");
+        clientAvantEnreg.setEmail("Pierre@yahoofr");
+        clientAvantEnreg.setPassword("Rsgfssfd2@");
         clientAvantEnreg.setDesactive(false);
         return clientAvantEnreg;
     }

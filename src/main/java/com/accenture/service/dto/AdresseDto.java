@@ -1,15 +1,22 @@
 package com.accenture.service.dto;
 
 
+import jakarta.validation.constraints.NotBlank;
+
 /**
- * <p>Version sans l'id de la classe adresse pour transmission avec les utilisateurs</p>
+ * Version sans l'id de la classe adresse pour transmission avec les utilisateurs
+ *
  * @param rue
  * @param codePostal
  * @param ville
  */
-public record AdresseDto(String rue,
-                         String codePostal,
-                         String ville
+public record AdresseDto(
+        @NotBlank (message = "La rue est obligatoire")
+        String rue,
+        @NotBlank(message = "Le code postal est obligatoire")
+        String codePostal,
+        @NotBlank(message = "La ville est obligatorie")
+        String ville
 ) {
 
 }

@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * <p>Classe mère de Client, et Admin, qui aura pour Id le mail renseigné à la création du compte.</p>
+ * Classe mère de Client, et Admin, qui aura pour Id le mail renseigné à la création du compte.
  */
 @Data
 @Entity

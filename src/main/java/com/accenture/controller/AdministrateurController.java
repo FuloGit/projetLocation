@@ -3,17 +3,16 @@ package com.accenture.controller;
 import com.accenture.service.AdministrateurService;
 import com.accenture.service.dto.AdministrateurRequestDto;
 import com.accenture.service.dto.AdministrateurResponseDto;
+import com.accenture.service.dto.ClientResponseDtoForClient;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 
 /**
- * <p>Gére les inputs pour Administrateur</p>
+ * Gére les inputs pour Administrateur
  */
 @RestController
 @RequestMapping("/Administrateurs")
@@ -27,7 +26,7 @@ public class AdministrateurController {
 
 
     @PostMapping
-    ResponseEntity<Void> ajouter(@RequestBody AdministrateurRequestDto administrateurRequestDto){
+    ResponseEntity<Void> ajouter(@RequestBody AdministrateurRequestDto administrateurRequestDto) {
         AdministrateurResponseDto administrateurResponseDto = administrateurService.ajouter(administrateurRequestDto);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
@@ -35,5 +34,17 @@ public class AdministrateurController {
                 .buildAndExpand(administrateurResponseDto.email())
                 .toUri();
         return ResponseEntity.created(location).build();
+    }
+
+    @GetMapping("/infos")
+    ResponseEntity<AdministrateurResponseDto> afficherInfos(@RequestBody String id, @RequestBody String password) {
+        AdministrateurResponseDto administrateurResponseDto = administrateurService.trouver(id, password);
+        return ResponseEntity.ok(administrateurResponseDto);
+    }
+
+    @DeleteMapping
+    ResponseEntity<AdministrateurResponseDto> suppression(@RequestParam String id, String password) {
+        administrateurService.supprimer(id, password);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }

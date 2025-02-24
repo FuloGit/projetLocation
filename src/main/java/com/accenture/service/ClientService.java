@@ -7,11 +7,12 @@ import com.accenture.service.dto.ClientResponseDtoForClient;
 import java.util.List;
 
 /**
- * <p>Interface comprenant les méthodes à implémenter</p>
+ * Interface comprenant les méthodes à implémenter
  */
 public interface ClientService {
     ClientResponseDtoForClient ajouter(ClientRequestDto clientRequestDto);
 
-    ClientResponseDtoForClient trouver(String id);
+    ClientResponseDtoForClient trouver(String id, String password);
 
+    void supprimer(String id, String password);
 }

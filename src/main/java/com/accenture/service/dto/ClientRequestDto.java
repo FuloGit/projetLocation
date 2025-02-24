@@ -1,5 +1,8 @@
 package com.accenture.service.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 import java.time.LocalDate;
 
 /**
@@ -9,14 +12,20 @@ import java.time.LocalDate;
  * @param nom
  * @param prenom
  * @param adresse
- * @param DateDeNaissance
+ * @param dateDeNaissance
  */
 public record ClientRequestDto(
+        @NotBlank (message = "L'adresse email est obligatoire")
         String email,
+        @NotBlank (message = "Le mot de passe est obligatoire")
         String password,
+        @NotBlank(message = "Le nom est obligatoire")
         String nom,
+        @NotBlank (message = "Le prénom est obligatoire")
         String prenom,
+        @NotNull(message = "L'adresse est obligatoire")
         AdresseDto adresse,
-        LocalDate DateDeNaissance
+        @NotNull(message = "La date de naissance est obligatoire")
+        LocalDate dateDeNaissance
 ) {
 }

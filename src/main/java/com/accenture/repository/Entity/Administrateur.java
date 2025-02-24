@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- *<p>Entity des Administrateurs qui ont les droits sur la base de données</p>
+ *Entity des Administrateurs qui ont les droits sur la base de données
  */
 @Data
 @Entity

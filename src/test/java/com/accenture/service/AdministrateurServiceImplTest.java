@@ -18,6 +18,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -203,13 +205,25 @@ class AdministrateurServiceImplTest {
     }
 
     @DisplayName("""
-            Verifie methode supprimer si clientOptional est vide, renvoie ClientException
+            Verifie methode supprimer si Administrateur est vide, renvoie AdministrateurException
             """)
     @Test
-    void supprimerClientOptionnalVide() {
+    void supprimerAdminOptionnalVide() {
         Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.empty());
         AdministrateurException ex = assertThrows(AdministrateurException.class, () -> administrateurService.supprimer("Gerard@goatmail.com", "fdsfds@Z23"));
         assertSame("Email ou password erroné", ex.getMessage());
+    }
+    @DisplayName("""
+            Verifie methode supprimer si un seul administrateur en base
+            """)
+    @Test
+    void supprimerOnlyOneAdmin() {
+        List<Administrateur> liste = List.of(gerard());
+        Administrateur administrateur = gerard();
+        Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.of(gerard()));
+        Mockito.when(administrateurDaoMock.findAll()).thenReturn(liste);
+        AdministrateurException ex = assertThrows(AdministrateurException.class, () -> administrateurService.supprimer("Gerard@goatmail.com", "fdsfds@Z23"));
+        assertSame("Vous ne pouvez pas supprimer le dernière administrateur en base.", ex.getMessage());
     }
 
     @DisplayName("""
@@ -219,7 +233,7 @@ class AdministrateurServiceImplTest {
     void supprimerPassWordInvalid() {
         Administrateur administrateur = gerard();
         Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.of(administrateur));
-        AdministrateurException ex = assertThrows(AdministrateurException.class, () -> administrateurService.supprimer("Gerard@goatmail.com", "fdsfds@Z23"));
+        AdministrateurException ex = assertThrows(AdministrateurException.class, () -> administrateurService.supprimer("Gerard@goatmail.com", "fdsfds23"));
         assertSame("Email ou password erroné", ex.getMessage());
     }
 
@@ -228,6 +242,8 @@ class AdministrateurServiceImplTest {
             """)
     @Test
     void supprimerOk() {
+        List<Administrateur> liste = List.of(gerard(), gerard());
+        Mockito.when(administrateurDaoMock.findAll()).thenReturn(liste);
         Administrateur administrateur = gerard();
         Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.of(administrateur));
         administrateurService.supprimer("Gerard@goatmail.com", "fdsfds@Z23");

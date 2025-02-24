@@ -57,6 +57,8 @@ public class AdministrateurServiceImpl implements AdministrateurService{
         if (administrateurOptional.isEmpty() || !administrateurOptional.get().getPassword().equals(password) ) {
             throw new AdministrateurException(EMAIL_OU_PASSWORD_ERRONE);
         }
+        if (administrateurDao.findAll().size() == 1)
+            throw new AdministrateurException("Vous ne pouvez pas supprimer le dernière administrateur en base.");
         administrateurDao.deleteById(id);
     }
 

@@ -1,13 +1,10 @@
 package com.accenture.service;
 
 import com.accenture.exception.AdministrateurException;
-import com.accenture.exception.ClientException;
 import com.accenture.repository.AdministrateurDao;
 import com.accenture.repository.Entity.Administrateur;
-import com.accenture.repository.Entity.Client;
 import com.accenture.service.dto.AdministrateurRequestDto;
 import com.accenture.service.dto.AdministrateurResponseDto;
-import com.accenture.service.dto.ClientResponseDtoForClient;
 import com.accenture.service.mapper.AdministrateurMapper;
 import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.DisplayName;
@@ -18,7 +15,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 

@@ -11,4 +11,7 @@ public interface AdministrateurService {
    AdministrateurResponseDto ajouter(AdministrateurRequestDto adminRequestDto);
    public AdministrateurResponseDto trouver(String id, String password);
     void supprimer(String id, String password);
+
+    AdministrateurResponseDto modifier(String id, String password, AdministrateurRequestDto administrateurRequestDto);
+
 }

@@ -12,17 +12,17 @@ import java.util.List;
  * @param email
  * @param adresse
  * @param dateDeNaissance
- * @param incription
+ * @param dateInscription
  * @param permis
  */
 
-public record ClientResponseDtoForClient(
+public record ClientResponseDto(
         String nom,
         String prenom,
         String email,
         AdresseDto adresse,
         LocalDate dateDeNaissance,
-        LocalDate incription,
+        LocalDate dateInscription,
         List<Permis> permis
 ) {
 }

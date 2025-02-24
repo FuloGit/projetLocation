@@ -1,9 +1,11 @@
 package com.accenture.service.dto;
 
+import com.accenture.shared.model.Permis;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * Classe utilisé pour les requêtes d'ajout et de modifications de la classe Client Entity, ne demande pas les attributs généré automatiquement comme la date de réation ou le status actif du compte
@@ -26,6 +28,7 @@ public record ClientRequestDto(
         @NotNull(message = "L'adresse est obligatoire")
         AdresseDto adresse,
         @NotNull(message = "La date de naissance est obligatoire")
-        LocalDate dateDeNaissance
+        LocalDate dateDeNaissance,
+        List<Permis> permis
 ) {
 }

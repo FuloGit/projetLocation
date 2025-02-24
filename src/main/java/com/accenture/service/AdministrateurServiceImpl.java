@@ -4,10 +4,8 @@ import com.accenture.exception.AdministrateurException;
 import com.accenture.exception.ClientException;
 import com.accenture.repository.AdministrateurDao;
 import com.accenture.repository.Entity.Administrateur;
-import com.accenture.repository.Entity.Client;
 import com.accenture.service.dto.AdministrateurRequestDto;
 import com.accenture.service.dto.AdministrateurResponseDto;
-import com.accenture.service.dto.ClientResponseDtoForClient;
 import com.accenture.service.mapper.AdministrateurMapper;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
@@ -15,16 +13,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+import static com.accenture.shared.model.UtilMessage.*;
+
 /**
  * S'occupe de la vérification de AdministrateurRequestDto, de remonter et de la transmettre sous forme de Administrateur Entity pour le repository
  */
 @Service
 @AllArgsConstructor
 public class AdministrateurServiceImpl implements AdministrateurService{
-    public static final String ID_NON_PRESENT = "Id non présent";
-    private static final String PASSWORD_REGEX = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[&#@\\-_§]).{8,}$";
-    private static final String EMAIL_REGEX = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
-    public static final String EMAIL_OU_PASSWORD_ERRONE = "Email ou password erroné";
     private AdministrateurDao administrateurDao;
     private AdministrateurMapper administrateurMapper;
 
@@ -39,6 +35,14 @@ public class AdministrateurServiceImpl implements AdministrateurService{
         return administrateurMapper.toAdministrateurResponseDto(administrateurDao.save(administrateurMapper.toAdministrateur(adminRequestDto)));
     }
 
+    /**
+     * Trouve les informations d'un administrateur après vérification d'un mot de passe.
+     * @param id
+     * @param password
+     * @return
+     * @throws EntityNotFoundException
+     */
+
     @Override
     public AdministrateurResponseDto trouver(String id, String password) throws EntityNotFoundException {
         Optional<Administrateur> optionalAdministrateur = administrateurDao.findById(id);
@@ -51,6 +55,12 @@ public class AdministrateurServiceImpl implements AdministrateurService{
 
     }
 
+    /**
+     *
+     * @param id
+     * @param password
+     * @throws AdministrateurException
+     */
     @Override
     public void supprimer(String id, String password) throws  AdministrateurException {
         Optional<Administrateur> administrateurOptional = administrateurDao.findById(id);
@@ -60,6 +70,42 @@ public class AdministrateurServiceImpl implements AdministrateurService{
         if (administrateurDao.findAll().size() == 1)
             throw new AdministrateurException("Vous ne pouvez pas supprimer le dernière administrateur en base.");
         administrateurDao.deleteById(id);
+    }
+
+    /**
+     * Méthode Patch pour Admin
+     * @param id
+     * @param password
+     * @param administrateurRequestDto
+     * @return
+     */
+    @Override
+    public AdministrateurResponseDto modifier(String id, String password, AdministrateurRequestDto administrateurRequestDto) throws AdministrateurException {
+        Optional<Administrateur> optionalAdministrateur = administrateurDao.findById(id);
+        if (optionalAdministrateur.isEmpty() || !optionalAdministrateur.get().getPassword().equals(password))
+            throw new ClientException(EMAIL_OU_PASSWORD_ERRONE);
+        Administrateur administrateurEnBase = optionalAdministrateur.get();
+        Administrateur administrateurAModifier = administrateurMapper.toAdministrateur(administrateurRequestDto);
+        remplace(administrateurEnBase, administrateurAModifier);
+
+        if (administrateurEnBase.getPassword() == null || !administrateurEnBase.getPassword().matches(PASSWORD_REGEX))
+            throw new AdministrateurException("Le mot de passe ne respecte pas les conditions");
+
+        Administrateur administrateurEnreg = administrateurDao.save(administrateurEnBase);
+        return administrateurMapper.toAdministrateurResponseDto(administrateurEnreg);
+    }
+
+
+
+    private void remplace(Administrateur administrateurEnBase, Administrateur administrateurAModifier) {
+        if (administrateurAModifier.getPassword() != null && administrateurAModifier.getPassword().matches(PASSWORD_REGEX))
+            administrateurEnBase.setPassword(administrateurAModifier.getPassword());
+        if (administrateurAModifier.getNom() != null && !administrateurAModifier.getNom().isBlank())
+            administrateurEnBase.setNom(administrateurAModifier.getNom());
+        if (administrateurAModifier.getPrenom() != null && !administrateurAModifier.getPrenom().isBlank())
+            administrateurEnBase.setPrenom(administrateurAModifier.getPrenom());
+        if (administrateurAModifier.getFonction() != null && !administrateurAModifier.getFonction().isBlank())
+            administrateurEnBase.setFonction(administrateurAModifier.getFonction());
     }
 
 

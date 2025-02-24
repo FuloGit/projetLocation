@@ -24,7 +24,8 @@ public class Client extends UtilisateurConnecte {
     @JoinColumn
     private Adresse adresse;
     private LocalDate dateDeNaissance;
-    private LocalDate dateinscription = LocalDate.now();
+    private LocalDate dateInscription = LocalDate.now();
+    @Enumerated(EnumType.STRING)
     private List<Permis> permis;
     private Boolean desactive = false;
 

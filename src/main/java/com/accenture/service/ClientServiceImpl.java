@@ -5,26 +5,24 @@ import com.accenture.repository.ClientDao;
 import com.accenture.repository.Entity.Client;
 import com.accenture.service.dto.AdresseDto;
 import com.accenture.service.dto.ClientRequestDto;
-import com.accenture.service.dto.ClientResponseDtoForClient;
+import com.accenture.service.dto.ClientResponseDto;
 import com.accenture.service.mapper.ClientMapper;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.time.LocalDate;
 import java.util.Optional;
 
+import static com.accenture.shared.model.UtilMessage.*;
+
 /**
- * S'occupe de la vérification de CLientRequestDto, de remonter et de la transmettre sous forme de Cient Entity pour le repository
+ * S'occupe de la vérification de ClientRequestDto, de remonter et de la transmettre sous forme de Cient Entity pour le repository
  */
 @Service
 @AllArgsConstructor
 public class ClientServiceImpl implements ClientService {
-    public static final String ID_NON_PRESENT = "Id non présent";
-    private static final String PASSWORD_REGEX = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[&#@\\-_§]).{8,}$";
-    private static final String EMAIL_REGEX = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
-    public static final String EMAIL_OU_PASSWORD_ERRONE = "Email ou password erroné";
+
     ClientMapper clientMapper;
     private ClientDao clientDAO;
 
@@ -34,7 +32,7 @@ public class ClientServiceImpl implements ClientService {
      * @return remonte le client enregistré sous forme de ResponseDto
      */
     @Override
-    public ClientResponseDtoForClient ajouter(ClientRequestDto clientRequestDto) {
+    public ClientResponseDto ajouter(ClientRequestDto clientRequestDto) {
         verifierClient(clientRequestDto);
         verifierAdresse(clientRequestDto.adresse());
         return clientMapper.toClientResponseDtoForCLient(clientDAO.save(clientMapper.toClient(clientRequestDto)));
@@ -47,7 +45,7 @@ public class ClientServiceImpl implements ClientService {
      * @throws EntityNotFoundException dans le cas où l'email n'existe pas en base
      */
     @Override
-    public ClientResponseDtoForClient trouver(String id, String password) throws EntityNotFoundException {
+    public ClientResponseDto trouver(String id, String password) throws EntityNotFoundException {
         Optional<Client> optionalClient = clientDAO.findById(id);
         if (optionalClient.isEmpty() || !optionalClient.get().getPassword().equals(password))
             throw new EntityNotFoundException(EMAIL_OU_PASSWORD_ERRONE);
@@ -56,6 +54,12 @@ public class ClientServiceImpl implements ClientService {
 
     }
 
+    /**
+     * Supprime un client après vérification du mot de passe
+     * @param id
+     * @param password
+     * @throws ClientException
+     */
     @Override
     public void supprimer(String id, String password)  throws ClientException {
         Optional<Client> clientOptional = clientDAO.findById(id);
@@ -63,6 +67,48 @@ public class ClientServiceImpl implements ClientService {
             throw new ClientException(EMAIL_OU_PASSWORD_ERRONE);
         }
             clientDAO.deleteById(id);
+    }
+
+    /**
+     * Méthode Patch pour le client
+     * @param id
+     * @param password
+     * @param clientRequestDto
+     * @return
+     * @throws ClientException
+     */
+    @Override
+    public ClientResponseDto modifier(String id, String password, ClientRequestDto clientRequestDto) throws ClientException {
+        Optional<Client> optionalClient = clientDAO.findById(id);
+        if (optionalClient.isEmpty() || !optionalClient.get().getPassword().equals(password))
+            throw new ClientException(EMAIL_OU_PASSWORD_ERRONE);
+        Client clientEnBase = optionalClient.get();
+        Client clientModifier = clientMapper.toClient(clientRequestDto);
+        remplace(clientModifier, clientEnBase);
+
+        Client clientEnregistrer = clientDAO.save(clientEnBase);
+        return clientMapper.toClientResponseDtoForCLient(clientEnregistrer);
+    }
+
+    private void remplace(Client clientModifier, Client clientEnBase){
+        if (clientModifier.getPassword() != null && !clientModifier.getPassword().isBlank())
+            clientEnBase.setPassword(clientModifier.getPassword());
+        if (clientModifier.getNom() != null && !clientModifier.getPassword().isBlank())
+            clientEnBase.setNom(clientModifier.getNom());
+        if (clientModifier.getPrenom() != null && !clientModifier.getPrenom().isBlank())
+            clientEnBase.setPrenom(clientModifier.getPrenom());
+        if (clientModifier.getDateDeNaissance() != null)
+            clientEnBase.setDateDeNaissance(clientModifier.getDateDeNaissance());
+        if (clientModifier.getPermis() != null)
+            clientEnBase.setPermis(clientModifier.getPermis());
+        if (clientModifier.getAdresse() != null)
+        {
+        if (clientModifier.getAdresse().getVille() != null && !clientModifier.getAdresse().getVille().isBlank())
+            clientEnBase.getAdresse().setVille(clientModifier.getAdresse().getVille());
+        if (clientModifier.getAdresse().getRue() != null &&!clientModifier.getAdresse().getRue().isBlank() )
+            clientEnBase.getAdresse().setRue(clientModifier.getAdresse().getRue());
+        if (clientModifier.getAdresse().getCodePostal() != null && !clientModifier.getAdresse().getCodePostal().isBlank())
+            clientEnBase.getAdresse().setCodePostal(clientModifier.getAdresse().getCodePostal());}
     }
 
     /**
@@ -89,7 +135,7 @@ public class ClientServiceImpl implements ClientService {
      * @throws ClientException en cas où un attribut est mal renseigné, stop l'ajout.
      */
 
-    private static void verifierClient(ClientRequestDto clientRequestDto) {
+    private static void verifierClient(ClientRequestDto clientRequestDto)  {
         if (clientRequestDto == null) {
             throw new ClientException("La requete est null");
         }

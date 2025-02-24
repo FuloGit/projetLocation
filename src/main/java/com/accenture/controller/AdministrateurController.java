@@ -3,7 +3,6 @@ package com.accenture.controller;
 import com.accenture.service.AdministrateurService;
 import com.accenture.service.dto.AdministrateurRequestDto;
 import com.accenture.service.dto.AdministrateurResponseDto;
-import com.accenture.service.dto.ClientResponseDtoForClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -46,5 +45,10 @@ public class AdministrateurController {
     ResponseEntity<AdministrateurResponseDto> suppression(@RequestParam String id, String password) {
         administrateurService.supprimer(id, password);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+    @PatchMapping
+    ResponseEntity<AdministrateurResponseDto> modifier(@RequestParam String id,@RequestParam String password, @RequestBody AdministrateurRequestDto administrateurRequestDto) {
+        AdministrateurResponseDto reponse = administrateurService.modifier(id, password, administrateurRequestDto);
+        return ResponseEntity.ok(reponse);
     }
 }

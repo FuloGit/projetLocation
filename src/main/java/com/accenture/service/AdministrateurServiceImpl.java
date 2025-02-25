@@ -21,18 +21,22 @@ import static com.accenture.shared.model.UtilMessage.*;
  */
 @Service
 @AllArgsConstructor
-public class AdministrateurServiceImpl implements AdministrateurService{
+public class AdministrateurServiceImpl implements AdministrateurService {
     private AdministrateurDao administrateurDao;
     private AdministrateurMapper administrateurMapper;
 
     /**
      * Vérifie la request et transforme en Entity pour la base de donnée
+     *
      * @param adminRequestDto
      * @return
      */
     @Override
     public AdministrateurResponseDto ajouter(AdministrateurRequestDto adminRequestDto) {
-            Optional<Administrateur> optionalAdministrateur = administrateurDao.findById(adminRequestDto.email());
+        if (adminRequestDto == null) {
+            throw new AdministrateurException("La requête est null");
+        }
+        Optional<Administrateur> optionalAdministrateur = administrateurDao.findById(adminRequestDto.email());
         if (optionalAdministrateur.isPresent())
             throw new AdministrateurException("Email déjà utilisé");
         verifierAdministrateur(adminRequestDto);
@@ -41,34 +45,34 @@ public class AdministrateurServiceImpl implements AdministrateurService{
 
     /**
      * Trouve les informations d'un administrateur après vérification d'un mot de passe.
+     *
      * @param id
      * @param password
      * @return
      * @throws EntityNotFoundException
      */
-
     @Override
     public AdministrateurResponseDto trouver(String id, String password) throws EntityNotFoundException {
         Optional<Administrateur> optionalAdministrateur = administrateurDao.findById(id);
         if (optionalAdministrateur.isEmpty())
             throw new EntityNotFoundException(EMAIL_OU_PASSWORD_ERRONE);
-       Administrateur administrateur = optionalAdministrateur.get();
+        Administrateur administrateur = optionalAdministrateur.get();
         if (!administrateur.getPassword().equals(password))
             throw new EntityNotFoundException(EMAIL_OU_PASSWORD_ERRONE);
         return administrateurMapper.toAdministrateurResponseDto(administrateur);
-
     }
 
     /**
      * Supprime un utilisateur
+     *
      * @param id
      * @param password
      * @throws AdministrateurException
      */
     @Override
-    public void supprimer(String id, String password) throws  AdministrateurException {
+    public void supprimer(String id, String password) throws AdministrateurException {
         Optional<Administrateur> administrateurOptional = administrateurDao.findById(id);
-        if (administrateurOptional.isEmpty() || !administrateurOptional.get().getPassword().equals(password) ) {
+        if (administrateurOptional.isEmpty() || !administrateurOptional.get().getPassword().equals(password)) {
             throw new AdministrateurException(EMAIL_OU_PASSWORD_ERRONE);
         }
         if (administrateurDao.findAll().size() == 1)
@@ -78,6 +82,7 @@ public class AdministrateurServiceImpl implements AdministrateurService{
 
     /**
      * Méthode Patch pour Admin
+     *
      * @param id
      * @param password
      * @param administrateurRequestDto
@@ -86,25 +91,18 @@ public class AdministrateurServiceImpl implements AdministrateurService{
     @Override
     public AdministrateurResponseDto modifier(String id, String password, AdministrateurRequestDto administrateurRequestDto) throws AdministrateurException {
         Optional<Administrateur> optionalAdministrateur = administrateurDao.findById(id);
-
         if (optionalAdministrateur.isEmpty() || !optionalAdministrateur.get().getPassword().equals(password))
-            throw new ClientException(EMAIL_OU_PASSWORD_ERRONE);
-
+            throw new AdministrateurException(EMAIL_OU_PASSWORD_ERRONE);
         Administrateur administrateurEnBase = optionalAdministrateur.get();
         Administrateur administrateurAModifier = administrateurMapper.toAdministrateur(administrateurRequestDto);
         remplace(administrateurEnBase, administrateurAModifier);
-
-        if (administrateurEnBase.getPassword() == null || !administrateurEnBase.getPassword().matches(PASSWORD_REGEX))
-            throw new AdministrateurException("Le mot de passe ne respecte pas les conditions");
-
         Administrateur administrateurEnreg = administrateurDao.save(administrateurEnBase);
         return administrateurMapper.toAdministrateurResponseDto(administrateurEnreg);
     }
 
 
-
     private void remplace(Administrateur administrateurEnBase, Administrateur administrateurAModifier) {
-        if (administrateurAModifier.getPassword() != null )
+        if (administrateurAModifier.getPassword() != null && administrateurAModifier.getPassword().matches(PASSWORD_REGEX))
             administrateurEnBase.setPassword(administrateurAModifier.getPassword());
         if (administrateurAModifier.getNom() != null && !administrateurAModifier.getNom().isBlank())
             administrateurEnBase.setNom(administrateurAModifier.getNom());
@@ -115,10 +113,8 @@ public class AdministrateurServiceImpl implements AdministrateurService{
     }
 
 
-    private void verifierAdministrateur(AdministrateurRequestDto administrateurRequestDto){
-        if (administrateurRequestDto == null) {
-            throw new AdministrateurException("La requête est null");
-        }
+    private void verifierAdministrateur(AdministrateurRequestDto administrateurRequestDto) {
+
         if (administrateurRequestDto.email() == null || administrateurRequestDto.email().isBlank()) {
             throw new AdministrateurException("L'adresse email est absente");
         }

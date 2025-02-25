@@ -34,6 +34,8 @@ public class ClientServiceImpl implements ClientService {
      */
     @Override
     public ClientResponseDto ajouter(ClientRequestDto clientRequestDto) {
+        if (clientRequestDto == null) {
+            throw new ClientException("La requete est null");}
         Optional<Client> optionalClient = clientDAO.findById(clientRequestDto.email());
         if (optionalClient.isPresent())
             throw new ClientException("Email déjà utilisé");
@@ -68,8 +70,7 @@ public class ClientServiceImpl implements ClientService {
         if (clientOptional.isEmpty() || !clientOptional.get().getPassword().equals(password) ) {
             throw new ClientException(EMAIL_OU_PASSWORD_ERRONE);
         }
-            clientDAO.deleteById(id);
-    }
+            clientDAO.deleteById(id);}
 
     /**
      * Méthode Patch pour le client
@@ -84,24 +85,19 @@ public class ClientServiceImpl implements ClientService {
         Optional<Client> optionalClient = clientDAO.findById(id);
         if (optionalClient.isEmpty() || !optionalClient.get().getPassword().equals(password))
             throw new ClientException(EMAIL_OU_PASSWORD_ERRONE);
-
         Client clientEnBase = optionalClient.get();
         Client clientModifier = clientMapper.toClient(clientRequestDto);
         remplace(clientModifier, clientEnBase);
-
-        if (clientEnBase.getPassword() == null || !clientEnBase.getPassword().matches(PASSWORD_REGEX))
-            throw new ClientException("Le mot de passe ne respecte pas les conditions");
-
         Client clientEnregistrer = clientDAO.save(clientEnBase);
         return clientMapper.toClientResponseDtoForCLient(clientEnregistrer);
     }
 
     private void remplace(Client clientModifier, Client clientEnBase){
-        if (clientModifier.getPassword() != null)
+        if (clientModifier.getPassword() != null && clientModifier.getPassword().matches(PASSWORD_REGEX))
             clientEnBase.setPassword(clientModifier.getPassword());
         if (clientModifier.getNom() != null && !clientModifier.getNom().isBlank())
             clientEnBase.setNom(clientModifier.getNom());
-        if (clientModifier.getPrenom() != null && !clientModifier.getNom().isBlank())
+        if (clientModifier.getPrenom() != null && !clientModifier.getPrenom().isBlank())
             clientEnBase.setPrenom(clientModifier.getPrenom());
         if (clientModifier.getDateDeNaissance() != null)
             clientEnBase.setDateDeNaissance(clientModifier.getDateDeNaissance());
@@ -142,9 +138,6 @@ public class ClientServiceImpl implements ClientService {
      */
 
     private static void verifierClient(ClientRequestDto clientRequestDto)  {
-        if (clientRequestDto == null) {
-            throw new ClientException("La requete est null");
-        }
         if (clientRequestDto.email() == null || clientRequestDto.email().isBlank()) {
             throw new ClientException("L'adresse Email est absente");
         }

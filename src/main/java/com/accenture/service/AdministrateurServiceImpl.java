@@ -1,12 +1,10 @@
 package com.accenture.service;
 
 import com.accenture.exception.AdministrateurException;
-import com.accenture.exception.ClientException;
 import com.accenture.repository.AdministrateurDao;
-import com.accenture.repository.Entity.Administrateur;
-import com.accenture.repository.Entity.Client;
-import com.accenture.service.dto.AdministrateurRequestDto;
-import com.accenture.service.dto.AdministrateurResponseDto;
+import com.accenture.repository.Entity.utilisateur.Administrateur;
+import com.accenture.service.dto.utilisateur.AdministrateurRequestDto;
+import com.accenture.service.dto.utilisateur.AdministrateurResponseDto;
 import com.accenture.service.mapper.AdministrateurMapper;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
@@ -33,13 +31,10 @@ public class AdministrateurServiceImpl implements AdministrateurService {
      */
     @Override
     public AdministrateurResponseDto ajouter(AdministrateurRequestDto adminRequestDto) {
-        if (adminRequestDto == null) {
-            throw new AdministrateurException("La requête est null");
-        }
+        verifierAdministrateur(adminRequestDto);
         Optional<Administrateur> optionalAdministrateur = administrateurDao.findById(adminRequestDto.email());
         if (optionalAdministrateur.isPresent())
             throw new AdministrateurException("Email déjà utilisé");
-        verifierAdministrateur(adminRequestDto);
         return administrateurMapper.toAdministrateurResponseDto(administrateurDao.save(administrateurMapper.toAdministrateur(adminRequestDto)));
     }
 
@@ -114,7 +109,9 @@ public class AdministrateurServiceImpl implements AdministrateurService {
 
 
     private void verifierAdministrateur(AdministrateurRequestDto administrateurRequestDto) {
-
+        if (administrateurRequestDto == null) {
+            throw new AdministrateurException("La requête est null");
+        }
         if (administrateurRequestDto.email() == null || administrateurRequestDto.email().isBlank()) {
             throw new AdministrateurException("L'adresse email est absente");
         }

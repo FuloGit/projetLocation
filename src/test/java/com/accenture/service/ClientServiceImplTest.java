@@ -2,11 +2,11 @@ package com.accenture.service;
 
 import com.accenture.exception.ClientException;
 import com.accenture.repository.ClientDao;
-import com.accenture.repository.Entity.Adresse;
-import com.accenture.repository.Entity.Client;
-import com.accenture.service.dto.AdresseDto;
-import com.accenture.service.dto.ClientRequestDto;
-import com.accenture.service.dto.ClientResponseDto;
+import com.accenture.repository.Entity.utilisateur.Adresse;
+import com.accenture.repository.Entity.utilisateur.Client;
+import com.accenture.service.dto.utilisateur.AdresseDto;
+import com.accenture.service.dto.utilisateur.ClientRequestDto;
+import com.accenture.service.dto.utilisateur.ClientResponseDto;
 import com.accenture.service.mapper.ClientMapper;
 import com.accenture.shared.model.Permis;
 import jakarta.persistence.EntityNotFoundException;

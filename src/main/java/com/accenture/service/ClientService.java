@@ -1,7 +1,7 @@
 package com.accenture.service;
 
-import com.accenture.service.dto.ClientRequestDto;
-import com.accenture.service.dto.ClientResponseDto;
+import com.accenture.service.dto.utilisateur.ClientRequestDto;
+import com.accenture.service.dto.utilisateur.ClientResponseDto;
 
 /**
  * Interface comprenant les méthodes à implémenter

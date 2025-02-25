@@ -1,6 +1,6 @@
 package com.accenture.repository;
 
-import com.accenture.repository.Entity.Administrateur;
+import com.accenture.repository.Entity.utilisateur.Administrateur;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

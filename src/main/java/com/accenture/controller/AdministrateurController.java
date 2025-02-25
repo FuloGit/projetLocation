@@ -1,8 +1,8 @@
 package com.accenture.controller;
 
 import com.accenture.service.AdministrateurService;
-import com.accenture.service.dto.AdministrateurRequestDto;
-import com.accenture.service.dto.AdministrateurResponseDto;
+import com.accenture.service.dto.utilisateur.AdministrateurRequestDto;
+import com.accenture.service.dto.utilisateur.AdministrateurResponseDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

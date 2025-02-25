@@ -1,4 +1,4 @@
-package com.accenture.service.dto;
+package com.accenture.service.dto.utilisateur;
 
 
 import jakarta.validation.constraints.NotBlank;

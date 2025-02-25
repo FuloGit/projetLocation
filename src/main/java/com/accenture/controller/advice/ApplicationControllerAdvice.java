@@ -2,6 +2,7 @@ package com.accenture.controller.advice;
 
 import com.accenture.exception.AdministrateurException;
 import com.accenture.exception.ClientException;
+import com.accenture.exception.VoitureException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +32,12 @@ public class ApplicationControllerAdvice {
 
     @ExceptionHandler(AdministrateurException.class)
     public ResponseEntity<ErreurReponse> gestionAdministrateurException (AdministrateurException ex){
+        ErreurReponse er = new ErreurReponse(LocalDateTime.now(), "Erreur Fonctionnelle", ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(er);
+    }
+
+    @ExceptionHandler(VoitureException.class)
+    public ResponseEntity<ErreurReponse> gestionVoitureException(VoitureException ex){
         ErreurReponse er = new ErreurReponse(LocalDateTime.now(), "Erreur Fonctionnelle", ex.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(er);
     }

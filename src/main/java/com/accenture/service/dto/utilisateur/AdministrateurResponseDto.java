@@ -1,4 +1,4 @@
-package com.accenture.service.dto;
+package com.accenture.service.dto.utilisateur;
 
 /**
  * Sert au retours à l'utilisateur, ne retourne pas le password

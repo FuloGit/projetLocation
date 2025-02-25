@@ -1,9 +1,6 @@
-package com.accenture.service.dto;
+package com.accenture.service.dto.utilisateur;
 
-import com.accenture.shared.model.Permis;
 import jakarta.validation.constraints.NotBlank;
-
-import java.util.List;
 
 /**
  * Sert à l'ajout d'un Admin

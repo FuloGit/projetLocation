@@ -1,4 +1,4 @@
-package com.accenture.service.dto;
+package com.accenture.service.dto.utilisateur;
 
 import com.accenture.shared.model.Permis;
 import java.time.LocalDate;

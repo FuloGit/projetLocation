@@ -1,12 +1,11 @@
 package com.accenture.service;
 
-import com.accenture.exception.AdministrateurException;
 import com.accenture.exception.ClientException;
 import com.accenture.repository.ClientDao;
-import com.accenture.repository.Entity.Client;
-import com.accenture.service.dto.AdresseDto;
-import com.accenture.service.dto.ClientRequestDto;
-import com.accenture.service.dto.ClientResponseDto;
+import com.accenture.repository.Entity.utilisateur.Client;
+import com.accenture.service.dto.utilisateur.AdresseDto;
+import com.accenture.service.dto.utilisateur.ClientRequestDto;
+import com.accenture.service.dto.utilisateur.ClientResponseDto;
 import com.accenture.service.mapper.ClientMapper;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
@@ -34,13 +33,14 @@ public class ClientServiceImpl implements ClientService {
      */
     @Override
     public ClientResponseDto ajouter(ClientRequestDto clientRequestDto) {
-        if (clientRequestDto == null) {
-            throw new ClientException("La requete est null");}
+
+        verifierClient(clientRequestDto);
+        verifierAdresse(clientRequestDto.adresse());
+
         Optional<Client> optionalClient = clientDAO.findById(clientRequestDto.email());
         if (optionalClient.isPresent())
             throw new ClientException("Email déjà utilisé");
-        verifierClient(clientRequestDto);
-        verifierAdresse(clientRequestDto.adresse());
+
         return clientMapper.toClientResponseDtoForCLient(clientDAO.save(clientMapper.toClient(clientRequestDto)));
     }
 
@@ -138,6 +138,8 @@ public class ClientServiceImpl implements ClientService {
      */
 
     private static void verifierClient(ClientRequestDto clientRequestDto)  {
+        if (clientRequestDto == null) {
+            throw new ClientException("La requete est null");}
         if (clientRequestDto.email() == null || clientRequestDto.email().isBlank()) {
             throw new ClientException("L'adresse Email est absente");
         }

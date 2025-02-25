@@ -1,8 +1,8 @@
 package com.accenture.service.mapper;
 
-import com.accenture.repository.Entity.Administrateur;
-import com.accenture.service.dto.AdministrateurRequestDto;
-import com.accenture.service.dto.AdministrateurResponseDto;
+import com.accenture.repository.Entity.utilisateur.Administrateur;
+import com.accenture.service.dto.utilisateur.AdministrateurRequestDto;
+import com.accenture.service.dto.utilisateur.AdministrateurResponseDto;
 import org.mapstruct.Mapper;
 
 

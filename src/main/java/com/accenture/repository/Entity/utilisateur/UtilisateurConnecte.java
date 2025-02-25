@@ -1,4 +1,4 @@
-package com.accenture.repository.Entity;
+package com.accenture.repository.Entity.utilisateur;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -12,7 +12,8 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @NoArgsConstructor
-@Inheritance (strategy = InheritanceType.TABLE_PER_CLASS)
+@AllArgsConstructor
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class UtilisateurConnecte {
 
     @Id
@@ -23,10 +24,5 @@ public abstract class UtilisateurConnecte {
     private String nom;
     private String prenom;
 
-    public UtilisateurConnecte(String mail, String password, String nom, String prenom) {
-        this.email = mail;
-        this.password = password;
-        this.nom = nom;
-        this.prenom = prenom;
-    }
+
 }

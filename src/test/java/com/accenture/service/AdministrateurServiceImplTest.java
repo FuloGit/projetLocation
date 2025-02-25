@@ -3,10 +3,10 @@ package com.accenture.service;
 import com.accenture.exception.AdministrateurException;
 
 import com.accenture.repository.AdministrateurDao;
-import com.accenture.repository.Entity.Administrateur;
+import com.accenture.repository.Entity.utilisateur.Administrateur;
 
-import com.accenture.service.dto.AdministrateurRequestDto;
-import com.accenture.service.dto.AdministrateurResponseDto;
+import com.accenture.service.dto.utilisateur.AdministrateurRequestDto;
+import com.accenture.service.dto.utilisateur.AdministrateurResponseDto;
 
 import com.accenture.service.mapper.AdministrateurMapper;
 import jakarta.persistence.EntityNotFoundException;

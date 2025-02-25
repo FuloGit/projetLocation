@@ -1,4 +1,4 @@
-package com.accenture.repository.Entity;
+package com.accenture.repository.Entity.utilisateur;
 
 import com.accenture.shared.model.Permis;
 import jakarta.persistence.*;

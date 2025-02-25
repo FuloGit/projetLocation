@@ -1,4 +1,4 @@
-package com.accenture.repository.Entity;
+package com.accenture.repository.Entity.utilisateur;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

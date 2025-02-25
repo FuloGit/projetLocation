@@ -1,4 +1,4 @@
-package com.accenture.repository.Entity;
+package com.accenture.repository.Entity.utilisateur;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

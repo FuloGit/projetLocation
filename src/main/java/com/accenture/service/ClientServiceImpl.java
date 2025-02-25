@@ -1,5 +1,6 @@
 package com.accenture.service;
 
+import com.accenture.exception.AdministrateurException;
 import com.accenture.exception.ClientException;
 import com.accenture.repository.ClientDao;
 import com.accenture.repository.Entity.Client;
@@ -33,6 +34,9 @@ public class ClientServiceImpl implements ClientService {
      */
     @Override
     public ClientResponseDto ajouter(ClientRequestDto clientRequestDto) {
+        Optional<Client> optionalClient = clientDAO.findById(clientRequestDto.email());
+        if (optionalClient.isPresent())
+            throw new ClientException("Email déjà utilisé");
         verifierClient(clientRequestDto);
         verifierAdresse(clientRequestDto.adresse());
         return clientMapper.toClientResponseDtoForCLient(clientDAO.save(clientMapper.toClient(clientRequestDto)));
@@ -49,9 +53,7 @@ public class ClientServiceImpl implements ClientService {
         Optional<Client> optionalClient = clientDAO.findById(id);
         if (optionalClient.isEmpty() || !optionalClient.get().getPassword().equals(password))
             throw new EntityNotFoundException(EMAIL_OU_PASSWORD_ERRONE);
-
         return clientMapper.toClientResponseDtoForCLient(optionalClient.get());
-
     }
 
     /**
@@ -82,20 +84,24 @@ public class ClientServiceImpl implements ClientService {
         Optional<Client> optionalClient = clientDAO.findById(id);
         if (optionalClient.isEmpty() || !optionalClient.get().getPassword().equals(password))
             throw new ClientException(EMAIL_OU_PASSWORD_ERRONE);
+
         Client clientEnBase = optionalClient.get();
         Client clientModifier = clientMapper.toClient(clientRequestDto);
         remplace(clientModifier, clientEnBase);
+
+        if (clientEnBase.getPassword() == null || !clientEnBase.getPassword().matches(PASSWORD_REGEX))
+            throw new ClientException("Le mot de passe ne respecte pas les conditions");
 
         Client clientEnregistrer = clientDAO.save(clientEnBase);
         return clientMapper.toClientResponseDtoForCLient(clientEnregistrer);
     }
 
     private void remplace(Client clientModifier, Client clientEnBase){
-        if (clientModifier.getPassword() != null && !clientModifier.getPassword().isBlank())
+        if (clientModifier.getPassword() != null)
             clientEnBase.setPassword(clientModifier.getPassword());
-        if (clientModifier.getNom() != null && !clientModifier.getPassword().isBlank())
+        if (clientModifier.getNom() != null && !clientModifier.getNom().isBlank())
             clientEnBase.setNom(clientModifier.getNom());
-        if (clientModifier.getPrenom() != null && !clientModifier.getPrenom().isBlank())
+        if (clientModifier.getPrenom() != null && !clientModifier.getNom().isBlank())
             clientEnBase.setPrenom(clientModifier.getPrenom());
         if (clientModifier.getDateDeNaissance() != null)
             clientEnBase.setDateDeNaissance(clientModifier.getDateDeNaissance());
@@ -105,7 +111,7 @@ public class ClientServiceImpl implements ClientService {
         {
         if (clientModifier.getAdresse().getVille() != null && !clientModifier.getAdresse().getVille().isBlank())
             clientEnBase.getAdresse().setVille(clientModifier.getAdresse().getVille());
-        if (clientModifier.getAdresse().getRue() != null &&!clientModifier.getAdresse().getRue().isBlank() )
+        if (clientModifier.getAdresse().getRue() != null && !clientModifier.getAdresse().getRue().isBlank())
             clientEnBase.getAdresse().setRue(clientModifier.getAdresse().getRue());
         if (clientModifier.getAdresse().getCodePostal() != null && !clientModifier.getAdresse().getCodePostal().isBlank())
             clientEnBase.getAdresse().setCodePostal(clientModifier.getAdresse().getCodePostal());}
@@ -159,6 +165,6 @@ public class ClientServiceImpl implements ClientService {
 
         if (clientRequestDto.password() == null || clientRequestDto.password().isBlank() || (!clientRequestDto.password().matches(PASSWORD_REGEX)))
             throw new ClientException("Le mot de passe ne respecte pas les conditions");
-
     }
+
 }

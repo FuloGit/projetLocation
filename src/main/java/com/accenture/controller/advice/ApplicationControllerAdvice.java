@@ -1,5 +1,6 @@
 package com.accenture.controller.advice;
 
+import com.accenture.exception.AdministrateurException;
 import com.accenture.exception.ClientException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -17,7 +18,7 @@ import java.time.LocalDateTime;
 public class ApplicationControllerAdvice {
 
     @ExceptionHandler(ClientException.class)
-    public ResponseEntity<ErreurReponse> gestionTacheException (ClientException ex){
+    public ResponseEntity<ErreurReponse> gestionClientException (ClientException ex){
        ErreurReponse er = new ErreurReponse(LocalDateTime.now(), "Erreur Fonctionnelle", ex.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(er);
     }
@@ -26,5 +27,11 @@ public class ApplicationControllerAdvice {
     public ResponseEntity<ErreurReponse> gestionEntityException (EntityNotFoundException ex){
         ErreurReponse er = new ErreurReponse(LocalDateTime.now(), "Mauvaise Requete", ex.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(er);
+    }
+
+    @ExceptionHandler(AdministrateurException.class)
+    public ResponseEntity<ErreurReponse> gestionAdministrateurException (AdministrateurException ex){
+        ErreurReponse er = new ErreurReponse(LocalDateTime.now(), "Erreur Fonctionnelle", ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(er);
     }
 }

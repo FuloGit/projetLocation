@@ -4,6 +4,7 @@ import com.accenture.exception.AdministrateurException;
 import com.accenture.exception.ClientException;
 import com.accenture.repository.AdministrateurDao;
 import com.accenture.repository.Entity.Administrateur;
+import com.accenture.repository.Entity.Client;
 import com.accenture.service.dto.AdministrateurRequestDto;
 import com.accenture.service.dto.AdministrateurResponseDto;
 import com.accenture.service.mapper.AdministrateurMapper;
@@ -31,6 +32,9 @@ public class AdministrateurServiceImpl implements AdministrateurService{
      */
     @Override
     public AdministrateurResponseDto ajouter(AdministrateurRequestDto adminRequestDto) {
+            Optional<Administrateur> optionalAdministrateur = administrateurDao.findById(adminRequestDto.email());
+        if (optionalAdministrateur.isPresent())
+            throw new AdministrateurException("Email déjà utilisé");
         verifierAdministrateur(adminRequestDto);
         return administrateurMapper.toAdministrateurResponseDto(administrateurDao.save(administrateurMapper.toAdministrateur(adminRequestDto)));
     }
@@ -56,7 +60,7 @@ public class AdministrateurServiceImpl implements AdministrateurService{
     }
 
     /**
-     *
+     * Supprime un utilisateur
      * @param id
      * @param password
      * @throws AdministrateurException
@@ -82,8 +86,10 @@ public class AdministrateurServiceImpl implements AdministrateurService{
     @Override
     public AdministrateurResponseDto modifier(String id, String password, AdministrateurRequestDto administrateurRequestDto) throws AdministrateurException {
         Optional<Administrateur> optionalAdministrateur = administrateurDao.findById(id);
+
         if (optionalAdministrateur.isEmpty() || !optionalAdministrateur.get().getPassword().equals(password))
             throw new ClientException(EMAIL_OU_PASSWORD_ERRONE);
+
         Administrateur administrateurEnBase = optionalAdministrateur.get();
         Administrateur administrateurAModifier = administrateurMapper.toAdministrateur(administrateurRequestDto);
         remplace(administrateurEnBase, administrateurAModifier);
@@ -98,7 +104,7 @@ public class AdministrateurServiceImpl implements AdministrateurService{
 
 
     private void remplace(Administrateur administrateurEnBase, Administrateur administrateurAModifier) {
-        if (administrateurAModifier.getPassword() != null && administrateurAModifier.getPassword().matches(PASSWORD_REGEX))
+        if (administrateurAModifier.getPassword() != null )
             administrateurEnBase.setPassword(administrateurAModifier.getPassword());
         if (administrateurAModifier.getNom() != null && !administrateurAModifier.getNom().isBlank())
             administrateurEnBase.setNom(administrateurAModifier.getNom());

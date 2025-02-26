@@ -5,13 +5,11 @@ import com.accenture.service.dto.vehicule.VoitureRequestDto;
 import com.accenture.service.dto.vehicule.VoitureResponseDto;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 @AllArgsConstructor
 @RestController
@@ -31,5 +29,31 @@ public class VoitureController {
         return ResponseEntity.created(location).build();
     }
 
+    @GetMapping
+    List<VoitureResponseDto> recherche(){
+        return voitureService.lister();
+    }
+    @GetMapping("/actifs")
+    List<VoitureResponseDto> rechercherActive(){
+        return voitureService.listerActifs();
+    }
+    @GetMapping("/inactifs")
+    List<VoitureResponseDto> rechercherInactive(){
+        return voitureService.listerInactifs();
+    }
+    @GetMapping("/dansLeParc")
+    List<VoitureResponseDto> rechercherDansleParc(){
+        return voitureService.listerDansLeParc();
+    }
+    @GetMapping("/horsDuParc")
+    List<VoitureResponseDto> rechercherHorsDuParc(){
+        return voitureService.listerRetirerDuParc();
+    }
+
+    @GetMapping("/{id}")
+    ResponseEntity<VoitureResponseDto> afficher(@PathVariable("id") Long id){
+        VoitureResponseDto voitureResponseDto = voitureService.trouver(id);
+        return ResponseEntity.ok(voitureResponseDto);
+    }
 
 }

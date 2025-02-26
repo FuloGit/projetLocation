@@ -91,19 +91,20 @@ public class AdministrateurServiceImpl implements AdministrateurService {
         Administrateur administrateurEnBase = optionalAdministrateur.get();
         Administrateur administrateurAModifier = administrateurMapper.toAdministrateur(administrateurRequestDto);
         remplace(administrateurEnBase, administrateurAModifier);
+        verifierAdministrateur(administrateurMapper.toAdministrateurRequestDto(administrateurEnBase));
         Administrateur administrateurEnreg = administrateurDao.save(administrateurEnBase);
         return administrateurMapper.toAdministrateurResponseDto(administrateurEnreg);
     }
 
 
     private void remplace(Administrateur administrateurEnBase, Administrateur administrateurAModifier) {
-        if (administrateurAModifier.getPassword() != null && administrateurAModifier.getPassword().matches(PASSWORD_REGEX))
+        if (administrateurAModifier.getPassword() != null)
             administrateurEnBase.setPassword(administrateurAModifier.getPassword());
-        if (administrateurAModifier.getNom() != null && !administrateurAModifier.getNom().isBlank())
+        if (administrateurAModifier.getNom() != null)
             administrateurEnBase.setNom(administrateurAModifier.getNom());
-        if (administrateurAModifier.getPrenom() != null && !administrateurAModifier.getPrenom().isBlank())
+        if (administrateurAModifier.getPrenom() != null)
             administrateurEnBase.setPrenom(administrateurAModifier.getPrenom());
-        if (administrateurAModifier.getFonction() != null && !administrateurAModifier.getFonction().isBlank())
+        if (administrateurAModifier.getFonction() != null)
             administrateurEnBase.setFonction(administrateurAModifier.getFonction());
     }
 

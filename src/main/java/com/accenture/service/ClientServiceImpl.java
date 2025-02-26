@@ -33,14 +33,11 @@ public class ClientServiceImpl implements ClientService {
      */
     @Override
     public ClientResponseDto ajouter(ClientRequestDto clientRequestDto) {
-
         verifierClient(clientRequestDto);
         verifierAdresse(clientRequestDto.adresse());
-
         Optional<Client> optionalClient = clientDAO.findById(clientRequestDto.email());
         if (optionalClient.isPresent())
             throw new ClientException("Email déjà utilisé");
-
         return clientMapper.toClientResponseDtoForCLient(clientDAO.save(clientMapper.toClient(clientRequestDto)));
     }
 
@@ -70,7 +67,8 @@ public class ClientServiceImpl implements ClientService {
         if (clientOptional.isEmpty() || !clientOptional.get().getPassword().equals(password) ) {
             throw new ClientException(EMAIL_OU_PASSWORD_ERRONE);
         }
-            clientDAO.deleteById(id);}
+        clientDAO.deleteById(id);
+    }
 
     /**
      * Méthode Patch pour le client
@@ -88,16 +86,17 @@ public class ClientServiceImpl implements ClientService {
         Client clientEnBase = optionalClient.get();
         Client clientModifier = clientMapper.toClient(clientRequestDto);
         remplace(clientModifier, clientEnBase);
+        verifierClient(clientMapper.toClientRequestDto(clientEnBase));
         Client clientEnregistrer = clientDAO.save(clientEnBase);
         return clientMapper.toClientResponseDtoForCLient(clientEnregistrer);
     }
 
     private void remplace(Client clientModifier, Client clientEnBase){
-        if (clientModifier.getPassword() != null && clientModifier.getPassword().matches(PASSWORD_REGEX))
+        if (clientModifier.getPassword() != null)
             clientEnBase.setPassword(clientModifier.getPassword());
-        if (clientModifier.getNom() != null && !clientModifier.getNom().isBlank())
+        if (clientModifier.getNom() != null)
             clientEnBase.setNom(clientModifier.getNom());
-        if (clientModifier.getPrenom() != null && !clientModifier.getPrenom().isBlank())
+        if (clientModifier.getPrenom() != null)
             clientEnBase.setPrenom(clientModifier.getPrenom());
         if (clientModifier.getDateDeNaissance() != null)
             clientEnBase.setDateDeNaissance(clientModifier.getDateDeNaissance());
@@ -105,11 +104,11 @@ public class ClientServiceImpl implements ClientService {
             clientEnBase.setPermis(clientModifier.getPermis());
         if (clientModifier.getAdresse() != null)
         {
-        if (clientModifier.getAdresse().getVille() != null && !clientModifier.getAdresse().getVille().isBlank())
+        if (clientModifier.getAdresse().getVille() != null)
             clientEnBase.getAdresse().setVille(clientModifier.getAdresse().getVille());
-        if (clientModifier.getAdresse().getRue() != null && !clientModifier.getAdresse().getRue().isBlank())
+        if (clientModifier.getAdresse().getRue() != null)
             clientEnBase.getAdresse().setRue(clientModifier.getAdresse().getRue());
-        if (clientModifier.getAdresse().getCodePostal() != null && !clientModifier.getAdresse().getCodePostal().isBlank())
+        if (clientModifier.getAdresse().getCodePostal() != null)
             clientEnBase.getAdresse().setCodePostal(clientModifier.getAdresse().getCodePostal());}
     }
 
@@ -121,8 +120,7 @@ public class ClientServiceImpl implements ClientService {
 
     private static void verifierAdresse(AdresseDto adresse) {
         if (adresse == null) {
-            throw new ClientException("L'adresse est absente");
-        }
+            throw new ClientException("L'adresse est absente");}
         if (adresse.rue() == null || adresse.rue().isBlank())
             throw new ClientException("Vous devez renseignez la rue");
         if (adresse.ville() == null || adresse.ville().isBlank())
@@ -161,5 +159,4 @@ public class ClientServiceImpl implements ClientService {
         if (clientRequestDto.password() == null || clientRequestDto.password().isBlank() || (!clientRequestDto.password().matches(PASSWORD_REGEX)))
             throw new ClientException("Le mot de passe ne respecte pas les conditions");
     }
-
 }

@@ -11,4 +11,5 @@ public interface AdministrateurMapper {
 
     AdministrateurResponseDto toAdministrateurResponseDto(Administrateur administrateur);
     Administrateur toAdministrateur (AdministrateurRequestDto administrateurRequestDto);
+    AdministrateurRequestDto toAdministrateurRequestDto (Administrateur administrateur);
 }

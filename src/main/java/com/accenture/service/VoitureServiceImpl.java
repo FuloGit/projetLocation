@@ -7,10 +7,12 @@ import com.accenture.service.dto.vehicule.VoitureRequestDto;
 import com.accenture.service.dto.vehicule.VoitureResponseDto;
 import com.accenture.service.mapper.VoitureMapper;
 import com.accenture.shared.model.Permis;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -19,6 +21,12 @@ public class VoitureServiceImpl implements VoitureService {
     private VoitureDao voitureDao;
     private VoitureMapper voitureMapper;
 
+    /**
+     * Verifie la voiture Request avant de la transmettre à la base
+     * @param voitureRequestDto
+     * @return
+     * @throws VoitureException
+     */
     @Override
     public VoitureResponseDto ajouter(VoitureRequestDto voitureRequestDto) throws VoitureException {
         verifierVoiture(voitureRequestDto);
@@ -27,9 +35,48 @@ public class VoitureServiceImpl implements VoitureService {
         return voitureMapper.toVoitureResponseDto(voitureDao.save(voiture));
     }
 
+    /**
+     * Liste des voitures en base
+     * @return
+     */
     @Override
     public List<VoitureResponseDto> lister() {
-        return List.of();
+        return voitureDao.findAll().stream()
+                .map(voiture -> voitureMapper.toVoitureResponseDto(voiture)).toList();
+    }
+
+    @Override
+    public List<VoitureResponseDto> listerActifs() {
+        return voitureDao.findByActifTrue().stream().map(voiture -> voitureMapper.toVoitureResponseDto(voiture)).toList();
+    }
+
+  @Override
+    public List<VoitureResponseDto> listerInactifs() {
+        return voitureDao.findByActifFalse().stream().map(voiture -> voitureMapper.toVoitureResponseDto(voiture)).toList();
+    }
+
+    @Override
+    public List<VoitureResponseDto> listerDansLeParc() {
+        return voitureDao.findByRetireDuParcFalse().stream().map(voiture -> voitureMapper.toVoitureResponseDto(voiture)).toList();
+    }
+
+    @Override
+    public List<VoitureResponseDto> listerRetirerDuParc() {
+        return voitureDao.findByRetireDuParcTrue().stream().map(voiture -> voitureMapper.toVoitureResponseDto(voiture)).toList();
+    }
+
+    /**
+     * CHercher Voiture par id, renvoie Exeception si l'id ne correspond à rien en base
+     * @param id
+     * @return
+     * @throws EntityNotFoundException
+     */
+    @Override
+    public VoitureResponseDto trouver(Long id) throws EntityNotFoundException {
+        Optional<Voiture> optionalVoiture = voitureDao.findById(id);
+        if (optionalVoiture.isEmpty())
+            throw new EntityNotFoundException("Id non présent");
+        return voitureMapper.toVoitureResponseDto(optionalVoiture.get());
     }
 
     private void verifierVoiture(VoitureRequestDto voitureRequestDto){

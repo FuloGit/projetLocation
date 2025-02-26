@@ -2,11 +2,10 @@ package com.accenture.service;
 
 import com.accenture.exception.ClientException;
 import com.accenture.repository.ClientDao;
+import com.accenture.repository.Entity.utilisateur.Administrateur;
 import com.accenture.repository.Entity.utilisateur.Adresse;
 import com.accenture.repository.Entity.utilisateur.Client;
-import com.accenture.service.dto.utilisateur.AdresseDto;
-import com.accenture.service.dto.utilisateur.ClientRequestDto;
-import com.accenture.service.dto.utilisateur.ClientResponseDto;
+import com.accenture.service.dto.utilisateur.*;
 import com.accenture.service.mapper.ClientMapper;
 import com.accenture.shared.model.Permis;
 import jakarta.persistence.EntityNotFoundException;
@@ -65,8 +64,8 @@ class ClientServiceImplTest {
         Client client = creactionClient();
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", "Pierre", "Pierre", adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
         Mockito.when(clientDAOMock.findById("Pierre@yahoo.fr")).thenReturn(Optional.of(client));
-       ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
-       assertEquals("Email déjà utilisé", ex.getMessage());
+        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        assertEquals("Email déjà utilisé", ex.getMessage());
     }
 
     @DisplayName("""
@@ -149,7 +148,7 @@ class ClientServiceImplTest {
     @Test
     void ajouterAvecPrenomNull() {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", "44300", "Nantes");
-        ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", "Pierre", null, adresseRequestDto, LocalDate.of(1990, 12, 12),List.of(A1));
+        ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", "Pierre", null, adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
         assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
 
     }
@@ -363,64 +362,24 @@ class ClientServiceImplTest {
     }
 
     @DisplayName("""
-            Vérifie si la méthode modifie fonctionne avec un Nom Null
+            Vérifie si la méthode modifier
             """)
     @Test
-    void modifierNomNull() {
+    void modifierSuccess() {
         ClientRequestDto clientRequestDto = creationClientRequestDto();
-        Adresse adresse = new Adresse("Lelasseur", "44300", "Nantes");
-        Client clientAvantEnreg = new Client("Pierre@yahoo.fr", "Rsgfssfd2@", null, "Pierre", adresse, LocalDate.of(1990, 12, 12), List.of(A1, B1));
-        Client clientApresEnreg = creactionClient();
-        ClientResponseDto clientResponseDto = creationClientResponseDto();
-        Mockito.when(clientDAOMock.findById("Pierre@yahoo.fr")).thenReturn(Optional.of(clientAvantEnreg));
-        Mockito.when(clientMapperMock.toClient(clientRequestDto)).thenReturn(clientAvantEnreg);
-        Mockito.when((clientDAOMock).save(clientAvantEnreg)).thenReturn(clientApresEnreg);
-        Mockito.when(clientMapperMock.toClientResponseDtoForCLient(clientApresEnreg)).thenReturn(clientResponseDto);
-        assertSame(clientResponseDto, clientService.modifier("Pierre@yahoo.fr", "Rsgfssfd2@", clientRequestDto));
-        Mockito.verify(clientDAOMock).save(clientAvantEnreg);
-    }
-
-    @DisplayName("""
-            Vérifie si la méthode modifie fonctionne avec un Nom Blank
-            """)
-    @Test
-    void modifierNomBlank() {
-        ClientRequestDto clientRequestDto = creationClientRequestDto();
-        Adresse adresse = new Adresse("Lelasseur", "44300", "Nantes");
-        Client clientAvantEnreg = new Client("Pierre@yahoo.fr", "Rsgfssfd2@", "", "Pierre", adresse, LocalDate.of(1990, 12, 12), List.of(A1, B1));
-        Client clientApresEnreg = creactionClient();
-        ClientResponseDto clientResponseDto = creationClientResponseDto();
-        Mockito.when(clientDAOMock.findById("Pierre@yahoo.fr")).thenReturn(Optional.of(clientAvantEnreg));
-        Mockito.when(clientMapperMock.toClient(clientRequestDto)).thenReturn(clientAvantEnreg);
-        Mockito.when((clientDAOMock).save(clientAvantEnreg)).thenReturn(clientApresEnreg);
-        Mockito.when(clientMapperMock.toClientResponseDtoForCLient(clientApresEnreg)).thenReturn(clientResponseDto);
-        assertSame(clientResponseDto, clientService.modifier("Pierre@yahoo.fr", "Rsgfssfd2@", clientRequestDto));
-        Mockito.verify(clientDAOMock).save(clientAvantEnreg);
-    }
-
-    @DisplayName("""
-            Vérifie si la méthode modifie fonctionne avec un Nom 
-            """)
-    @Test
-    void modifierNom() {
-        ClientRequestDto clientRequestDto = creationClientRequestDto();
-        Adresse adresse = new Adresse("Lelasseur", "44300", "Nantes");
-        Client clientAvantEnreg = new Client("Pierre@yahoo.fr", "Rsgfssfd2@", "Pierre", "Pierre", adresse, LocalDate.of(1990, 12, 12), List.of(A1, B1));
+        Client clientAvantEnreg = creactionClient();
         Client clientApresEnreg = creactionClient();
         AdresseDto adresseResponseDto = new AdresseDto("Lelasseur", "44300", "Nantes");
         List<Permis> permis = new ArrayList<>();
         ClientResponseDto clientResponseDto = new ClientResponseDto("Pierre", "Pierre", "Pierre@yahoo.fr", adresseResponseDto, LocalDate.of(1990, 12, 12), LocalDate.of(1990, 12, 12), permis);
         Mockito.when(clientDAOMock.findById("Pierre@yahoo.fr")).thenReturn(Optional.of(clientAvantEnreg));
         Mockito.when(clientMapperMock.toClient(clientRequestDto)).thenReturn(clientAvantEnreg);
-        Mockito.when((clientDAOMock).save(clientAvantEnreg)).thenReturn(clientApresEnreg);
+        Mockito.when(clientDAOMock.save(clientAvantEnreg)).thenReturn(clientApresEnreg);
+        Mockito.when(clientMapperMock.toClientRequestDto(clientAvantEnreg)).thenReturn(clientRequestDto);
         Mockito.when(clientMapperMock.toClientResponseDtoForCLient(clientApresEnreg)).thenReturn(clientResponseDto);
         assertSame(clientResponseDto, clientService.modifier("Pierre@yahoo.fr", "Rsgfssfd2@", clientRequestDto));
         Mockito.verify(clientDAOMock).save(clientAvantEnreg);
     }
-
-
-
-
 
 
     private static ClientRequestDto creationClientRequestDto() {

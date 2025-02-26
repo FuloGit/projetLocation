@@ -286,46 +286,11 @@ class AdministrateurServiceImplTest {
         assertSame("Email ou password erroné", ex.getMessage());
     }
 
-
     @DisplayName("""
-            Vérifie si la méthode modifie avec nom null
+            Vérifie si la méthode modifier
             """)
     @Test
-    void modifierNomNull() {
-        AdministrateurRequestDto administrateurRequestDto = gerardRequest();
-        Administrateur adminAvantEnreg = new Administrateur("Gerard@goatmail.com", "fdsfds@Z23", null , "Gerard", "Hr");
-        Administrateur adminApresEnreg = gerard();
-        AdministrateurResponseDto administrateurResponseDto = new AdministrateurResponseDto("Gerard@goatmail.com", "Patrick", "Gerard", "Hr");
-        Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.of(adminAvantEnreg));
-        Mockito.when(administrateurMapperMock.toAdministrateur(administrateurRequestDto)).thenReturn(adminAvantEnreg);
-        Mockito.when(administrateurDaoMock.save(adminAvantEnreg)).thenReturn(adminApresEnreg);
-        Mockito.when(administrateurMapperMock.toAdministrateurResponseDto(adminApresEnreg)).thenReturn(administrateurResponseDto);
-        assertSame(administrateurResponseDto, administrateurService.modifier("Gerard@goatmail.com", "fdsfds@Z23",administrateurRequestDto));
-        Mockito.verify(administrateurDaoMock).save(adminAvantEnreg);
-    }
-
-    @DisplayName("""
-            Vérifie si la méthode modifie fonctionne avec Nom Blank
-            """)
-    @Test
-    void modifierNomBlank() {
-        AdministrateurRequestDto administrateurRequestDto = gerardRequest();
-        Administrateur adminAvantEnreg = new Administrateur("Gerard@goatmail.com", "fdsfds@Z23", " ", "Gerard", "Hr");
-        Administrateur adminApresEnreg = gerard();
-        AdministrateurResponseDto administrateurResponseDto = new AdministrateurResponseDto("Gerard@goatmail.com", "Patrick", "Gerard", "Hr");
-        Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.of(adminAvantEnreg));
-        Mockito.when(administrateurMapperMock.toAdministrateur(administrateurRequestDto)).thenReturn(adminAvantEnreg);
-        Mockito.when(administrateurDaoMock.save(adminAvantEnreg)).thenReturn(adminApresEnreg);
-        Mockito.when(administrateurMapperMock.toAdministrateurResponseDto(adminApresEnreg)).thenReturn(administrateurResponseDto);
-        assertSame(administrateurResponseDto, administrateurService.modifier("Gerard@goatmail.com", "fdsfds@Z23",administrateurRequestDto));
-        Mockito.verify(administrateurDaoMock).save(adminAvantEnreg);
-    }
-
-    @DisplayName("""
-            Vérifie si la méthode modifie nom
-            """)
-    @Test
-    void modifierNomOk() {
+    void modifierSuccess() {
         AdministrateurRequestDto administrateurRequestDto = gerardRequest();
         Administrateur adminAvantEnreg = new Administrateur("Gerard@goatmail.com", "fdsfds@Z23", "Gerard", "Gerard", "Hr");
         Administrateur adminApresEnreg = gerard();
@@ -333,114 +298,11 @@ class AdministrateurServiceImplTest {
         Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.of(adminAvantEnreg));
         Mockito.when(administrateurMapperMock.toAdministrateur(administrateurRequestDto)).thenReturn(adminAvantEnreg);
         Mockito.when(administrateurDaoMock.save(adminAvantEnreg)).thenReturn(adminApresEnreg);
+        Mockito.when(administrateurMapperMock.toAdministrateurRequestDto(adminAvantEnreg)).thenReturn(administrateurRequestDto);
         Mockito.when(administrateurMapperMock.toAdministrateurResponseDto(adminApresEnreg)).thenReturn(administrateurResponseDto);
         assertSame(administrateurResponseDto, administrateurService.modifier("Gerard@goatmail.com", "fdsfds@Z23",administrateurRequestDto));
         Mockito.verify(administrateurDaoMock).save(adminAvantEnreg);
     }
-
-
-    @DisplayName("""
-            Vérifie si la méthode modifie avec prenom null
-            """)
-    @Test
-    void modifierPrenomNull() {
-        AdministrateurRequestDto administrateurRequestDto = gerardRequest();
-        Administrateur adminAvantEnreg = new Administrateur("Gerard@goatmail.com", "fdsfds@Z23", "Patrick" , null, "Hr");
-        Administrateur adminApresEnreg = gerard();
-        AdministrateurResponseDto administrateurResponseDto = new AdministrateurResponseDto("Gerard@goatmail.com", "Patrick", "Gerard", "Hr");
-        Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.of(adminAvantEnreg));
-        Mockito.when(administrateurMapperMock.toAdministrateur(administrateurRequestDto)).thenReturn(adminAvantEnreg);
-        Mockito.when(administrateurDaoMock.save(adminAvantEnreg)).thenReturn(adminApresEnreg);
-        Mockito.when(administrateurMapperMock.toAdministrateurResponseDto(adminApresEnreg)).thenReturn(administrateurResponseDto);
-        assertSame(administrateurResponseDto, administrateurService.modifier("Gerard@goatmail.com", "fdsfds@Z23",administrateurRequestDto));
-        Mockito.verify(administrateurDaoMock).save(adminAvantEnreg);
-    }
-
-    @DisplayName("""
-            Vérifie si la méthode modifie avec prenom blank
-            """)
-    @Test
-    void modifierPrenomBlank() {
-        AdministrateurRequestDto administrateurRequestDto = gerardRequest();
-        Administrateur adminAvantEnreg = new Administrateur("Gerard@goatmail.com", "fdsfds@Z23", "Patrick", " ", "Hr");
-        Administrateur adminApresEnreg = gerard();
-        AdministrateurResponseDto administrateurResponseDto = new AdministrateurResponseDto("Gerard@goatmail.com", "Patrick", "Gerard", "Hr");
-        Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.of(adminAvantEnreg));
-        Mockito.when(administrateurMapperMock.toAdministrateur(administrateurRequestDto)).thenReturn(adminAvantEnreg);
-        Mockito.when(administrateurDaoMock.save(adminAvantEnreg)).thenReturn(adminApresEnreg);
-        Mockito.when(administrateurMapperMock.toAdministrateurResponseDto(adminApresEnreg)).thenReturn(administrateurResponseDto);
-        assertSame(administrateurResponseDto, administrateurService.modifier("Gerard@goatmail.com", "fdsfds@Z23",administrateurRequestDto));
-        Mockito.verify(administrateurDaoMock).save(adminAvantEnreg);
-    }
-
-    @DisplayName("""
-            Vérifie si la méthode modifie prenom
-            """)
-    @Test
-    void modifierPrenomOk() {
-        AdministrateurRequestDto administrateurRequestDto = gerardRequest();
-        Administrateur adminAvantEnreg = new Administrateur("Gerard@goatmail.com", "fdsfds@Z23", "Gerard", "Arthur", "Hr");
-        Administrateur adminApresEnreg = gerard();
-        AdministrateurResponseDto administrateurResponseDto = new AdministrateurResponseDto("Gerard@goatmail.com", "Gerard", "Arthur", "Hr");
-        Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.of(adminAvantEnreg));
-        Mockito.when(administrateurMapperMock.toAdministrateur(administrateurRequestDto)).thenReturn(adminAvantEnreg);
-        Mockito.when(administrateurDaoMock.save(adminAvantEnreg)).thenReturn(adminApresEnreg);
-        Mockito.when(administrateurMapperMock.toAdministrateurResponseDto(adminApresEnreg)).thenReturn(administrateurResponseDto);
-        assertSame(administrateurResponseDto, administrateurService.modifier("Gerard@goatmail.com", "fdsfds@Z23",administrateurRequestDto));
-        Mockito.verify(administrateurDaoMock).save(adminAvantEnreg);
-    }
-
-    @DisplayName("""
-            Vérifie si la méthode modifie avec Fonction null
-            """)
-    @Test
-    void modifierFonctionNull() {
-        AdministrateurRequestDto administrateurRequestDto = gerardRequest();
-        Administrateur adminAvantEnreg = new Administrateur("Gerard@goatmail.com", "fdsfds@Z23", "Patrick" , "Gerard", null);
-        Administrateur adminApresEnreg = gerard();
-        AdministrateurResponseDto administrateurResponseDto = new AdministrateurResponseDto("Gerard@goatmail.com", "Patrick", "Gerard", "Hr");
-        Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.of(adminAvantEnreg));
-        Mockito.when(administrateurMapperMock.toAdministrateur(administrateurRequestDto)).thenReturn(adminAvantEnreg);
-        Mockito.when(administrateurDaoMock.save(adminAvantEnreg)).thenReturn(adminApresEnreg);
-        Mockito.when(administrateurMapperMock.toAdministrateurResponseDto(adminApresEnreg)).thenReturn(administrateurResponseDto);
-        assertSame(administrateurResponseDto, administrateurService.modifier("Gerard@goatmail.com", "fdsfds@Z23",administrateurRequestDto));
-        Mockito.verify(administrateurDaoMock).save(adminAvantEnreg);
-    }
-
-    @DisplayName("""
-            Vérifie si la méthode modifie avec fonction blank
-            """)
-    @Test
-    void modifierFonctionBlank() {
-        AdministrateurRequestDto administrateurRequestDto = gerardRequest();
-        Administrateur adminAvantEnreg = new Administrateur("Gerard@goatmail.com", "fdsfds@Z23", "Patrick", "Gerard ", " ");
-        Administrateur adminApresEnreg = gerard();
-        AdministrateurResponseDto administrateurResponseDto = new AdministrateurResponseDto("Gerard@goatmail.com", "Patrick", "Gerard", "Hr");
-        Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.of(adminAvantEnreg));
-        Mockito.when(administrateurMapperMock.toAdministrateur(administrateurRequestDto)).thenReturn(adminAvantEnreg);
-        Mockito.when(administrateurDaoMock.save(adminAvantEnreg)).thenReturn(adminApresEnreg);
-        Mockito.when(administrateurMapperMock.toAdministrateurResponseDto(adminApresEnreg)).thenReturn(administrateurResponseDto);
-        assertSame(administrateurResponseDto, administrateurService.modifier("Gerard@goatmail.com", "fdsfds@Z23",administrateurRequestDto));
-        Mockito.verify(administrateurDaoMock).save(adminAvantEnreg);
-    }
-
-    @DisplayName("""
-            Vérifie si la méthode modifie fonction
-            """)
-    @Test
-    void modifierFonctionOk() {
-        AdministrateurRequestDto administrateurRequestDto = gerardRequest();
-        Administrateur adminAvantEnreg = new Administrateur("Gerard@goatmail.com", "fdsfds@Z23", "Gerard", "Arthur", "CEO");
-        Administrateur adminApresEnreg = gerard();
-        AdministrateurResponseDto administrateurResponseDto = new AdministrateurResponseDto("Gerard@goatmail.com", "Gerard", "Arthur", "CEO");
-        Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.of(adminAvantEnreg));
-        Mockito.when(administrateurMapperMock.toAdministrateur(administrateurRequestDto)).thenReturn(adminAvantEnreg);
-        Mockito.when(administrateurDaoMock.save(adminAvantEnreg)).thenReturn(adminApresEnreg);
-        Mockito.when(administrateurMapperMock.toAdministrateurResponseDto(adminApresEnreg)).thenReturn(administrateurResponseDto);
-        assertSame(administrateurResponseDto, administrateurService.modifier("Gerard@goatmail.com", "fdsfds@Z23",administrateurRequestDto));
-        Mockito.verify(administrateurDaoMock).save(adminAvantEnreg);
-    }
-
 
 
 

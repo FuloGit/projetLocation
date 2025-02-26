@@ -6,11 +6,13 @@ import com.accenture.repository.VoitureDao;
 import com.accenture.service.dto.vehicule.VoitureRequestDto;
 import com.accenture.service.dto.vehicule.VoitureResponseDto;
 import com.accenture.service.mapper.VoitureMapper;
+import com.accenture.shared.model.FiltreListe;
 import com.accenture.shared.model.Permis;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,6 +25,7 @@ public class VoitureServiceImpl implements VoitureService {
 
     /**
      * Verifie la voiture Request avant de la transmettre à la base
+     *
      * @param voitureRequestDto
      * @return
      * @throws VoitureException
@@ -37,6 +40,7 @@ public class VoitureServiceImpl implements VoitureService {
 
     /**
      * Liste des voitures en base
+     *
      * @return
      */
     @Override
@@ -46,27 +50,27 @@ public class VoitureServiceImpl implements VoitureService {
     }
 
     @Override
-    public List<VoitureResponseDto> listerActifs() {
-        return voitureDao.findByActifTrue().stream().map(voiture -> voitureMapper.toVoitureResponseDto(voiture)).toList();
-    }
-
-  @Override
-    public List<VoitureResponseDto> listerInactifs() {
-        return voitureDao.findByActifFalse().stream().map(voiture -> voitureMapper.toVoitureResponseDto(voiture)).toList();
-    }
-
-    @Override
-    public List<VoitureResponseDto> listerDansLeParc() {
-        return voitureDao.findByRetireDuParcFalse().stream().map(voiture -> voitureMapper.toVoitureResponseDto(voiture)).toList();
-    }
-
-    @Override
-    public List<VoitureResponseDto> listerRetirerDuParc() {
-        return voitureDao.findByRetireDuParcTrue().stream().map(voiture -> voitureMapper.toVoitureResponseDto(voiture)).toList();
+    public List<VoitureResponseDto> listerParRequete(FiltreListe filtreListe) {
+        List<VoitureResponseDto> liste = new ArrayList<>();
+        switch (filtreListe) {
+            case actifs -> {
+                liste = voitureDao.findByActifTrue().stream().map(voiture -> voitureMapper.toVoitureResponseDto(voiture)).toList();
+            }
+            case inactifs -> {
+                liste = voitureDao.findByActifFalse().stream().map(voiture -> voitureMapper.toVoitureResponseDto(voiture)).toList();
+            }
+            case horsDuParc -> {
+                 liste = voitureDao.findByRetireDuParcTrue().stream().map(voiture -> voitureMapper.toVoitureResponseDto(voiture)).toList();
+            }
+            case dansLeParc -> {
+                liste = voitureDao.findByRetireDuParcFalse().stream().map(voiture -> voitureMapper.toVoitureResponseDto(voiture)).toList();
+            }
+        } return liste;
     }
 
     /**
      * CHercher Voiture par id, renvoie Exeception si l'id ne correspond à rien en base
+     *
      * @param id
      * @return
      * @throws EntityNotFoundException
@@ -79,12 +83,12 @@ public class VoitureServiceImpl implements VoitureService {
         return voitureMapper.toVoitureResponseDto(optionalVoiture.get());
     }
 
-    private void verifierVoiture(VoitureRequestDto voitureRequestDto){
+    private void verifierVoiture(VoitureRequestDto voitureRequestDto) {
         if (voitureRequestDto == null)
             throw new VoitureException("La requête est null");
         if (voitureRequestDto.marque() == null || voitureRequestDto.marque().isBlank())
             throw new VoitureException("La marque est obligatoire");
-        if(voitureRequestDto.modele() == null || voitureRequestDto.modele().isBlank())
+        if (voitureRequestDto.modele() == null || voitureRequestDto.modele().isBlank())
             throw new VoitureException("Le modèle est obligatoire");
         if (voitureRequestDto.couleur() == null || voitureRequestDto.couleur().isBlank())
             throw new VoitureException("La couleur est obligatoire");
@@ -108,13 +112,14 @@ public class VoitureServiceImpl implements VoitureService {
             throw new VoitureException("Le statut de la climatisation est obligatoire");
         if (voitureRequestDto.nombredeBagages() == 0)
             throw new VoitureException("Le nombres de bagages est obligatoire");
-        }
-        private void determinerPermis(Voiture voiture){
+    }
+
+    private void determinerPermis(Voiture voiture) {
         if (voiture.getNombreDePlaces() > 0 && voiture.getNombreDePlaces() <= 9)
             voiture.setPermis(Permis.B);
-        else if (voiture.getNombreDePlaces() >=10 && voiture.getNombreDePlaces() <17)
+        else if (voiture.getNombreDePlaces() >= 10 && voiture.getNombreDePlaces() < 17)
             voiture.setPermis(Permis.D1);
         else throw new VoitureException("Le nombre de passages n'est pas adéquat");
-        }
     }
+}
 

@@ -3,6 +3,7 @@ package com.accenture.controller;
 import com.accenture.service.VoitureService;
 import com.accenture.service.dto.vehicule.VoitureRequestDto;
 import com.accenture.service.dto.vehicule.VoitureResponseDto;
+import com.accenture.shared.model.FiltreListe;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,21 +34,9 @@ public class VoitureController {
     List<VoitureResponseDto> recherche(){
         return voitureService.lister();
     }
-    @GetMapping("/actifs")
-    List<VoitureResponseDto> rechercherActive(){
-        return voitureService.listerActifs();
-    }
-    @GetMapping("/inactifs")
-    List<VoitureResponseDto> rechercherInactive(){
-        return voitureService.listerInactifs();
-    }
-    @GetMapping("/dansLeParc")
-    List<VoitureResponseDto> rechercherDansleParc(){
-        return voitureService.listerDansLeParc();
-    }
-    @GetMapping("/horsDuParc")
-    List<VoitureResponseDto> rechercherHorsDuParc(){
-        return voitureService.listerRetirerDuParc();
+    @GetMapping("/filtre")
+    List<VoitureResponseDto> rechercherParFiltre(@RequestParam FiltreListe filtreListe) {
+        return voitureService.listerParRequete(filtreListe);
     }
 
     @GetMapping("/{id}")
@@ -55,5 +44,8 @@ public class VoitureController {
         VoitureResponseDto voitureResponseDto = voitureService.trouver(id);
         return ResponseEntity.ok(voitureResponseDto);
     }
+
+    @DeleteMapping
+
 
 }

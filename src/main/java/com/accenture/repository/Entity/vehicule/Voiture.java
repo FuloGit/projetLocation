@@ -8,7 +8,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,11 +16,12 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @NoArgsConstructor
+
 @Entity
 @Table (name = "voitures")
 public class Voiture extends Vehicule {
 
-    private int nombreDePlaces;
+    private Integer nombreDePlaces;
     @Enumerated(value = EnumType.STRING)
     private Carburant carburant;
     @Enumerated(value = EnumType.STRING)
@@ -29,11 +29,11 @@ public class Voiture extends Vehicule {
     @Enumerated(value = EnumType.STRING)
     private Transmission transmission;
     private Boolean climatisation;
-    private int nombredeBagages;
+    private Integer nombredeBagages;
     @Enumerated(value = EnumType.STRING)
     private Permis permis;
 
-    public Voiture(Long id, String marque, String modele, String couleur, int tarifJournalier, int kilometrage, Boolean actif, Boolean retireDuParc, int nombreDePlaces, Carburant carburant, NombresDePortes nombresDePortes, Transmission transmission, Boolean climatisation, int nombredeBagages) {
+    public Voiture(Long id, String marque, String modele, String couleur, Integer tarifJournalier, Integer kilometrage, Boolean actif, Boolean retireDuParc, Integer nombreDePlaces, Carburant carburant, NombresDePortes nombresDePortes, Transmission transmission, Boolean climatisation, Integer nombredeBagages) {
         super(id, marque, modele, couleur, tarifJournalier, kilometrage, actif, retireDuParc);
         this.nombreDePlaces = nombreDePlaces;
         this.carburant = carburant;

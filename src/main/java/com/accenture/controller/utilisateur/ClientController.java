@@ -1,8 +1,9 @@
-package com.accenture.controller;
+package com.accenture.controller.utilisateur;
 
 import com.accenture.service.ClientService;
 import com.accenture.service.dto.utilisateur.ClientRequestDto;
 import com.accenture.service.dto.utilisateur.ClientResponseDto;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +32,7 @@ public class ClientController {
     }
 
     @PostMapping
-    ResponseEntity<Void> creer(@RequestBody ClientRequestDto clientRequestDto){
+    ResponseEntity<Void> creer(@RequestBody @Valid ClientRequestDto clientRequestDto){
         ClientResponseDto clientEnreg = clientService.ajouter(clientRequestDto);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
@@ -42,6 +43,7 @@ public class ClientController {
     }
 @DeleteMapping
     ResponseEntity<ClientResponseDto>  suppression(@RequestParam String id, String password){
+        //TODO changer une fois la notion de location
         clientService.supprimer(id,  password);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 }

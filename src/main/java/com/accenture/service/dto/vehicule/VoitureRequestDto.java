@@ -2,22 +2,21 @@ package com.accenture.service.dto.vehicule;
 
 import com.accenture.shared.model.Carburant;
 import com.accenture.shared.model.NombresDePortes;
-import com.accenture.shared.model.Permis;
 import com.accenture.shared.model.Transmission;
 
 public record VoitureRequestDto(
         String marque,
         String modele,
         String couleur,
-        int nombreDePlaces,
+        Integer nombreDePlaces,
         Carburant carburant,
         NombresDePortes nombresDePortes,
 
         Transmission transmission,
         Boolean climatisation,
-        int nombredeBagages,
-        int tarifJournalier,
-        int kilometrage,
+        Integer nombredeBagages,
+        Integer tarifJournalier,
+        Integer kilometrage,
         Boolean actif,
         Boolean retireDuParc
 ) {

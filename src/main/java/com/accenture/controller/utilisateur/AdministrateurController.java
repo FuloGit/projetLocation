@@ -1,8 +1,9 @@
-package com.accenture.controller;
+package com.accenture.controller.utilisateur;
 
 import com.accenture.service.AdministrateurService;
 import com.accenture.service.dto.utilisateur.AdministrateurRequestDto;
 import com.accenture.service.dto.utilisateur.AdministrateurResponseDto;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +26,7 @@ public class AdministrateurController {
 
 
     @PostMapping
-    ResponseEntity<Void> ajouter(@RequestBody AdministrateurRequestDto administrateurRequestDto) {
+    ResponseEntity<Void> ajouter(@RequestBody @Valid AdministrateurRequestDto administrateurRequestDto) {
         AdministrateurResponseDto administrateurResponseDto = administrateurService.ajouter(administrateurRequestDto);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()

@@ -21,8 +21,8 @@ public class Vehicule {
     private String marque;
     private String modele;
     private String couleur;
-    private int tarifJournalier;
-    private int kilometrage;
+    private Integer tarifJournalier;
+    private Integer kilometrage;
     private Boolean actif;
     private Boolean retireDuParc;
 }

@@ -16,4 +16,7 @@ public interface VoitureService {
 
    VoitureResponseDto trouver(Long id);
 
+   void supprimer(Long id);
+
+   VoitureResponseDto modifier(VoitureRequestDto voitureRequestDto, Long id);
 }

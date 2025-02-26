@@ -10,4 +10,5 @@ public interface VoitureMapper {
 
     VoitureResponseDto toVoitureResponseDto (Voiture voiture);
     Voiture toVoiture (VoitureRequestDto voitureRequestDto);
+    VoitureRequestDto toVoitureRequestDto(Voiture voiture);
 }

@@ -1,10 +1,12 @@
-package com.accenture.controller;
+package com.accenture.controller.vehicule;
 
 import com.accenture.service.VoitureService;
 import com.accenture.service.dto.vehicule.VoitureRequestDto;
 import com.accenture.service.dto.vehicule.VoitureResponseDto;
 import com.accenture.shared.model.FiltreListe;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -20,7 +22,7 @@ public class VoitureController {
     private VoitureService voitureService;
 
     @PostMapping
-    ResponseEntity<VoitureResponseDto> ajouter(@RequestBody VoitureRequestDto voitureRequestDto){
+    ResponseEntity<VoitureResponseDto> ajouter(@RequestBody @Valid VoitureRequestDto voitureRequestDto){
         VoitureResponseDto voitureResponseDto = voitureService.ajouter(voitureRequestDto);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
@@ -35,7 +37,7 @@ public class VoitureController {
         return voitureService.lister();
     }
     @GetMapping("/filtre")
-    List<VoitureResponseDto> rechercherParFiltre(@RequestParam FiltreListe filtreListe) {
+    List<VoitureResponseDto> rechercheParFiltre(@RequestParam FiltreListe filtreListe) {
         return voitureService.listerParRequete(filtreListe);
     }
 
@@ -45,7 +47,18 @@ public class VoitureController {
         return ResponseEntity.ok(voitureResponseDto);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
+    ResponseEntity<VoitureResponseDto> supprimer(@PathVariable ("id") Long id){
+        voitureService.supprimer(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @PatchMapping
+    ResponseEntity<VoitureResponseDto> modifier(@RequestBody VoitureRequestDto voitureRequestDto, @RequestParam Long id){
+        VoitureResponseDto voitureResponseDto = voitureService.modifier(voitureRequestDto, id);
+        return ResponseEntity.ok(voitureResponseDto);
+    }
+
 
 
 }

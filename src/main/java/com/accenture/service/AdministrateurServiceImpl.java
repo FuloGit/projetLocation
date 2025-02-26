@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 import static com.accenture.shared.model.UtilMessage.*;
-
+//TODO relire et vérifier synthaxe
 /**
  * S'occupe de la vérification de AdministrateurRequestDto, de remonter et de la transmettre sous forme de Administrateur Entity pour le repository
  */

@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Entity complémentaire au Client, sera associé en OneToOne à celui-ci
+ * Entity complémentaire au Client, sera associée en OneToOne à Client
  */
 @Entity
 @Data

@@ -4,7 +4,7 @@ package com.accenture.service.dto.utilisateur;
 import jakarta.validation.constraints.NotBlank;
 
 /**
- * Version sans l'id de la classe adresse pour transmission avec les utilisateurs
+ * Version sans l'ID de la classe Adresse pour transmission avec les utilisateurs.
  *
  * @param rue
  * @param codePostal

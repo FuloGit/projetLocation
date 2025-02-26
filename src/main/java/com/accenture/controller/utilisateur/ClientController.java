@@ -12,7 +12,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 
 /**
- * Gére les clients
+ * Gére le mapping pour Clients
  */
 @RestController
 @RequestMapping("/clients")
@@ -26,13 +26,13 @@ public class ClientController {
 
 
     @GetMapping("/infos")
-    ResponseEntity<ClientResponseDto> afficherInfos(@RequestParam String id, @RequestParam String password) {
+    ResponseEntity<ClientResponseDto> afficher(@RequestParam String id, @RequestParam String password) {
         ClientResponseDto trouve = clientService.trouver(id, password);
         return ResponseEntity.ok(trouve);
     }
 
     @PostMapping
-    ResponseEntity<Void> creer(@RequestBody @Valid ClientRequestDto clientRequestDto){
+    ResponseEntity<Void> ajouter(@RequestBody @Valid ClientRequestDto clientRequestDto){
         ClientResponseDto clientEnreg = clientService.ajouter(clientRequestDto);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
@@ -42,7 +42,7 @@ public class ClientController {
         return ResponseEntity.created(location).build();
     }
 @DeleteMapping
-    ResponseEntity<ClientResponseDto>  suppression(@RequestParam String id, String password){
+    ResponseEntity<ClientResponseDto>  supprimer(@RequestParam String id, String password){
         //TODO changer une fois la notion de location
         clientService.supprimer(id,  password);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();

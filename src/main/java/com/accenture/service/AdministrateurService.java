@@ -4,13 +4,14 @@ import com.accenture.service.dto.utilisateur.AdministrateurRequestDto;
 import com.accenture.service.dto.utilisateur.AdministrateurResponseDto;
 
 /**
- * Interface comprenant les méthodes à implémenter
+ * Interface pour l'implémentation d'Administrateur Service
  *
  */
 public interface AdministrateurService {
-   AdministrateurResponseDto ajouter(AdministrateurRequestDto adminRequestDto);
-   public AdministrateurResponseDto trouver(String id, String password);
-    void supprimer(String id, String password);
+
+    AdministrateurResponseDto ajouter(AdministrateurRequestDto adminRequestDto);
+   AdministrateurResponseDto trouver(String id, String password);
+   void supprimer(String id, String password);
 
     AdministrateurResponseDto modifier(String id, String password, AdministrateurRequestDto administrateurRequestDto);
 

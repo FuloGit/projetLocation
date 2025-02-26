@@ -10,9 +10,9 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
- *Le client qui utilisera la base de donnée le service de location.
- * La date d'inscription est générée automatiquement
- * Le desactivé est automatiquement false, le compte est actif à sa création mais pourra être désactiver plus tard
+ * Le client qui utilisera le service de location.
+ * La date d'inscription est générée automatiquement,
+ * Le desactivé est automatiquement false, le compte est actif à sa création mais il pourra être désactiver plus tard.
  */
 @Entity
 @AllArgsConstructor

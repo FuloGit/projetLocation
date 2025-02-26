@@ -26,7 +26,7 @@ import java.util.Optional;
 import static com.accenture.shared.model.Permis.A1;
 import static com.accenture.shared.model.Permis.B1;
 import static org.junit.jupiter.api.Assertions.*;
-
+//TODO relire et vérifier synthaxe
 @ExtendWith(MockitoExtension.class)
 class ClientServiceImplTest {
 

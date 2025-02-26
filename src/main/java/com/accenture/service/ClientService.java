@@ -4,7 +4,7 @@ import com.accenture.service.dto.utilisateur.ClientRequestDto;
 import com.accenture.service.dto.utilisateur.ClientResponseDto;
 
 /**
- * Interface comprenant les méthodes à implémenter
+ * Interface pour l'implémentation de CLient service.
  */
 public interface ClientService {
     ClientResponseDto ajouter(ClientRequestDto clientRequestDto);

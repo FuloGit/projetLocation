@@ -12,7 +12,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 
 /**
- * Gére les inputs pour Administrateur
+ * Gére les mapping pour Administrateurs
  */
 @RestController
 @RequestMapping("/Administrateurs")
@@ -37,13 +37,13 @@ public class AdministrateurController {
     }
 
     @GetMapping("/infos")
-    ResponseEntity<AdministrateurResponseDto> afficherInfos(@RequestBody String id, @RequestBody String password) {
+    ResponseEntity<AdministrateurResponseDto> afficher(@RequestBody String id, @RequestBody String password) {
         AdministrateurResponseDto administrateurResponseDto = administrateurService.trouver(id, password);
         return ResponseEntity.ok(administrateurResponseDto);
     }
 
     @DeleteMapping
-    ResponseEntity<AdministrateurResponseDto> suppression(@RequestParam String id, String password) {
+    ResponseEntity<AdministrateurResponseDto> supprimer(@RequestParam String id, String password) {
         administrateurService.supprimer(id, password);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }

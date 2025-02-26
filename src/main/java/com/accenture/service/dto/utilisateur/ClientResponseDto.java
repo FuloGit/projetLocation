@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  *
- * Ne renvoie pas à l'utilisateur des informations comme  le mot de passe ou le statut du compte.
+ * Renvoie ses infos à l'administrateur,  pas à l'utilisateur des informations comme  le mot de passe ou le statut du compte.
  * @param nom
  * @param prenom
  * @param email

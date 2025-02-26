@@ -8,6 +8,9 @@ import com.accenture.shared.model.FiltreListe;
 
 import java.util.List;
 
+/**
+ * Interface pour l'implémentation de Voiture service
+ */
 public interface VoitureService {
 
    VoitureResponseDto ajouter(VoitureRequestDto voitureRequestDto) throws VoitureException;

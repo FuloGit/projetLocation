@@ -14,6 +14,9 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
+/**
+ * Gère les mapping pour Voitures
+ */
 @AllArgsConstructor
 @RestController
 @RequestMapping("/voitures")
@@ -33,11 +36,11 @@ public class VoitureController {
     }
 
     @GetMapping
-    List<VoitureResponseDto> recherche(){
+    List<VoitureResponseDto> rechercherToutes(){
         return voitureService.lister();
     }
     @GetMapping("/filtre")
-    List<VoitureResponseDto> rechercheParFiltre(@RequestParam FiltreListe filtreListe) {
+    List<VoitureResponseDto> rechercherParFiltre(@RequestParam FiltreListe filtreListe) {
         return voitureService.listerParRequete(filtreListe);
     }
 

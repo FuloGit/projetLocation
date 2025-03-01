@@ -2,7 +2,6 @@ package com.accenture.service;
 
 import com.accenture.exception.ClientException;
 import com.accenture.repository.ClientDao;
-import com.accenture.repository.Entity.utilisateur.Administrateur;
 import com.accenture.repository.Entity.utilisateur.Adresse;
 import com.accenture.repository.Entity.utilisateur.Client;
 import com.accenture.service.dto.utilisateur.*;
@@ -26,6 +25,7 @@ import java.util.Optional;
 import static com.accenture.shared.model.Permis.A1;
 import static com.accenture.shared.model.Permis.B1;
 import static org.junit.jupiter.api.Assertions.*;
+
 //TODO relire et vérifier synthaxe
 @ExtendWith(MockitoExtension.class)
 class ClientServiceImplTest {
@@ -39,27 +39,30 @@ class ClientServiceImplTest {
     ClientServiceImpl clientService;
 
     @DisplayName("""
-            Test la méthode ajouter si null lui est passé""")
+            Test de la méthode ajouter si null lui est passé""")
     @Test
     void ajouterNull() {
-        assertThrows(ClientException.class, () -> clientService.ajouter(null));
+
+        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(null));
+        assertEquals("La requete est null", ex.getMessage());
     }
 
     @DisplayName("""
-            Test Méthode ajouter si email null
+            Test l'exception levée de la méthode ajouter si l'attribut email est null
             """)
     @Test
     void ajouterAvecEmailNull() {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", "44300", "Nantes");
         ClientRequestDto clientRequestDto = new ClientRequestDto(null, "Rsgfssfd2@", "Pierre", "Pierre", adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
-        assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        assertEquals("L'adresse Email est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
-            Test Méthode ajouter si email déjà en base
+            Test l'excepetion levée, de la méthode ajouter si l'eamil préciser sert déjà d'id en base
             """)
     @Test
-    void ajouterAvecEmailEnBase() {
+    void ajouterAvecEmailDejaEnBase() {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", "44300", "Nantes");
         Client client = creactionClient();
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", "Pierre", "Pierre", adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
@@ -69,17 +72,18 @@ class ClientServiceImplTest {
     }
 
     @DisplayName("""
-            Test Méthode ajouter si email blank
+            Test l'exception levée, de la Méthode ajouter si l'attribut email est blank
             """)
     @Test
     void ajouterAvecEmailBlank() {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", "44300", "Nantes");
         ClientRequestDto clientRequestDto = new ClientRequestDto("", "Rsgfssfd2@", "Pierre", "Pierre", adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
-        assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        assertEquals("L'adresse Email est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
-            Test Méthode ajouter si email ne match pas la Regex
+            Test l'expection levée,si la Méthode ajouter si l'attribut email de correspond pas à la RegexEmail
             """)
     @Test
     void ajouterAvecEmailNotMatchingRegex() {
@@ -90,7 +94,7 @@ class ClientServiceImplTest {
     }
 
     @DisplayName("""
-            Test Méthode ajouter si le mot de passe ne match pas la Regex
+            Test l'excepetion levée de la méthode ajouter si l'attribut password ne match pas la Regex
             """)
     @Test
     void ajouterAvecPasswordNotMatchingRegex() {
@@ -101,38 +105,40 @@ class ClientServiceImplTest {
     }
 
     @DisplayName("""
-            Test Méthode ajouter si le mot de passe est null
+            Test l'exception levée de la méthode ajouter si l'attribut mot de pass est null
             """)
     @Test
     void ajouterAvecPasswordNull() {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", "44300", "Nantes");
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", null, "Pierre", "Pierre", adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
-        assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        assertEquals("Le mot de passe ne respecte pas les conditions", ex.getMessage());
     }
 
     @DisplayName("""
-            Test Méthode ajouter si le mot de passe est null
+            Test l'exception levée de  Méthode ajouter si l'attribut mot de pass est blank
             """)
     @Test
     void ajouterAvecPasswordBlank() {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", "44300", "Nantes");
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "", "Pierre", "Pierre", adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
-        assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        assertEquals("Le mot de passe ne respecte pas les conditions", ex.getMessage());
     }
 
     @DisplayName("""
-            Test Méthode ajouter si la date de DateDeNaissance est Null
+            Test l'exception levée de la  Méthode ajouter si la date de DateDeNaissance est Null
             """)
     @Test
     void ajouterAvecNaissanceNull() {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", "44300", "Nantes");
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", "Pierre", "Pierre", adresseRequestDto, null, List.of(A1));
         ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
-        assertEquals("La date de naissance est absente", ex.getMessage());
+        assertEquals("La date de naissance est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
-            Test méthode ajouter si la personne est mineur
+            Test l'exception levée de la méthode ajouter si l'attribut date de naissance est valorisé en sorte que la client soit mineur
             """)
     @Test
     void ajouterAvecNaissanceMineur() {
@@ -143,120 +149,129 @@ class ClientServiceImplTest {
     }
 
     @DisplayName("""
-            Test méthode ajouter si Prenom is null
+            Test l'exception levée de la méthode ajouter si l'attribut prenom is null
             """)
     @Test
     void ajouterAvecPrenomNull() {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", "44300", "Nantes");
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", "Pierre", null, adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
-        assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
-
+        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        assertEquals("Le prenom est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
-            Test méthode ajouter si Prenom is Blank
+            Test l'exception levée de la méthode ajouter si l'attribut prénom est Blank
             """)
     @Test
     void ajouterAvecPrenomBlank() {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", "44300", "Nantes");
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", "Pierre", "", adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
-        assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        assertEquals("Le prenom est obligatoire", ex.getMessage());
 
     }
 
     @DisplayName("""
-            Test méthode ajouter si nom is null
+            Test l'exception levée de la  méthode ajouter si l'attribut nom est null
             """)
     @Test
     void ajouterAvecNomNull() {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", "44300", "Nantes");
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", null, "Pierre", adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
-        assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
-
+        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        assertEquals("Le nom est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
-            Test méthode ajouter si Prenom is Blank
+            Test l'exception levée de la méthode ajouter si l'attribut nom est blank
             """)
     @Test
     void ajouterAvecNomBlank() {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", "44300", "Nantes");
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", " ", "Pierre", adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
-        assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        assertEquals("Le nom est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
-            Test méthode ajouter si l'adresse est Null
+            Test l'exception levée méthode ajouter si l'attribut adresse est null
             """)
     @Test
     void ajouterAdresseNull() {
-        AdresseDto adresseRequestDto = new AdresseDto(null, "44300", "Nantes");
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", "Pierre", "Pierre", null, LocalDate.of(1990, 12, 12), List.of(A1));
-        assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        assertEquals("L'adresse est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
-            Test méthode ajouter si la rue de l'adresse est Null
+            Test l'exception levée de méthode ajouter si l'attribut rue de Adresse est null
             """)
     @Test
     void ajouterAvecRueNull() {
         AdresseDto adresseRequestDto = new AdresseDto(null, "44300", "Nantes");
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", "Pierre", "Pierre", adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
-        assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        assertEquals("La rue est obligatoire", ex.getMessage());
+
     }
 
     @DisplayName("""
-            Test méthode ajouter si la rue de l'adresse est Null
+            Test l'exception levée de la méthode ajouter si l'attribut rue de Adresse est blank
             """)
     @Test
     void ajouterAvecRueBlank() {
         AdresseDto adresseRequestDto = new AdresseDto("", "44300", "Nantes");
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", "Pierre", "Pierre", adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
-        assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        assertEquals("La rue est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
-            Test méthode ajouter si le code postal de l'adresse est Null
+            Test l'exception lévée de la méthode ajouter si l'attribut code postal de Adresse est null
             """)
     @Test
     void ajouterAvecCodePostalNull() {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", null, "Nantes");
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", "Pierre", "Pierre", adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
-        assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        assertEquals("Le code postal est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
-            Test méthode ajouter si le code postal de l'adresse est Blank
+            Test l'excption levée de la méthode ajouter si l'attribut  code postal de l'Adresse est blank
             """)
     @Test
     void ajouterAvecCodePostalBlank() {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", "", "Nantes");
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", "Pierre", "Pierre", adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
-        assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        assertEquals("Le code postal est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
-            Test méthode ajouter si la ville de l'adresse est Null
+            Test l'exception levée de la méthode ajouter si l'attribut ville de Adresse est null
             """)
     @Test
     void ajouterAvecVilleNull() {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", "44300", null);
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", "Pierre", "Pierre", adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
-        assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+       ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+       assertEquals("La ville est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
-            Test méthode ajouter si la ville de l'adresse est blank
+            Test l'exception levée de la méthode ajouter si l'attribut ville de Adresse est blank
             """)
     @Test
     void ajouterAvecVilleBlank() {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", "44300", "");
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", "Pierre", "Pierre", adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
-        assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        assertEquals("La ville est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
-            Si ajouter(ClientRequestDto Ok) alors save() est appelé et un ClientResponseDto renvoyé
+            Vérifie Si ajouter(ClientRequestDto Ok) alors save() est appelé et un ClientResponseDto renvoyé
             """)
     @Test
     void TestAjouterOK() {
@@ -275,44 +290,44 @@ class ClientServiceImplTest {
             Verifie méthode trouver qui doit renvoyer une EntityNotFoundException lorsque le client n'existe pas
             """)
     @Test
-    void trouverExistePas() {
+    void trouverParidExistePas() {
         Mockito.when(clientDAOMock.findById("Pierre@yahoo.fr")).thenReturn(Optional.empty());
-        EntityNotFoundException ex = assertThrows(EntityNotFoundException.class, () -> clientService.trouver("Pierre@yahoo.fr", "Rsgfssfd2@"));
+        EntityNotFoundException ex = assertThrows(EntityNotFoundException.class, () -> clientService.trouverParId("Pierre@yahoo.fr", "Rsgfssfd2@"));
         assertEquals("Email ou password erroné", ex.getMessage());
     }
 
     @DisplayName("""
-            Verifie méthode trouver qui doit renvoyer une EntityNotFoundException lorsque le password est invalid
+            Verifie méthode trouver(id) qui doit renvoyer une EntityNotFoundException lorsque le password est invalid
             """)
     @Test
-    void trouverPassWordInvalid() {
+    void trouverParIdPassWordInvalid() {
         Client client = creactionClient();
         Mockito.when(clientDAOMock.findById("Pierre@yahoo.fr")).thenReturn(Optional.of(client));
-        EntityNotFoundException ex = assertThrows(EntityNotFoundException.class, () -> clientService.trouver("Pierre@yahoo.fr", "Rsgfssfd"));
+        EntityNotFoundException ex = assertThrows(EntityNotFoundException.class, () -> clientService.trouverParId("Pierre@yahoo.fr", "Rsgfssfd"));
         assertEquals("Email ou password erroné", ex.getMessage());
     }
 
 
     @DisplayName("""
-            Verifie méthode trouver qui doit renvoyer un Client.
+            Verifie trouver(id) renvoie un ClientResponseDto
             """)
     @Test
-    void trouverExiste() {
+    void trouverParIdExiste() {
         Client client = creactionClient();
         Optional<Client> optionalClient = Optional.of(client);
         ClientResponseDto clientResponseDtoForClient = creationClientResponseDto();
         Mockito.when(clientDAOMock.findById("Pierre@yahoo.fr")).thenReturn(optionalClient);
         Mockito.when(clientMapperMock.toClientResponseDtoForCLient(client)).thenReturn(clientResponseDtoForClient);
-        assertSame((clientResponseDtoForClient), clientService.trouver("Pierre@yahoo.fr", "Rsgfssfd2@"));
+        assertSame((clientResponseDtoForClient), clientService.trouverParId("Pierre@yahoo.fr", "Rsgfssfd2@"));
     }
 
     @DisplayName("""
-            Verifie methode supprimer si clientOptional est vide, renvoie ClientException
+            Test l'exception levée de la méthode supprimerParId(id) si l'id ne corresponde à aucun client
             """)
     @Test
-    void supprimerClientOptionnalVide() {
+    void supprimerParIdOptionnalVide() {
         Mockito.when(clientDAOMock.findById("Pierre@yahoo.fr")).thenReturn(Optional.empty());
-        ClientException ex = assertThrows(ClientException.class, () -> clientService.supprimer("Pierre@yahoo.fr", "Rsgfssfd2@"));
+        EntityNotFoundException ex = assertThrows(EntityNotFoundException.class, () -> clientService.supprimerParId("Pierre@yahoo.fr", "Rsgfssfd2@"));
         assertSame("Email ou password erroné", ex.getMessage());
     }
 
@@ -320,10 +335,10 @@ class ClientServiceImplTest {
             Verifie methode supprimer si Password invalid, renvoie ClientException
             """)
     @Test
-    void supprimerPassWordInvalid() {
+    void supprimerParIdPassWordInvalid() {
         Client pierre = creactionClient();
         Mockito.when(clientDAOMock.findById("Pierre@yahoo.fr")).thenReturn(Optional.of(pierre));
-        ClientException ex = assertThrows(ClientException.class, () -> clientService.supprimer("Pierre@yahoo.fr", "Rsgfssfd"));
+        EntityNotFoundException ex = assertThrows(EntityNotFoundException.class, () -> clientService.supprimerParId("Pierre@yahoo.fr", "Rsgfssfd"));
         assertSame("Email ou password erroné", ex.getMessage());
     }
 
@@ -334,7 +349,7 @@ class ClientServiceImplTest {
     void supprimerOk() {
         Client pierre = creactionClient();
         Mockito.when(clientDAOMock.findById("Pierre@yahoo.fr")).thenReturn(Optional.of(pierre));
-        clientService.supprimer("Pierre@yahoo.fr", "Rsgfssfd2@");
+        clientService.supprimerParId("Pierre@yahoo.fr", "Rsgfssfd2@");
         Mockito.verify(clientDAOMock).deleteById("Pierre@yahoo.fr");
     }
 
@@ -345,24 +360,24 @@ class ClientServiceImplTest {
     void modifierAvecEmailNull() {
         Mockito.when(clientDAOMock.findById("Pierre@yahoo.fr")).thenReturn(Optional.empty());
         ClientRequestDto clientRequestDto = creationClientRequestDto();
-        ClientException ex = assertThrows(ClientException.class, () -> clientService.modifier("Pierre@yahoo.fr", "Rsgfssfd2@", clientRequestDto));
-        assertSame("Email ou password erroné", ex.getMessage());
+        EntityNotFoundException ex = assertThrows(EntityNotFoundException.class, () -> clientService.modifier("Pierre@yahoo.fr", "Rsgfssfd2@", clientRequestDto));
+        assertEquals("Email ou password erroné", ex.getMessage());
     }
 
     @DisplayName("""
-            Vérifie si la méthode modifie renvoie une CLientException si le password est invalice
+            Vérifie si la méthode modifie renvoie une CLientException si le password est invalide
             """)
     @Test
     void modifierAvecPasswordInvalid() {
         Client client = creactionClient();
         Mockito.when(clientDAOMock.findById("Pierre@yahoo.fr")).thenReturn(Optional.of(client));
         ClientRequestDto clientRequestDto = creationClientRequestDto();
-        ClientException ex = assertThrows(ClientException.class, () -> clientService.modifier("Pierre@yahoo.fr", "Rsfssfd2", clientRequestDto));
-        assertSame("Email ou password erroné", ex.getMessage());
+        EntityNotFoundException ex = assertThrows(EntityNotFoundException.class, () -> clientService.modifier("Pierre@yahoo.fr", "Rsfssfd2", clientRequestDto));
+        assertEquals("Email ou password erroné", ex.getMessage());
     }
 
     @DisplayName("""
-            Vérifie si la méthode modifier
+            Vérifie si la méthode modifier passe bien par save() si tout se passe correctement.
             """)
     @Test
     void modifierSuccess() {

@@ -38,13 +38,13 @@ public class AdministrateurController {
 
     @GetMapping("/infos")
     ResponseEntity<AdministrateurResponseDto> afficher(@RequestBody String id, @RequestBody String password) {
-        AdministrateurResponseDto administrateurResponseDto = administrateurService.trouver(id, password);
+        AdministrateurResponseDto administrateurResponseDto = administrateurService.trouverParId(id, password);
         return ResponseEntity.ok(administrateurResponseDto);
     }
 
     @DeleteMapping
     ResponseEntity<AdministrateurResponseDto> supprimer(@RequestParam String id, String password) {
-        administrateurService.supprimer(id, password);
+        administrateurService.supprimerParid(id, password);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
     @PatchMapping

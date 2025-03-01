@@ -26,7 +26,7 @@ public class VoitureController {
 
     @PostMapping
     ResponseEntity<VoitureResponseDto> ajouter(@RequestBody @Valid VoitureRequestDto voitureRequestDto){
-        VoitureResponseDto voitureResponseDto = voitureService.ajouter(voitureRequestDto);
+        VoitureResponseDto voitureResponseDto = voitureService.ajouterVoiture(voitureRequestDto);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path(("/{id}"))
@@ -37,22 +37,22 @@ public class VoitureController {
 
     @GetMapping
     List<VoitureResponseDto> rechercherToutes(){
-        return voitureService.lister();
+        return voitureService.TrouverToutes();
     }
     @GetMapping("/filtre")
     List<VoitureResponseDto> rechercherParFiltre(@RequestParam FiltreListe filtreListe) {
-        return voitureService.listerParRequete(filtreListe);
+        return voitureService.trouverParFiltre(filtreListe);
     }
 
     @GetMapping("/{id}")
     ResponseEntity<VoitureResponseDto> afficher(@PathVariable("id") Long id){
-        VoitureResponseDto voitureResponseDto = voitureService.trouver(id);
+        VoitureResponseDto voitureResponseDto = voitureService.trouverParId(id);
         return ResponseEntity.ok(voitureResponseDto);
     }
 
     @DeleteMapping("/{id}")
     ResponseEntity<VoitureResponseDto> supprimer(@PathVariable ("id") Long id){
-        voitureService.supprimer(id);
+        voitureService.supprimerParId(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 

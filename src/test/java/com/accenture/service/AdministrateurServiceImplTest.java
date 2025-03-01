@@ -9,6 +9,7 @@ import com.accenture.service.dto.utilisateur.AdministrateurRequestDto;
 import com.accenture.service.dto.utilisateur.AdministrateurResponseDto;
 
 import com.accenture.service.mapper.AdministrateurMapper;
+import jakarta.persistence.Entity;
 import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,8 +21,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
-//TODO relire et vérifier synthaxe
+
 @ExtendWith(MockitoExtension.class)
 class AdministrateurServiceImplTest {
 
@@ -36,29 +38,32 @@ class AdministrateurServiceImplTest {
             Test la méthode ajouter si null lui est passé""")
     @Test
     void ajouterNull() {
-        assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(null));
+        AdministrateurException ex = assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(null));
+        assertEquals("La requête est null", ex.getMessage());
     }
 
     @DisplayName("""
-            Test Méthode ajouter si email null
+            Test l'exception levée de la Méthode ajouter si l'attribut Email est null
             """)
     @Test
     void ajouterAvecEmailNull() {
         AdministrateurRequestDto administrateurRequestDto = new AdministrateurRequestDto(null, "fdsfds@Z23", "Gerard", "Gerard", "CDI");
-        assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(administrateurRequestDto));
+        AdministrateurException ex = assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(administrateurRequestDto));
+        assertEquals("L'adresse email est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
-            Test Méthode ajouter si email blank
+            Test l'expeption levée de Méthode ajouter si l'attribut email est blank
             """)
     @Test
     void ajouterAvecEmailBlank() {
         AdministrateurRequestDto administrateurRequestDto = new AdministrateurRequestDto("", "fdsfds@Z23", "Gerard", "Gerard", "CDI");
-        assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(administrateurRequestDto));
+        AdministrateurException ex = assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(administrateurRequestDto));
+        assertEquals("L'adresse email est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
-            Test Méthode ajouter si email ne corresponds aux conditions;
+            Test l'exception levée de la méthode ajouter si email ne corresponds aux conditions;
             """)
     @Test
     void ajouterAvecEmailNotMatchingRegex() {
@@ -68,7 +73,7 @@ class AdministrateurServiceImplTest {
     }
 
     @DisplayName("""
-            Test Méthode ajouter si email déjà en base
+            Test l'exception levée de la méthode ajouter si email déjà en base
             """)
     @Test
     void ajouterAvecEmailEnBase() {
@@ -82,7 +87,7 @@ class AdministrateurServiceImplTest {
 
 
     @DisplayName("""
-            Test Méthode ajouter si le mot de passe ne correspond pas à la regex;
+            Test l'exception levée de la méthode ajouter si l'attribut password ne correspond pas à la regex;
             """)
     @Test
     void ajouterAvecPasswordNotMatchingRegex() {
@@ -92,80 +97,88 @@ class AdministrateurServiceImplTest {
     }
 
     @DisplayName("""
-            Test Méthode ajouter si le mot de passe est null;
+            Test l'exception levée de la méthode ajouter si l'attribut password est null;
             """)
     @Test
     void ajouterAvecPasswordNull() {
         AdministrateurRequestDto administrateurRequestDto = new AdministrateurRequestDto("Gerard@goatmail.com", null, "Gerard", "Gerard", "CDI");
-        assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(administrateurRequestDto));
+        AdministrateurException ex = assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(administrateurRequestDto));
+        assertEquals("Le mot de passe ne respecte pas les conditions", ex.getMessage());
     }
 
     @DisplayName("""
-            Test Méthode ajouter si le mot de passe est blank;
+            Test l'exception levée de la méthode ajouter si l'attribut password est blank
             """)
     @Test
     void ajouterAvecPasswordBlank() {
         AdministrateurRequestDto administrateurRequestDto = new AdministrateurRequestDto("Gerard@goatmail.com", "", "Gerard", "Gerard", "CDI");
-        assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(administrateurRequestDto));
+        AdministrateurException ex = assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(administrateurRequestDto));
+        assertEquals("Le mot de passe ne respecte pas les conditions", ex.getMessage());
     }
 
     @DisplayName("""
-            Test Méthode ajouter si le nom est null;
+            Test l'exception levée de la méthode ajouter si l'attribut nom est null
             """)
     @Test
-    void ajouterAvecnomNull() {
+    void ajouterAvecNomNull() {
         AdministrateurRequestDto administrateurRequestDto = new AdministrateurRequestDto("Gerard@goatmail.com", "fdsf@ggfdZ23", null, "Gerard", "CDI");
-        assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(administrateurRequestDto));
+        AdministrateurException ex = assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(administrateurRequestDto));
+        assertEquals("Le nom est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
-            Test Méthode ajouter si le nom est blank;
+            Test l'exception levée de  méthode ajouter si l'attribut nom est blank'
             """)
     @Test
-    void ajouterAvecnomBlank() {
+    void ajouterAvecNomBlank() {
         AdministrateurRequestDto administrateurRequestDto = new AdministrateurRequestDto("Gerard@goatmail.com", "fdsfds@Z23", "", "Gerard", "CDI");
-        assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(administrateurRequestDto));
+        AdministrateurException ex = assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(administrateurRequestDto));
+        assertEquals("Le nom est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
-            Test Méthode ajouter si le prenom est null;
+            Test l'exception de la méthode ajouter si l'attribut prénom est null
             """)
     @Test
     void ajouterAvecPrenomNull() {
         AdministrateurRequestDto administrateurRequestDto = new AdministrateurRequestDto("Gerard@goatmail.com", "fdsfds@Z23", "Gerard", null, "CDI");
-        assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(administrateurRequestDto));
+       AdministrateurException ex = assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(administrateurRequestDto));
+       assertEquals("Le prenom est obligatoire" ,ex.getMessage());
     }
 
     @DisplayName("""
-            Test Méthode ajouter si le prenom est blank;
+            Test l'exception levée de la méthode ajouter si l'attribut prenom est blank;
             """)
     @Test
     void ajouterAvecPrenomBlank() {
         AdministrateurRequestDto administrateurRequestDto = new AdministrateurRequestDto("Gerard@goatmail.com", "fdsfds@Z23", "Gerard", "", "CDI");
-        assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(administrateurRequestDto));
+       AdministrateurException ex =  assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(administrateurRequestDto));
+       assertEquals("Le prenom est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
-            Test Méthode ajouter si la fonction est null;
+            Test l'exception levvée de la méthode ajouter si la fonction est null;
             """)
     @Test
     void ajouterAvecFonctionNull() {
         AdministrateurRequestDto administrateurRequestDto = new AdministrateurRequestDto("Gerard@goatmail.com", "fdsfds@Z23", "Gerard", "Gerard", null);
-        assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(administrateurRequestDto));
+      AdministrateurException ex =  assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(administrateurRequestDto));
+      assertEquals("La fonction est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
-            Test Méthode ajouter si la fonction est blank;
+            Test l'exception levée de la Méthode ajouter si l'attribut fonction est blank;
             """)
     @Test
     void ajouterAvecFonctionBlank() {
         AdministrateurRequestDto administrateurRequestDto = new AdministrateurRequestDto("Gerard@goatmail.com", "fdsfds@Z23", "Gerard", "Gerard", "");
-        assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(administrateurRequestDto));
+        AdministrateurException ex = assertThrows(AdministrateurException.class, () -> administrateurService.ajouter(administrateurRequestDto));
+        assertEquals("La fonction est obligatoire", ex.getMessage());
     }
 
     @DisplayName(
             """
-                    Verifie si l'ajout se fait bien si tout les critères sont ok.
+                    Verifie si ajouter passe bien par save() si toutes les vérifications sont passées
                     """
     )
     @Test
@@ -182,29 +195,29 @@ class AdministrateurServiceImplTest {
     }
 
     @DisplayName("""
-            Verifie méthode trouver qui doit renvoyer une EntityNotFoundException lorsque l'administrateur n'existe pas
+            Verifie méthode trouver(id) qui doit renvoyer une EntityNotFoundException lorsque l'administrateur n'existe pas
             """)
     @Test
-    void trouverExistePas() {
+    void trouverParIdExistePas() {
         Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.empty());
-        EntityNotFoundException ex = assertThrows(EntityNotFoundException.class, () -> administrateurService.trouver("Gerard@goatmail.com", "fdsfds@Z23"));
+        EntityNotFoundException ex = assertThrows(EntityNotFoundException.class, () -> administrateurService.trouverParId("Gerard@goatmail.com", "fdsfds@Z23"));
         assertEquals("Email ou password erroné", ex.getMessage());
     }
 
     @DisplayName("""
-            Verifie méthode trouver qui doit renvoyer une EntityNotFoundException lorsque le password est invalid
+            Verifie méthode trouver(id) qui doit renvoyer une EntityNotFoundException lorsque le password est invalid
             """)
     @Test
-    void trouverPassWordInvalid() {
+    void trouverParIdPassWordInvalid() {
         Administrateur administrateur = gerard();
         Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.of(administrateur));
-        EntityNotFoundException ex = assertThrows(EntityNotFoundException.class, () -> administrateurService.trouver("Gerard@goatmail.com", "fdsfds23"));
+        EntityNotFoundException ex = assertThrows(EntityNotFoundException.class, () -> administrateurService.trouverParId("Gerard@goatmail.com", "fdsfds23"));
         assertEquals("Email ou password erroné", ex.getMessage());
     }
 
 
     @DisplayName("""
-            Verifie méthode trouver qui doit renvoyer un Administrateur.
+            Verifie méthode trouverParId() renvoie un AdministrateurResponseDto
             """)
     @Test
     void trouverExiste() {
@@ -213,21 +226,21 @@ class AdministrateurServiceImplTest {
         AdministrateurResponseDto administrateurResponseDto = gerardResponse();
         Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(optionalAdministrateur);
         Mockito.when(administrateurMapperMock.toAdministrateurResponseDto(gerard())).thenReturn(administrateurResponseDto);
-        assertSame(administrateurResponseDto, administrateurService.trouver("Gerard@goatmail.com", "fdsfds@Z23"));
+        assertSame(administrateurResponseDto, administrateurService.trouverParId("Gerard@goatmail.com", "fdsfds@Z23"));
     }
 
     @DisplayName("""
-            Verifie methode supprimer si Administrateur est vide, renvoie AdministrateurException
+            Test l'exception levée de la méthode supprimerParId si l'id ne correspond à aucun administrateur en base.
             """)
     @Test
-    void supprimerAdminOptionnalVide() {
+    void supprimerParIdOptionnalVide() {
         Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.empty());
-        AdministrateurException ex = assertThrows(AdministrateurException.class, () -> administrateurService.supprimer("Gerard@goatmail.com", "fdsfds@Z23"));
-        assertSame("Email ou password erroné", ex.getMessage());
+       EntityNotFoundException ex = assertThrows(EntityNotFoundException.class, () -> administrateurService.supprimerParid("Gerard@goatmail.com", "fdsfds@Z23"));
+        assertEquals("Email ou password erroné", ex.getMessage());
     }
 
     @DisplayName("""
-            Verifie methode supprimer si un seul administrateur en base
+            Test l'exception levée de la méthode supprimerParId s'il n'y plus qu'un administrateur en base
             """)
     @Test
     void supprimerOnlyOneAdmin() {
@@ -235,18 +248,18 @@ class AdministrateurServiceImplTest {
         Administrateur administrateur = gerard();
         Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.of(gerard()));
         Mockito.when(administrateurDaoMock.findAll()).thenReturn(liste);
-        AdministrateurException ex = assertThrows(AdministrateurException.class, () -> administrateurService.supprimer("Gerard@goatmail.com", "fdsfds@Z23"));
-        assertSame("Vous ne pouvez pas supprimer le dernière administrateur en base.", ex.getMessage());
+        AdministrateurException ex = assertThrows(AdministrateurException.class, () -> administrateurService.supprimerParid("Gerard@goatmail.com", "fdsfds@Z23"));
+        assertEquals("Vous ne pouvez pas supprimer le dernière administrateur en base.", ex.getMessage());
     }
 
     @DisplayName("""
-            Verifie methode supprimer si Password invalid, renvoie ClientException
+            Verifie methode supprimer si Password invalid, renvoie Administrateur
             """)
     @Test
     void supprimerPassWordInvalid() {
         Administrateur administrateur = gerard();
         Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.of(administrateur));
-        AdministrateurException ex = assertThrows(AdministrateurException.class, () -> administrateurService.supprimer("Gerard@goatmail.com", "fdsfds23"));
+        EntityNotFoundException ex = assertThrows(EntityNotFoundException.class, () -> administrateurService.supprimerParid("Gerard@goatmail.com", "fdsfds23"));
         assertSame("Email ou password erroné", ex.getMessage());
     }
 
@@ -259,7 +272,7 @@ class AdministrateurServiceImplTest {
         Mockito.when(administrateurDaoMock.findAll()).thenReturn(liste);
         Administrateur administrateur = gerard();
         Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.of(administrateur));
-        administrateurService.supprimer("Gerard@goatmail.com", "fdsfds@Z23");
+        administrateurService.supprimerParid("Gerard@goatmail.com", "fdsfds@Z23");
         Mockito.verify(administrateurDaoMock).deleteById("Gerard@goatmail.com");
     }
 
@@ -270,24 +283,24 @@ class AdministrateurServiceImplTest {
     void modifierAvecEmailNull() {
         Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.empty());
         AdministrateurRequestDto administrateurRequestDto = gerardRequest();
-        AdministrateurException ex = assertThrows(AdministrateurException.class, () -> administrateurService.modifier("Gerard@goatmail.com", "fdsfds@Z23", administrateurRequestDto));
+        EntityNotFoundException ex = assertThrows(EntityNotFoundException.class, () -> administrateurService.modifier("Gerard@goatmail.com", "fdsfds@Z23", administrateurRequestDto));
         assertSame("Email ou password erroné", ex.getMessage());
     }
 
     @DisplayName("""
-            Vérifie si la méthode modifie renvoie une AdministrateurException si le password ne correspond pas à l'admin
+            Vérifie si la méthode modifie renvoie une AdministrateurException si le password est invalide
             """)
     @Test
     void modifierAvecPasswordInvalid() {
         AdministrateurRequestDto administrateurRequestDto = gerardRequest();
         Administrateur administrateur = gerard();
         Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.of(administrateur));
-        AdministrateurException ex = assertThrows(AdministrateurException.class, () -> administrateurService.modifier("Gerard@goatmail.com", "fdsfZ23", administrateurRequestDto));
+        EntityNotFoundException ex = assertThrows(EntityNotFoundException.class, () -> administrateurService.modifier("Gerard@goatmail.com", "fdsfZ23", administrateurRequestDto));
         assertSame("Email ou password erroné", ex.getMessage());
     }
 
     @DisplayName("""
-            Vérifie si la méthode modifier
+            Vérifie si la méthode modifier passe bien par save() si tout se passe correctement
             """)
     @Test
     void modifierSuccess() {
@@ -300,21 +313,9 @@ class AdministrateurServiceImplTest {
         Mockito.when(administrateurDaoMock.save(adminAvantEnreg)).thenReturn(adminApresEnreg);
         Mockito.when(administrateurMapperMock.toAdministrateurRequestDto(adminAvantEnreg)).thenReturn(administrateurRequestDto);
         Mockito.when(administrateurMapperMock.toAdministrateurResponseDto(adminApresEnreg)).thenReturn(administrateurResponseDto);
-        assertSame(administrateurResponseDto, administrateurService.modifier("Gerard@goatmail.com", "fdsfds@Z23",administrateurRequestDto));
+        assertSame(administrateurResponseDto, administrateurService.modifier("Gerard@goatmail.com", "fdsfds@Z23", administrateurRequestDto));
         Mockito.verify(administrateurDaoMock).save(adminAvantEnreg);
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     private Administrateur gerard() {

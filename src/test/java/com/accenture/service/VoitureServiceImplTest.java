@@ -1,13 +1,8 @@
 package com.accenture.service;
 
-import com.accenture.exception.ClientException;
 import com.accenture.exception.VoitureException;
-import com.accenture.repository.Entity.utilisateur.Client;
 import com.accenture.repository.Entity.vehicule.Voiture;
 import com.accenture.repository.VoitureDao;
-import com.accenture.service.dto.utilisateur.AdresseDto;
-import com.accenture.service.dto.utilisateur.ClientRequestDto;
-import com.accenture.service.dto.utilisateur.ClientResponseDto;
 import com.accenture.service.dto.vehicule.VoitureRequestDto;
 import com.accenture.service.dto.vehicule.VoitureResponseDto;
 import com.accenture.service.mapper.VoitureMapper;
@@ -21,14 +16,12 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import static com.accenture.shared.model.Permis.*;
 import static org.junit.jupiter.api.Assertions.*;
-//TODO relire et vérifier synthaxe
+
 @ExtendWith(MockitoExtension.class)
 class VoitureServiceImplTest {
 
@@ -44,198 +37,198 @@ class VoitureServiceImplTest {
             Test la méthode ajouter si null lui est passé""")
     @Test
     void ajouterNull() {
-        assertThrows(VoitureException.class, () -> voitureService.ajouter(null));
+        assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(null));
     }
 
     @DisplayName("""
-            Test Méthode ajouter si Marque Null
+            Test l'excpetion levée de la méthode ajouter si l'attribut marque est null
             """)
     @Test
     void ajouterAvecMarqueNull() {
         VoitureRequestDto voitureRequestDto = new VoitureRequestDto(null, "MultiPlat", "rouge", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouter(voitureRequestDto));
+        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("La marque est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
-            Test Méthode ajouter si Marque Blank
+            Test l'exception levée de la méthode ajouter si l'attribut Marque est blank
             """)
     @Test
     void ajouterAvecMarqueBlank() {
         VoitureRequestDto voitureRequestDto = new VoitureRequestDto("", "MultiPlat", "rouge", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouter(voitureRequestDto));
+        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("La marque est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
-            Test Méthode ajouter si Modele Null
+            Test l'exception levée de la méthode ajouter si l'attribut modèle est Null
             """)
     @Test
     void ajouterAvecModeleNull() {
         VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", null, "rouge", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouter(voitureRequestDto));
+        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("Le modèle est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
-            Test Méthode ajouter si Modele Blank
+            Test l'exception levée de la Méthode ajouter si l'attrbiut modèle est Blank
             """)
     @Test
     void ajouterAvecModeleBlank() {
         VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "", "rouge", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouter(voitureRequestDto));
+        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("Le modèle est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
-            Test Méthode ajouter si Couleur Null
+            Test l'exception levée de la Méthode ajouter si l'attribut couleur est null
             """)
     @Test
     void ajouterAvecCouleurNull() {
         VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", null, 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouter(voitureRequestDto));
+        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("La couleur est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
-            Test Méthode ajouter si couleur Blank
+            Test l'exception levée de la Méthode ajouter si l'attribut Couleur est BLank
             """)
     @Test
     void ajouterAvecCouleurBlank() {
         VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouter(voitureRequestDto));
+        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("La couleur est obligatoire", ex.getMessage());
     }
 
 
     @DisplayName("""
-            Test Méthode ajouter si Nombre de places null
+            Test l'exception levée de la méthode ajouter si l'attribut NombreDePlaces est null
             """)
     @Test
     void ajouterAvecNombredePlacesNull() {
         VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", null, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouter(voitureRequestDto));
+        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("Le nombre de places est obligatoire", ex.getMessage());
     }
 
 
     @DisplayName("""
-            Test Méthode ajouter si carburant null
+            Test l'exception levée de la méthode ajouter si l'attribut Caburant est null
             """)
     @Test
     void ajouterAvecCarburantNull() {
         VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, null, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouter(voitureRequestDto));
+        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("Le carburant est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
-            Test Méthode ajouter si Nombre de Portes null
+            Test l'exception levée de la méthode ajouter si l'attribut NombresDeportes est null
             """)
     @Test
     void ajouterAvecNombreDePorteNull() {
         VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.Diesel, null, Transmission.AUTO, true, 3, 10, 100040, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouter(voitureRequestDto));
+        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("Le nombre de portes est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
-            Test Méthode ajouter si transmission est null
+            Test l'exception levée de la Méthode ajouter si l'attribut transmission est null
             """)
     @Test
     void ajouterAvecTransmissionNull() {
         VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.Diesel, NombresDePortes.TROIS, null, true, 3, 10, 100040, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouter(voitureRequestDto));
+        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("Le type de transmission est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
-            Test Méthode ajouter si climatisation est null
+            Test l'excepetion levée de la Méthode ajouter si l'attribut Climatisation est null
             """)
     @Test
     void ajouterAvecClimatisationNull() {
         VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, null, 3, 10, 100040, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouter(voitureRequestDto));
+        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("Le statut de la climatisation est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
-            Test Méthode ajouter si nombreDeBagages est null
+            Test l'exception levée de la Méthode ajouter si l'attribut nombreDeBagages est null
             """)
     @Test
     void ajouterAvecBagageNull() {
         VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, null, 10, 100040, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouter(voitureRequestDto));
+        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("Le nombre de bagages est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
-            Test Méthode ajouter si nombreDeBagages est 0
+            Test l'exception levée de la Méthode ajouter si  l'attribut nombreDeBagages est 0
             """)
     @Test
     void ajouterAvecBagageZero() {
         VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 0, 10, 100040, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouter(voitureRequestDto));
+        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("Le nombre de bagages est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
-            Test Méthode ajouter si le tarif journalier est null
+            Test l'exception levée de la Méthode ajouter si l'attribut tarifJournalier est null
             """)
     @Test
     void ajouterAvecTarifNull() {
         VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, null, 100040, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouter(voitureRequestDto));
+        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("Le tarif Journalier est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
-            Test Méthode ajouter si le tarif journalier est zéro
+            Test l'exception levée de la Méthode ajouter si l'attribut tarifJournalier est zéro
             """)
     @Test
     void ajouterAvecTarifZero() {
         VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 0, 100040, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouter(voitureRequestDto));
+        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("Le tarif Journalier est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
-            Test Méthode ajouter si le kilometrage est null
+            Test l'exception levée de la méthode ajouter si l'attribut kilometrage est null
             """)
     @Test
     void ajouterAvecKilometrageNull() {
         VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, null, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouter(voitureRequestDto));
+        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("Le kilomètrage est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
-            Test Méthode ajouter si le kilometrage est zero
+            Test l'exception levée de la méthode ajouter si l'attribut kilometrage est zero
             """)
     @Test
     void ajouterAvecKilometrageZero() {
         VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 0, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouter(voitureRequestDto));
+        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("Le kilomètrage est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
-            Test Méthode ajouter si Actif est null
+            Test l'exception levée de laMéthode ajouter si l'attribut Actif est null
             """)
     @Test
     void ajouterAvecActifNull() {
         VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, null, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouter(voitureRequestDto));
+        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("Le véhicule doit être actif ou inactif", ex.getMessage());
     }
 
     @DisplayName("""
-            Test Méthode ajouter si Retirer du parc est null
+            Test l'exception levée de la méthode ajouter si l'attribut RetirerDuParc est null
             """)
     @Test
     void ajouterAvecRetirerDuParc() {
         VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, false, null);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouter(voitureRequestDto));
+        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("Precisez si le véhicule est retiré du parc", ex.getMessage());
     }
 
@@ -251,7 +244,7 @@ class VoitureServiceImplTest {
         Mockito.when(voitureMapperMock.toVoiture(voitureRequestDto)).thenReturn(voitureAvant);
         Mockito.when(voitureDaoMock.save(voitureAvant)).thenReturn(voitureApres);
         Mockito.when(voitureMapperMock.toVoitureResponseDto(voitureApres)).thenReturn(voitureResponseDto);
-        assertSame(voitureResponseDto.permis(), voitureService.ajouter(voitureRequestDto).permis());
+        assertSame(voitureResponseDto.permis(), voitureService.ajouterVoiture(voitureRequestDto).permis());
         Mockito.verify(voitureDaoMock).save(voitureAvant);
     }
 
@@ -267,27 +260,27 @@ class VoitureServiceImplTest {
         Mockito.when(voitureMapperMock.toVoiture(voitureRequestDto)).thenReturn(voitureAvant);
         Mockito.when(voitureDaoMock.save(voitureAvant)).thenReturn(voitureApres);
         Mockito.when(voitureMapperMock.toVoitureResponseDto(voitureApres)).thenReturn(voitureResponseDto);
-        assertSame(voitureResponseDto.permis(), voitureService.ajouter(voitureRequestDto).permis());
+        assertSame(voitureResponseDto.permis(), voitureService.ajouterVoiture(voitureRequestDto).permis());
         Mockito.verify(voitureDaoMock).save(voitureAvant);
     }
 
     @DisplayName("""
-            Verifie le permis assigné lors de l'enregistrement, avec Permis impossible
+            Verifie l'exception levée si l'attribut nombresDePassager est trop elevé pour assigner un permis
             """)
     @Test
     void TestAjouterPermisImpossible() {
         VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 20, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
         Voiture voitureAvant = new Voiture(1L, "Volvo", "Multiplat", "rouge ", 10, 100040, true, false, 20, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3);
         Mockito.when(voitureMapperMock.toVoiture(voitureRequestDto)).thenReturn(voitureAvant);
-        VoitureException voitureException = assertThrows(VoitureException.class, () -> voitureService.ajouter(voitureRequestDto));
+        VoitureException voitureException = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("Le nombre de passages n'est pas adéquat", voitureException.getMessage());
     }
 
     @DisplayName("""
-            Verifie la méthode lister
+            Verifie la méthode TrouverToutes, renvoie bien une liste de voitureResponse
             """)
     @Test
-    void lister() {
+    void TrouverToutes() {
         Voiture voiture1 = creerVoiture();
         Voiture voiture2 = creerVoiture2();
         List<Voiture> liste = List.of(voiture1, voiture2);
@@ -297,14 +290,14 @@ class VoitureServiceImplTest {
         Mockito.when(voitureDaoMock.findAll()).thenReturn(liste);
         Mockito.when(voitureMapperMock.toVoitureResponseDto(voiture1)).thenReturn(voitureResponseDto1);
         Mockito.when(voitureMapperMock.toVoitureResponseDto(voiture2)).thenReturn(voitureResponseDto2);
-        assertEquals(listeResponse, voitureService.lister());
+        assertEquals(listeResponse, voitureService.TrouverToutes());
     }
 
     @DisplayName("""
-            Verifie la méthode listerParRequete ACTIFS
+            Verifie la méthode listerParRequete ACTIFS, renvoie bien une liste de voitureResponse
             """)
     @Test
-    void listerParRequeteActif() {
+    void trouverParRequeteActif() {
         Voiture voiture1 = creerVoiture();
         Voiture voiture2 = creerVoiture2();
         List<Voiture> liste = List.of(voiture1, voiture2);
@@ -314,14 +307,14 @@ class VoitureServiceImplTest {
         Mockito.when(voitureDaoMock.findByActifTrue()).thenReturn(liste);
         Mockito.when(voitureMapperMock.toVoitureResponseDto(voiture1)).thenReturn(voitureResponseDto1);
         Mockito.when(voitureMapperMock.toVoitureResponseDto(voiture2)).thenReturn(voitureResponseDto2);
-        assertEquals(listeResponse, voitureService.listerParRequete(FiltreListe.ACTIFS));
+        assertEquals(listeResponse, voitureService.trouverParFiltre(FiltreListe.ACTIFS));
     }
 
     @DisplayName("""
-            Verifie la méthode listerParRequete INACTIFS
+            Verifie la méthode listerParRequete INACTIFS, renvoie bien une liste de voitureResponse
             """)
     @Test
-    void listerParRequeteInactif() {
+    void trouverParRequeteInactif() {
         Voiture voiture1 = creerVoiture();
         Voiture voiture2 = creerVoiture2();
         List<Voiture> liste = List.of(voiture1, voiture2);
@@ -331,14 +324,14 @@ class VoitureServiceImplTest {
         Mockito.when(voitureDaoMock.findByActifFalse()).thenReturn(liste);
         Mockito.when(voitureMapperMock.toVoitureResponseDto(voiture1)).thenReturn(voitureResponseDto1);
         Mockito.when(voitureMapperMock.toVoitureResponseDto(voiture2)).thenReturn(voitureResponseDto2);
-        assertEquals(listeResponse, voitureService.listerParRequete(FiltreListe.INACTIFS));
+        assertEquals(listeResponse, voitureService.trouverParFiltre(FiltreListe.INACTIFS));
     }
 
     @DisplayName("""
             Verifie la méthode listerParRequete HorsParc
             """)
     @Test
-    void listerParRequeteHorsParc() {
+    void trouverParRequeteHorsParc() {
         Voiture voiture1 = creerVoiture();
         Voiture voiture2 = creerVoiture2();
         List<Voiture> liste = List.of(voiture1, voiture2);
@@ -348,14 +341,14 @@ class VoitureServiceImplTest {
         Mockito.when(voitureDaoMock.findByRetireDuParcTrue()).thenReturn(liste);
         Mockito.when(voitureMapperMock.toVoitureResponseDto(voiture1)).thenReturn(voitureResponseDto1);
         Mockito.when(voitureMapperMock.toVoitureResponseDto(voiture2)).thenReturn(voitureResponseDto2);
-        assertEquals(listeResponse, voitureService.listerParRequete(FiltreListe.HORS_DU_PARC));
+        assertEquals(listeResponse, voitureService.trouverParFiltre(FiltreListe.HORS_DU_PARC));
     }
 
     @DisplayName("""
             Verifie la méthode listerParRequete DansleParc
             """)
     @Test
-    void listerParRequeteDansleParc() {
+    void trouverParRequeteDansleParc() {
         Voiture voiture1 = creerVoiture();
         Voiture voiture2 = creerVoiture2();
         List<Voiture> liste = List.of(voiture1, voiture2);
@@ -365,16 +358,16 @@ class VoitureServiceImplTest {
         Mockito.when(voitureDaoMock.findByRetireDuParcFalse()).thenReturn(liste);
         Mockito.when(voitureMapperMock.toVoitureResponseDto(voiture1)).thenReturn(voitureResponseDto1);
         Mockito.when(voitureMapperMock.toVoitureResponseDto(voiture2)).thenReturn(voitureResponseDto2);
-        assertEquals(listeResponse, voitureService.listerParRequete(FiltreListe.DANS_LE_PARC));
+        assertEquals(listeResponse, voitureService.trouverParFiltre(FiltreListe.DANS_LE_PARC));
     }
 
     @DisplayName("""
             Verifie rechercher voiture par Id renvoie une EntityNotfoundException si l'Id ne correspond pas
             """)
     @Test
-    void trouverNotFound() {
+    void trouverParIdExistePas() {
         Mockito.when(voitureDaoMock.findById(2L)).thenReturn(Optional.empty());
-        EntityNotFoundException ex = assertThrows(EntityNotFoundException.class, () -> voitureService.trouver(2L));
+        EntityNotFoundException ex = assertThrows(EntityNotFoundException.class, () -> voitureService.trouverParId(2L));
         assertEquals("Id non présent", ex.getMessage());
     }
 
@@ -382,39 +375,39 @@ class VoitureServiceImplTest {
             Test la méthode trouver (id) qui doit renvoyer une voitureResponseDto lorsque la voiture existe
             """)
     @Test
-    void trouver() {
+    void trouverParIdExiste() {
         Voiture voiture = creerVoiture();
         Optional<Voiture> optionalVoiture = Optional.of(voiture);
         VoitureResponseDto voitureResponseDto = creerResponse();
         Mockito.when(voitureDaoMock.findById(1L)).thenReturn(optionalVoiture);
         Mockito.when(voitureMapperMock.toVoitureResponseDto(voiture)).thenReturn(voitureResponseDto);
-        assertSame(voitureResponseDto, voitureService.trouver(1L));
+        assertSame(voitureResponseDto, voitureService.trouverParId(1L));
     }
 
 
     @DisplayName("""
-            Supprimer renvoie une EntityNotFound exception
+            Test l'exception levée de la méthode supprimer si l'id ne correspond à aucune entity
             """)
     @Test
-    void supprimerIdNotFOund() {
+    void supprimerIdExistePas() {
         Mockito.when(voitureDaoMock.existsById(1L)).thenReturn(false);
-        EntityNotFoundException ex = assertThrows(EntityNotFoundException.class, () -> voitureService.supprimer(1L));
+        EntityNotFoundException ex = assertThrows(EntityNotFoundException.class, () -> voitureService.supprimerParId(1L));
         assertSame("Id non présent", ex.getMessage());
     }
 
     @DisplayName("""
-            Supprimer 
+            Vérifie que la méthose supprimer appel bien deleteById(id)
             """)
     @Test
-    void supprimerFonctionne() {
+    void supprimerExiste() {
         Mockito.when(voitureDaoMock.existsById(1L)).thenReturn(true);
-        voitureService.supprimer(1L);
+        voitureService.supprimerParId(1L);
         Mockito.verify(voitureDaoMock).deleteById(1L);
     }
 
 
     @DisplayName("""
-            Vérifie si la méthode modifie renvoie une Voiture Exception
+            Test l'exception levée de la méthode modifier is la voiture est retiré du parc
             """)
     @Test
     void modifierAvecVoitureRetireDUParc (){
@@ -426,18 +419,18 @@ class VoitureServiceImplTest {
     }
 
     @DisplayName("""
-            Vérifie si la méthode modifie renvoie une ClientException si l'Email n'est pas en base
+            Vérifie si la méthode modifie renvoie une voitureException si l'Email n'est pas en base
             """)
     @Test
     void modifierAvecIdInexistante() {
         Mockito.when(voitureDaoMock.findById(1L)).thenReturn(Optional.empty());
         VoitureRequestDto voitureRequestDto = creerRequest();
-        VoitureException exception = assertThrows(VoitureException.class, () -> voitureService.modifier(voitureRequestDto, 1L));
-        assertSame("Id non présent", exception.getMessage());
+        EntityNotFoundException ex  = assertThrows(EntityNotFoundException.class, () -> voitureService.modifier(voitureRequestDto, 1L));
+        assertSame("Id non présent", ex.getMessage());
     }
 
     @DisplayName("""
-            Vérifie si la méthode modifier
+            Vérifie si la méthode modifier par bien par save() si tout se passe bien
             """)
     @Test
     void modifierSuccess() {
@@ -460,9 +453,6 @@ class VoitureServiceImplTest {
         return new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
     }
 
-    private VoitureRequestDto creerRequest2() {
-        return new VoitureRequestDto("Honda", "Multiplat", "rouge ", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
-    }
 
     private VoitureResponseDto creerResponse() {
         return new VoitureResponseDto(1L, "Volvo", "Multiplat", "rouge ", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, B);

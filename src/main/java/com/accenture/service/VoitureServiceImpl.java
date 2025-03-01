@@ -15,7 +15,9 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-//TODO relire et vérifier synthaxe
+/**
+ * Implémentation de l'interface Voiture service
+ */
 @Service
 @AllArgsConstructor
 public class VoitureServiceImpl implements VoitureService {
@@ -24,14 +26,14 @@ public class VoitureServiceImpl implements VoitureService {
     private VoitureMapper voitureMapper;
 
     /**
-     * Verifie la voiture Request avant de la transmettre à la base
+     * Renvoie une VoitureResponseDto après avoir vérifier la requete  et appeler save()
      *
      * @param voitureRequestDto
      * @return
-     * @throws VoitureException
+     * @throws VoitureException si un champs est null ou blank
      */
     @Override
-    public VoitureResponseDto ajouter(VoitureRequestDto voitureRequestDto) throws VoitureException {
+    public VoitureResponseDto ajouterVoiture(VoitureRequestDto voitureRequestDto) throws VoitureException {
         verifierVoiture(voitureRequestDto);
         Voiture voiture = voitureMapper.toVoiture(voitureRequestDto);
         determinerPermis(voiture);
@@ -39,23 +41,22 @@ public class VoitureServiceImpl implements VoitureService {
     }
 
     /**
-     * Liste des voitures en base
-     *
-     * @return
+     * Appel la méthode findAll() et retransmet la liste des voitures
+     * @return liste de voitureResponseDto
      */
     @Override
-    public List<VoitureResponseDto> lister() {
+    public List<VoitureResponseDto> TrouverToutes() {
         return voitureDao.findAll().stream()
                 .map(voiture -> voitureMapper.toVoitureResponseDto(voiture)).toList();
     }
 
     /**
-     * Permet d'afficher une liste différente suivant le filtre transmis depuis le controller
-     * @param filtreListe
-     * @return
+     * Utilise un switch pour revoyer une liste différente selon la requete utilisateur
+     * @param filtreListe filtre transmis depuis le Voiturecontroller
+     * @return renvoie une liste de VoitureDto selon le critère reçu depuis le controller
      */
     @Override
-    public List<VoitureResponseDto> listerParRequete(FiltreListe filtreListe) {
+    public List<VoitureResponseDto> trouverParFiltre(FiltreListe filtreListe) {
         List<VoitureResponseDto> liste = new ArrayList<>();
         switch (filtreListe) {
             case ACTIFS ->
@@ -75,22 +76,24 @@ public class VoitureServiceImpl implements VoitureService {
     }
 
     /**
-     * CHercher Voiture par id, renvoie Exeception si l'id ne correspond à rien en base
-     *
+     * Renvoie la voitureResponseDto correspondant à l'id après vérification
      * @param id
-     * @return
-     * @throws EntityNotFoundException
+     * @return VoitureResponseDto
+     * @throws EntityNotFoundException si l'id n'existe pas en base
      */
     @Override
-    public VoitureResponseDto trouver(Long id) throws EntityNotFoundException {
-        Optional<Voiture> optionalVoiture = voitureDao.findById(id);
-        if (optionalVoiture.isEmpty())
-            throw new EntityNotFoundException("Id non présent");
+    public VoitureResponseDto trouverParId(Long id) throws EntityNotFoundException {
+        Optional<Voiture> optionalVoiture = checkVoiture(id);
         return voitureMapper.toVoitureResponseDto(optionalVoiture.get());
     }
 
+    /**
+     * Appel deleteById() après vérification de la requête
+     * A retravaillé une fois la classe location implémentée.
+     * @param id
+     */
     @Override
-    public void supprimer(Long id) {
+    public void supprimerParId(Long id) {
         //TODO Changer une fois la notion de Location
         if (voitureDao.existsById(id))
             voitureDao.deleteById(id);
@@ -100,16 +103,21 @@ public class VoitureServiceImpl implements VoitureService {
 
     @Override
     public VoitureResponseDto modifier(VoitureRequestDto voitureRequestDto, Long id) {
-        Optional<Voiture> optionalVoiture = voitureDao.findById(id);
-        if (optionalVoiture.isEmpty())
-            throw new VoitureException("Id non présent");
+        Optional<Voiture> optionalVoiture = checkVoiture(id);
         Voiture voitureEnBase = optionalVoiture.get();
-        if (voitureEnBase.getRetireDuParc() == true)
+        if (voitureEnBase.getRetireDuParc())
             throw new VoitureException("Une voiture retirée du parc n'est pas modifiable");
         Voiture voitureQuiModifie = voitureMapper.toVoiture(voitureRequestDto);
         remplacer(voitureQuiModifie, voitureEnBase);
         verifierVoiture(voitureMapper.toVoitureRequestDto(voitureEnBase));
         return voitureMapper.toVoitureResponseDto(voitureDao.save(voitureEnBase));
+    }
+
+    private Optional<Voiture> checkVoiture(Long id) {
+        Optional<Voiture> optionalVoiture = voitureDao.findById(id);
+        if (optionalVoiture.isEmpty())
+            throw new EntityNotFoundException("Id non présent");
+        return optionalVoiture;
     }
 
     private void remplacer(Voiture voitureQuiModifie, Voiture voitureEnBase) {
@@ -123,7 +131,6 @@ public class VoitureServiceImpl implements VoitureService {
             voitureEnBase.setNombreDePlaces(voitureQuiModifie.getNombreDePlaces());
         if (voitureQuiModifie.getCarburant() != null)
             voitureEnBase.setCarburant(voitureQuiModifie.getCarburant());
-
         if (voitureQuiModifie.getNombresDePortes() != null)
             voitureEnBase.setNombresDePortes(voitureQuiModifie.getNombresDePortes());
         if (voitureQuiModifie.getTransmission() != null)

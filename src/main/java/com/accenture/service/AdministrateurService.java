@@ -10,8 +10,8 @@ import com.accenture.service.dto.utilisateur.AdministrateurResponseDto;
 public interface AdministrateurService {
 
     AdministrateurResponseDto ajouter(AdministrateurRequestDto adminRequestDto);
-   AdministrateurResponseDto trouver(String id, String password);
-   void supprimer(String id, String password);
+   AdministrateurResponseDto trouverParId(String id, String password);
+   void supprimerParid(String id, String password);
 
     AdministrateurResponseDto modifier(String id, String password, AdministrateurRequestDto administrateurRequestDto);
 

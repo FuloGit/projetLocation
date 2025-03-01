@@ -9,9 +9,9 @@ import com.accenture.service.dto.utilisateur.ClientResponseDto;
 public interface ClientService {
     ClientResponseDto ajouter(ClientRequestDto clientRequestDto);
 
-    ClientResponseDto trouver(String id, String password);
+    ClientResponseDto trouverParId(String id, String password);
 
-    void supprimer(String id, String password);
+    void supprimerParId(String id, String password);
 
     ClientResponseDto modifier(String id, String password, ClientRequestDto clientRequestDto);
 

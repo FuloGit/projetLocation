@@ -27,7 +27,7 @@ public class ClientController {
 
     @GetMapping("/infos")
     ResponseEntity<ClientResponseDto> afficher(@RequestParam String id, @RequestParam String password) {
-        ClientResponseDto trouve = clientService.trouver(id, password);
+        ClientResponseDto trouve = clientService.trouverParId(id, password);
         return ResponseEntity.ok(trouve);
     }
 
@@ -44,7 +44,7 @@ public class ClientController {
 @DeleteMapping
     ResponseEntity<ClientResponseDto>  supprimer(@RequestParam String id, String password){
         //TODO changer une fois la notion de location
-        clientService.supprimer(id,  password);
+        clientService.supprimerParId(id,  password);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 }
 

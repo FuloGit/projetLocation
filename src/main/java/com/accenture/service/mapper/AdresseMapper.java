@@ -1,6 +1,6 @@
 package com.accenture.service.mapper;
 
-import com.accenture.repository.Entity.utilisateur.Adresse;
+import com.accenture.repository.entity.utilisateur.Adresse;
 import com.accenture.service.dto.utilisateur.AdresseDto;
 
 import org.mapstruct.Mapper;

@@ -1,5 +1,4 @@
-package com.accenture.repository.Entity.vehicule;
-import com.accenture.shared.model.Permis;
+package com.accenture.repository.entity.vehicule;
 import com.accenture.shared.model.TypeVelo;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -21,8 +20,6 @@ public class Velo extends Vehicule {
     private Boolean freinADisque;
     @Enumerated(value = EnumType.STRING)
     private TypeVelo typeVelo;
-    private Permis permis;
-
     public Velo(Long id, String marque, String modele, String couleur, Integer tarifJournalier, Integer kilometrage, Boolean actif, Boolean retireDuParc, Integer tailleDuCadre, Integer poids, Boolean electrique, Integer autonomie, Boolean freinADisque, TypeVelo typeVelo) {
         super(id, marque, modele, couleur, tarifJournalier, kilometrage, actif, retireDuParc);
         this.tailleDuCadre = tailleDuCadre;

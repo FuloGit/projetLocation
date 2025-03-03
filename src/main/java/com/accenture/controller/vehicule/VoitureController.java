@@ -1,6 +1,6 @@
 package com.accenture.controller.vehicule;
 
-import com.accenture.service.VoitureService;
+import com.accenture.service.vehicule.VoitureService;
 import com.accenture.service.dto.vehicule.VoitureRequestDto;
 import com.accenture.service.dto.vehicule.VoitureResponseDto;
 import com.accenture.shared.model.FiltreListe;

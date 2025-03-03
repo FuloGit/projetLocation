@@ -1,6 +1,6 @@
 package com.accenture.controller.utilisateur;
 
-import com.accenture.service.ClientService;
+import com.accenture.service.utilisateur.ClientService;
 import com.accenture.service.dto.utilisateur.ClientRequestDto;
 import com.accenture.service.dto.utilisateur.ClientResponseDto;
 import jakarta.validation.Valid;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 /**
  * Gére le mapping pour Clients
@@ -29,6 +30,10 @@ public class ClientController {
     ResponseEntity<ClientResponseDto> afficher(@RequestParam String id, @RequestParam String password) {
         ClientResponseDto trouve = clientService.trouverParId(id, password);
         return ResponseEntity.ok(trouve);
+    }
+    @GetMapping
+    List<ClientResponseDto> rechercherTous(){
+        return clientService.trouverTous();
     }
 
     @PostMapping

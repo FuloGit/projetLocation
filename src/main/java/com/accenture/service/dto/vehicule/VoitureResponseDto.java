@@ -1,21 +1,21 @@
 package com.accenture.service.dto.vehicule;
 
-import com.accenture.shared.model.Carburant;
-import com.accenture.shared.model.NombresDePortes;
-import com.accenture.shared.model.Permis;
-import com.accenture.shared.model.Transmission;
+import com.accenture.shared.model.*;
+
+import java.lang.reflect.Type;
 
 public record VoitureResponseDto(
         Long id,
         String marque,
         String modele,
         String couleur,
-        int nombreDePlaces,
+        Integer nombreDePlaces,
         Carburant carburant,
+        TypeVoiture typeVoiture,
         NombresDePortes nombresDePortes,
         Transmission transmission,
         Boolean climatisation,
-        int nombredeBagages,
+        Integer nombredeBagages,
         Permis permis
 ) {
 }

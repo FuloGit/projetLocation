@@ -1,4 +1,4 @@
-package com.accenture.repository.Entity.utilisateur;
+package com.accenture.repository.entity.utilisateur;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Entity complémentaire au Client, sera associée en OneToOne à Client
+ * entity complémentaire au Client, sera associée en OneToOne à Client
  */
 @Entity
 @Data

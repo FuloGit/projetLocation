@@ -1,6 +1,6 @@
 package com.accenture.controller.utilisateur;
 
-import com.accenture.service.AdministrateurService;
+import com.accenture.service.utilisateur.AdministrateurService;
 import com.accenture.service.dto.utilisateur.AdministrateurRequestDto;
 import com.accenture.service.dto.utilisateur.AdministrateurResponseDto;
 import jakarta.validation.Valid;
@@ -15,7 +15,7 @@ import java.net.URI;
  * Gére les mapping pour Administrateurs
  */
 @RestController
-@RequestMapping("/Administrateurs")
+@RequestMapping("/administrateurs")
 public class AdministrateurController {
 
     private AdministrateurService administrateurService;

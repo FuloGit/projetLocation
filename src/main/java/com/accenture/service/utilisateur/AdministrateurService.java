@@ -1,4 +1,4 @@
-package com.accenture.service;
+package com.accenture.service.utilisateur;
 
 import com.accenture.service.dto.utilisateur.AdministrateurRequestDto;
 import com.accenture.service.dto.utilisateur.AdministrateurResponseDto;

@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
- * Classe utilisé pour les requêtes d'ajout et de modifications de la classe Client Entity, ne demande pas les attributs généré automatiquement comme la date de réation ou le status actif du compte
+ * Classe utilisé pour les requêtes d'ajout et de modifications de la classe Client entity, ne demande pas les attributs généré automatiquement comme la date de réation ou le status actif du compte
  * @param email
  * @param password
  * @param nom

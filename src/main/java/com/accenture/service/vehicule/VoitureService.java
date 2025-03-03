@@ -1,6 +1,6 @@
-package com.accenture.service;
+package com.accenture.service.vehicule;
 
-import com.accenture.exception.VoitureException;
+import com.accenture.exception.VehiculeException;
 import com.accenture.service.dto.vehicule.VoitureRequestDto;
 import com.accenture.service.dto.vehicule.VoitureResponseDto;
 import com.accenture.shared.model.FiltreListe;
@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface VoitureService {
 
-   VoitureResponseDto ajouterVoiture(VoitureRequestDto voitureRequestDto) throws VoitureException;
+   VoitureResponseDto ajouterVoiture(VoitureRequestDto voitureRequestDto) throws VehiculeException;
    List<VoitureResponseDto> TrouverToutes();
    List<VoitureResponseDto> trouverParFiltre(FiltreListe filtreListe);
 

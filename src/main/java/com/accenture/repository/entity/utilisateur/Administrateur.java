@@ -1,4 +1,4 @@
-package com.accenture.repository.Entity.utilisateur;
+package com.accenture.repository.entity.utilisateur;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- *Entity des Administrateurs qui ont les droits sur la base de données
+ *entity des Administrateurs qui ont les droits sur la base de données
  */
 @Data
 @Entity

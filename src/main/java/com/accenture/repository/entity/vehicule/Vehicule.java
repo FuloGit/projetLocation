@@ -1,4 +1,4 @@
-package com.accenture.repository.Entity.vehicule;
+package com.accenture.repository.entity.vehicule;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

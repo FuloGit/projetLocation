@@ -3,11 +3,12 @@ package com.accenture.service.dto.vehicule;
 import com.accenture.shared.model.Carburant;
 import com.accenture.shared.model.NombresDePortes;
 import com.accenture.shared.model.Transmission;
+import com.accenture.shared.model.TypeVoiture;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public record VoitureRequestDto(
-        @NotBlank (message = "La marque est olbigatoire")
+        @NotBlank (message = "La marque est obligatoire")
         String marque,
         @NotBlank (message = "Le modèle est obligatoire")
         String modele,
@@ -17,6 +18,8 @@ public record VoitureRequestDto(
         Integer nombreDePlaces,
         @NotNull (message = "Le carburant est obligatoire")
         Carburant carburant,
+        @NotNull (message = "Le type de voiture est obligatoire")
+        TypeVoiture typeVoiture,
         @NotNull (message = "Le nombre de portes est obligatoire")
         NombresDePortes nombresDePortes,
         @NotNull (message = "Le type de transmission est obligatoire")

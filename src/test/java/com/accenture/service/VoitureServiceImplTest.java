@@ -1,11 +1,12 @@
 package com.accenture.service;
 
-import com.accenture.exception.VoitureException;
-import com.accenture.repository.Entity.vehicule.Voiture;
+import com.accenture.exception.VehiculeException;
+import com.accenture.repository.entity.vehicule.Voiture;
 import com.accenture.repository.VoitureDao;
 import com.accenture.service.dto.vehicule.VoitureRequestDto;
 import com.accenture.service.dto.vehicule.VoitureResponseDto;
 import com.accenture.service.mapper.VoitureMapper;
+import com.accenture.service.vehicule.VoitureServiceImpl;
 import com.accenture.shared.model.*;
 import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.DisplayName;
@@ -37,7 +38,7 @@ class VoitureServiceImplTest {
             Test la méthode ajouter si null lui est passé""")
     @Test
     void ajouterNull() {
-        assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(null));
+        assertThrows(VehiculeException.class, () -> voitureService.ajouterVoiture(null));
     }
 
     @DisplayName("""
@@ -45,8 +46,8 @@ class VoitureServiceImplTest {
             """)
     @Test
     void ajouterAvecMarqueNull() {
-        VoitureRequestDto voitureRequestDto = new VoitureRequestDto(null, "MultiPlat", "rouge", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
+        VoitureRequestDto voitureRequestDto = new VoitureRequestDto(null, "MultiPlat", "rouge", 5, Carburant.DIESEL,TypeVoiture.ELECTRIQUE, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
+        VehiculeException ex = assertThrows(VehiculeException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("La marque est obligatoire", ex.getMessage());
     }
 
@@ -55,8 +56,8 @@ class VoitureServiceImplTest {
             """)
     @Test
     void ajouterAvecMarqueBlank() {
-        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("", "MultiPlat", "rouge", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
+        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("", "MultiPlat", "rouge", 5, Carburant.DIESEL,TypeVoiture.ELECTRIQUE, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
+        VehiculeException ex = assertThrows(VehiculeException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("La marque est obligatoire", ex.getMessage());
     }
 
@@ -65,8 +66,8 @@ class VoitureServiceImplTest {
             """)
     @Test
     void ajouterAvecModeleNull() {
-        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", null, "rouge", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
+        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", null, "rouge", 5, Carburant.DIESEL,TypeVoiture.ELECTRIQUE, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
+        VehiculeException ex = assertThrows(VehiculeException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("Le modèle est obligatoire", ex.getMessage());
     }
 
@@ -75,8 +76,8 @@ class VoitureServiceImplTest {
             """)
     @Test
     void ajouterAvecModeleBlank() {
-        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "", "rouge", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
+        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "", "rouge", 5, Carburant.DIESEL,TypeVoiture.ELECTRIQUE, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
+        VehiculeException ex = assertThrows(VehiculeException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("Le modèle est obligatoire", ex.getMessage());
     }
 
@@ -85,8 +86,8 @@ class VoitureServiceImplTest {
             """)
     @Test
     void ajouterAvecCouleurNull() {
-        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", null, 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
+        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", null, 5, Carburant.DIESEL,TypeVoiture.ELECTRIQUE, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
+        VehiculeException ex = assertThrows(VehiculeException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("La couleur est obligatoire", ex.getMessage());
     }
 
@@ -95,8 +96,8 @@ class VoitureServiceImplTest {
             """)
     @Test
     void ajouterAvecCouleurBlank() {
-        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
+        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "", 5, Carburant.DIESEL,TypeVoiture.ELECTRIQUE, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
+        VehiculeException ex = assertThrows(VehiculeException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("La couleur est obligatoire", ex.getMessage());
     }
 
@@ -106,8 +107,8 @@ class VoitureServiceImplTest {
             """)
     @Test
     void ajouterAvecNombredePlacesNull() {
-        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", null, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
+        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", null, Carburant.DIESEL,TypeVoiture.ELECTRIQUE, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
+        VehiculeException ex = assertThrows(VehiculeException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("Le nombre de places est obligatoire", ex.getMessage());
     }
 
@@ -117,8 +118,8 @@ class VoitureServiceImplTest {
             """)
     @Test
     void ajouterAvecCarburantNull() {
-        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, null, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
+        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, null,TypeVoiture.ELECTRIQUE, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
+        VehiculeException ex = assertThrows(VehiculeException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("Le carburant est obligatoire", ex.getMessage());
     }
 
@@ -127,8 +128,8 @@ class VoitureServiceImplTest {
             """)
     @Test
     void ajouterAvecNombreDePorteNull() {
-        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.Diesel, null, Transmission.AUTO, true, 3, 10, 100040, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
+        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.DIESEL,TypeVoiture.ELECTRIQUE, null, Transmission.AUTO, true, 3, 10, 100040, true, false);
+        VehiculeException ex = assertThrows(VehiculeException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("Le nombre de portes est obligatoire", ex.getMessage());
     }
 
@@ -137,8 +138,8 @@ class VoitureServiceImplTest {
             """)
     @Test
     void ajouterAvecTransmissionNull() {
-        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.Diesel, NombresDePortes.TROIS, null, true, 3, 10, 100040, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
+        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.DIESEL,TypeVoiture.ELECTRIQUE, NombresDePortes.TROIS, null, true, 3, 10, 100040, true, false);
+        VehiculeException ex = assertThrows(VehiculeException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("Le type de transmission est obligatoire", ex.getMessage());
     }
 
@@ -147,8 +148,8 @@ class VoitureServiceImplTest {
             """)
     @Test
     void ajouterAvecClimatisationNull() {
-        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, null, 3, 10, 100040, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
+        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.DIESEL,TypeVoiture.ELECTRIQUE, NombresDePortes.TROIS, Transmission.AUTO, null, 3, 10, 100040, true, false);
+        VehiculeException ex = assertThrows(VehiculeException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("Le statut de la climatisation est obligatoire", ex.getMessage());
     }
 
@@ -157,8 +158,8 @@ class VoitureServiceImplTest {
             """)
     @Test
     void ajouterAvecBagageNull() {
-        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, null, 10, 100040, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
+        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.DIESEL,TypeVoiture.ELECTRIQUE, NombresDePortes.TROIS, Transmission.AUTO, true, null, 10, 100040, true, false);
+        VehiculeException ex = assertThrows(VehiculeException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("Le nombre de bagages est obligatoire", ex.getMessage());
     }
 
@@ -167,8 +168,8 @@ class VoitureServiceImplTest {
             """)
     @Test
     void ajouterAvecBagageZero() {
-        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 0, 10, 100040, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
+        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.DIESEL,TypeVoiture.ELECTRIQUE, NombresDePortes.TROIS, Transmission.AUTO, true, 0, 10, 100040, true, false);
+        VehiculeException ex = assertThrows(VehiculeException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("Le nombre de bagages est obligatoire", ex.getMessage());
     }
 
@@ -177,8 +178,8 @@ class VoitureServiceImplTest {
             """)
     @Test
     void ajouterAvecTarifNull() {
-        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, null, 100040, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
+        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.DIESEL,TypeVoiture.ELECTRIQUE, NombresDePortes.TROIS, Transmission.AUTO, true, 3, null, 100040, true, false);
+        VehiculeException ex = assertThrows(VehiculeException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("Le tarif Journalier est obligatoire", ex.getMessage());
     }
 
@@ -187,9 +188,19 @@ class VoitureServiceImplTest {
             """)
     @Test
     void ajouterAvecTarifZero() {
-        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 0, 100040, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
+        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.DIESEL,TypeVoiture.ELECTRIQUE, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 0, 100040, true, false);
+        VehiculeException ex = assertThrows(VehiculeException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("Le tarif Journalier est obligatoire", ex.getMessage());
+    }
+
+    @DisplayName("""
+            Test l'exception levée de la Méthode ajouter si l'attribut TypeDeVoiture est null
+            """)
+    @Test
+    void ajouterAvecTypeVoitureNull() {
+        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.DIESEL,null, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
+        VehiculeException ex = assertThrows(VehiculeException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
+        assertEquals("Le type de voiture est obligatoire", ex.getMessage());
     }
 
     @DisplayName("""
@@ -197,8 +208,8 @@ class VoitureServiceImplTest {
             """)
     @Test
     void ajouterAvecKilometrageNull() {
-        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, null, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
+        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.DIESEL,TypeVoiture.ELECTRIQUE, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, null, true, false);
+        VehiculeException ex = assertThrows(VehiculeException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("Le kilomètrage est obligatoire", ex.getMessage());
     }
 
@@ -207,8 +218,8 @@ class VoitureServiceImplTest {
             """)
     @Test
     void ajouterAvecKilometrageZero() {
-        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 0, true, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
+        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.DIESEL,TypeVoiture.ELECTRIQUE, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 0, true, false);
+        VehiculeException ex = assertThrows(VehiculeException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("Le kilomètrage est obligatoire", ex.getMessage());
     }
 
@@ -217,8 +228,8 @@ class VoitureServiceImplTest {
             """)
     @Test
     void ajouterAvecActifNull() {
-        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, null, false);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
+        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.DIESEL,TypeVoiture.ELECTRIQUE, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, null, false);
+        VehiculeException ex = assertThrows(VehiculeException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("Le véhicule doit être actif ou inactif", ex.getMessage());
     }
 
@@ -227,8 +238,8 @@ class VoitureServiceImplTest {
             """)
     @Test
     void ajouterAvecRetirerDuParc() {
-        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, false, null);
-        VoitureException ex = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
+        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.DIESEL,TypeVoiture.ELECTRIQUE, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, false, null);
+        VehiculeException ex = assertThrows(VehiculeException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("Precisez si le véhicule est retiré du parc", ex.getMessage());
     }
 
@@ -237,22 +248,38 @@ class VoitureServiceImplTest {
             """)
     @Test
     void TestAjouterOKPermisD1() {
-        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 10, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
-        Voiture voitureAvant = new Voiture(1L, "Volvo", "Multiplat", "rouge ", 10, 100040, true, false, 10, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3);
-        Voiture voitureApres = new Voiture(1L, "Volvo", "Multiplat", "rouge ", 10, 100040, true, false, 10, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3);
-        VoitureResponseDto voitureResponseDto = new VoitureResponseDto(1L, "Volvo", "Multiplat", "rouge ", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, D1);
+        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 10, Carburant.DIESEL,TypeVoiture.ELECTRIQUE, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
+        Voiture voitureAvant = new Voiture(1L, "Volvo", "Multiplat", "rouge ",10, 100040, true, false, TypeVoiture.ELECTRIQUE, 10, Carburant.DIESEL, NombresDePortes.TROIS, Transmission.AUTO, true, 3);
+        Voiture voitureApres = new Voiture(1L, "Volvo", "Multiplat", "rouge ", 10, 100040, true, false, TypeVoiture.ELECTRIQUE,10, Carburant.DIESEL, NombresDePortes.TROIS, Transmission.AUTO, true, 3);
+        VoitureResponseDto voitureResponseDto = new VoitureResponseDto(1L, "Volvo", "Multiplat", "rouge ", 10, Carburant.DIESEL, TypeVoiture.ELECTRIQUE,NombresDePortes.TROIS, Transmission.AUTO, true, 3, D1);
         Mockito.when(voitureMapperMock.toVoiture(voitureRequestDto)).thenReturn(voitureAvant);
         Mockito.when(voitureDaoMock.save(voitureAvant)).thenReturn(voitureApres);
         Mockito.when(voitureMapperMock.toVoitureResponseDto(voitureApres)).thenReturn(voitureResponseDto);
-        assertSame(voitureResponseDto.permis(), voitureService.ajouterVoiture(voitureRequestDto).permis());
-        Mockito.verify(voitureDaoMock).save(voitureAvant);
+        Permis permis = voitureService.ajouterVoiture(voitureRequestDto).permis();
+        assertEquals(voitureResponseDto.permis(), permis);
+    }
+
+    @DisplayName("""
+            Verifie le permis assigné lors de l'enregistrement, avec Permis D
+            """)
+    @Test
+    void TestAjouterOKPermisB() {
+        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.DIESEL,TypeVoiture.ELECTRIQUE, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
+        Voiture voitureAvant = new Voiture(1L, "Volvo", "Multiplat", "rouge ",10, 100040, true, false, TypeVoiture.ELECTRIQUE, 5, Carburant.DIESEL, NombresDePortes.TROIS, Transmission.AUTO, true, 3);
+        Voiture voitureApres = new Voiture(1L, "Volvo", "Multiplat", "rouge ", 10, 100040, true, false, TypeVoiture.ELECTRIQUE,5, Carburant.DIESEL, NombresDePortes.TROIS, Transmission.AUTO, true, 3);
+        VoitureResponseDto voitureResponseDto = new VoitureResponseDto(1L, "Volvo", "Multiplat", "rouge ", 5, Carburant.DIESEL, TypeVoiture.ELECTRIQUE,NombresDePortes.TROIS, Transmission.AUTO, true, 3, D1);
+        Mockito.when(voitureMapperMock.toVoiture(voitureRequestDto)).thenReturn(voitureAvant);
+        Mockito.when(voitureDaoMock.save(voitureAvant)).thenReturn(voitureApres);
+        Mockito.when(voitureMapperMock.toVoitureResponseDto(voitureApres)).thenReturn(voitureResponseDto);
+        Permis permis = voitureService.ajouterVoiture(voitureRequestDto).permis();
+        assertEquals(voitureResponseDto.permis(), permis);
     }
 
     @DisplayName("""
             Verifie le permis assigné lors de l'enregistrement, avec Permis B
             """)
     @Test
-    void TestAjouterOKPermisB() {
+    void TestAjouterOK() {
         VoitureRequestDto voitureRequestDto = creerRequest();
         Voiture voitureAvant = creerVoiture();
         Voiture voitureApres = creerVoiture();
@@ -260,7 +287,7 @@ class VoitureServiceImplTest {
         Mockito.when(voitureMapperMock.toVoiture(voitureRequestDto)).thenReturn(voitureAvant);
         Mockito.when(voitureDaoMock.save(voitureAvant)).thenReturn(voitureApres);
         Mockito.when(voitureMapperMock.toVoitureResponseDto(voitureApres)).thenReturn(voitureResponseDto);
-        assertSame(voitureResponseDto.permis(), voitureService.ajouterVoiture(voitureRequestDto).permis());
+        assertSame(voitureResponseDto, voitureService.ajouterVoiture(voitureRequestDto));
         Mockito.verify(voitureDaoMock).save(voitureAvant);
     }
 
@@ -268,11 +295,11 @@ class VoitureServiceImplTest {
             Verifie l'exception levée si l'attribut nombresDePassager est trop elevé pour assigner un permis
             """)
     @Test
-    void TestAjouterPermisImpossible() {
-        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 20, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
-        Voiture voitureAvant = new Voiture(1L, "Volvo", "Multiplat", "rouge ", 10, 100040, true, false, 20, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3);
+    void TestAjouterNombreDePassagerSupp17() {
+        VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 20, Carburant.DIESEL,TypeVoiture.ELECTRIQUE, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
+        Voiture voitureAvant = new Voiture(1L, "Volvo", "Multiplat", "rouge ", 10, 100040, true, false, TypeVoiture.ELECTRIQUE,20, Carburant.DIESEL, NombresDePortes.TROIS, Transmission.AUTO, true, 3);
         Mockito.when(voitureMapperMock.toVoiture(voitureRequestDto)).thenReturn(voitureAvant);
-        VoitureException voitureException = assertThrows(VoitureException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
+        VehiculeException voitureException = assertThrows(VehiculeException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("Le nombre de passages n'est pas adéquat", voitureException.getMessage());
     }
 
@@ -411,10 +438,10 @@ class VoitureServiceImplTest {
             """)
     @Test
     void modifierAvecVoitureRetireDUParc (){
-        Voiture voiture = new Voiture(1L, "Volvo", "Multiplat", "rouge ", 5, 100040, true, true, 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3);
+        Voiture voiture = new Voiture(1L, "Volvo", "Multiplat", "rouge ", 5, 100040, true, true, TypeVoiture.ELECTRIQUE, 5, Carburant.DIESEL, NombresDePortes.TROIS, Transmission.AUTO, true, 3);
         Mockito.when(voitureDaoMock.findById(1L)).thenReturn(Optional.of(voiture));
         VoitureRequestDto voitureRequestDto = creerRequest();
-        VoitureException exception = assertThrows(VoitureException.class, () -> voitureService.modifier(voitureRequestDto, 1L));
+        VehiculeException exception = assertThrows(VehiculeException.class, () -> voitureService.modifier(voitureRequestDto, 1L));
         assertSame("Une voiture retirée du parc n'est pas modifiable", exception.getMessage());
     }
 
@@ -447,26 +474,48 @@ class VoitureServiceImplTest {
         Mockito.verify(voitureDaoMock).save(voitureAvantEnreg);
     }
 
+    @DisplayName("""
+            Vérifie si la méthode modifier par bien par save() si tout se passe bien avec VoitureRequest null
+            """)
+    @Test
+    void modifierSuccessAvecVoitureRequestNull() {
+       VoitureRequestDto voitureRequestQuiModifie = new VoitureRequestDto(null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+        Voiture QuiModifie = new Voiture(null,null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+
+        Voiture voitureEnBase = creerVoiture();
+        Voiture voitureEnFin = creerVoiture();
+        VoitureRequestDto voitureRequest = creerRequest();
+        VoitureResponseDto voitureResponseDto = creerResponse();
+        Mockito.when(voitureDaoMock.findById(1L)).thenReturn(Optional.of(voitureEnBase));
+        Mockito.when(voitureMapperMock.toVoiture(voitureRequestQuiModifie)).thenReturn(QuiModifie);
+        Mockito.when(voitureMapperMock.toVoitureRequestDto(voitureEnBase)).thenReturn(voitureRequest);
+        Mockito.when(voitureDaoMock.save(voitureEnBase)).thenReturn(voitureEnFin);
+        Mockito.when(voitureMapperMock.toVoitureResponseDto(voitureEnFin)).thenReturn(voitureResponseDto);
+        VoitureResponseDto voitureResponseDto1 =  voitureService.modifier(voitureRequestQuiModifie, 1L);
+        assertSame("Multiplat", voitureResponseDto1.modele());
+        Mockito.verify(voitureDaoMock).save(voitureEnBase);
+    }
+
 
 
     private VoitureRequestDto creerRequest() {
-        return new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
+        return new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.DIESEL,TypeVoiture.ELECTRIQUE, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
     }
 
 
     private VoitureResponseDto creerResponse() {
-        return new VoitureResponseDto(1L, "Volvo", "Multiplat", "rouge ", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, B);
+        return new VoitureResponseDto(1L, "Volvo", "Multiplat", "rouge ", 5, Carburant.DIESEL,TypeVoiture.ELECTRIQUE, NombresDePortes.TROIS, Transmission.AUTO, true, 3, B);
     }
 
     private VoitureResponseDto creerResponse2() {
-        return new VoitureResponseDto(1L, "Volvo", "Multiplat", "rouge ", 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3, B);
+        return new VoitureResponseDto(1L, "Volvo", "Multiplat", "rouge ", 5, Carburant.DIESEL,TypeVoiture.ELECTRIQUE, NombresDePortes.TROIS, Transmission.AUTO, true, 3, B);
     }
 
     private Voiture creerVoiture() {
-        return new Voiture(1L, "Volvo", "Multiplat", "rouge ", 5, 100040, true, false, 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3);
+        return new Voiture(1L, "Volvo", "Multiplat", "rouge ", 5, 100040, true, false,TypeVoiture.ELECTRIQUE, 5, Carburant.DIESEL, NombresDePortes.TROIS, Transmission.AUTO, true, 3);
     }
 
     private Voiture creerVoiture2() {
-        return new Voiture(1L, "Honda", "Multiplat", "rouge ", 5, 100040, true, false, 5, Carburant.Diesel, NombresDePortes.TROIS, Transmission.AUTO, true, 3);
+        return new Voiture(1L, "Honda", "Multiplat", "rouge ", 5, 100040, true, false, TypeVoiture.ELECTRIQUE, 5, Carburant.DIESEL, NombresDePortes.TROIS, Transmission.AUTO, true, 3);
     }
 }

@@ -1,11 +1,13 @@
 package com.accenture.service;
 
-import com.accenture.exception.ClientException;
+
+import com.accenture.exception.UtilisateurException;
 import com.accenture.repository.ClientDao;
-import com.accenture.repository.Entity.utilisateur.Adresse;
-import com.accenture.repository.Entity.utilisateur.Client;
+import com.accenture.repository.entity.utilisateur.Adresse;
+import com.accenture.repository.entity.utilisateur.Client;
 import com.accenture.service.dto.utilisateur.*;
 import com.accenture.service.mapper.ClientMapper;
+import com.accenture.service.utilisateur.ClientServiceImpl;
 import com.accenture.shared.model.Permis;
 import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.DisplayName;
@@ -26,7 +28,6 @@ import static com.accenture.shared.model.Permis.A1;
 import static com.accenture.shared.model.Permis.B1;
 import static org.junit.jupiter.api.Assertions.*;
 
-//TODO relire et vérifier synthaxe
 @ExtendWith(MockitoExtension.class)
 class ClientServiceImplTest {
 
@@ -43,7 +44,7 @@ class ClientServiceImplTest {
     @Test
     void ajouterNull() {
 
-        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(null));
+        UtilisateurException ex = assertThrows(UtilisateurException.class, () -> clientService.ajouter(null));
         assertEquals("La requete est null", ex.getMessage());
     }
 
@@ -54,7 +55,7 @@ class ClientServiceImplTest {
     void ajouterAvecEmailNull() {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", "44300", "Nantes");
         ClientRequestDto clientRequestDto = new ClientRequestDto(null, "Rsgfssfd2@", "Pierre", "Pierre", adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
-        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        UtilisateurException ex = assertThrows(UtilisateurException.class, () -> clientService.ajouter(clientRequestDto));
         assertEquals("L'adresse Email est obligatoire", ex.getMessage());
     }
 
@@ -67,7 +68,7 @@ class ClientServiceImplTest {
         Client client = creactionClient();
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", "Pierre", "Pierre", adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
         Mockito.when(clientDAOMock.findById("Pierre@yahoo.fr")).thenReturn(Optional.of(client));
-        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        UtilisateurException ex = assertThrows(UtilisateurException.class, () -> clientService.ajouter(clientRequestDto));
         assertEquals("Email déjà utilisé", ex.getMessage());
     }
 
@@ -78,7 +79,7 @@ class ClientServiceImplTest {
     void ajouterAvecEmailBlank() {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", "44300", "Nantes");
         ClientRequestDto clientRequestDto = new ClientRequestDto("", "Rsgfssfd2@", "Pierre", "Pierre", adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
-        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        UtilisateurException ex = assertThrows(UtilisateurException.class, () -> clientService.ajouter(clientRequestDto));
         assertEquals("L'adresse Email est obligatoire", ex.getMessage());
     }
 
@@ -89,7 +90,7 @@ class ClientServiceImplTest {
     void ajouterAvecEmailNotMatchingRegex() {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", "44300", "Nantes");
         ClientRequestDto clientRequestDto = new ClientRequestDto("Prout", "Rsgfssfd2@", "Pierre", "Pierre", adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
-        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        UtilisateurException ex = assertThrows(UtilisateurException.class, () -> clientService.ajouter(clientRequestDto));
         assertEquals("L'adresse email doit être valide", ex.getMessage());
     }
 
@@ -100,7 +101,7 @@ class ClientServiceImplTest {
     void ajouterAvecPasswordNotMatchingRegex() {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", "44300", "Nantes");
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2", "Pierre", "Pierre", adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
-        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        UtilisateurException ex = assertThrows(UtilisateurException.class, () -> clientService.ajouter(clientRequestDto));
         assertEquals("Le mot de passe ne respecte pas les conditions", ex.getMessage());
     }
 
@@ -111,7 +112,7 @@ class ClientServiceImplTest {
     void ajouterAvecPasswordNull() {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", "44300", "Nantes");
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", null, "Pierre", "Pierre", adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
-        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        UtilisateurException ex = assertThrows(UtilisateurException.class, () -> clientService.ajouter(clientRequestDto));
         assertEquals("Le mot de passe ne respecte pas les conditions", ex.getMessage());
     }
 
@@ -122,7 +123,7 @@ class ClientServiceImplTest {
     void ajouterAvecPasswordBlank() {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", "44300", "Nantes");
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "", "Pierre", "Pierre", adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
-        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        UtilisateurException ex = assertThrows(UtilisateurException.class, () -> clientService.ajouter(clientRequestDto));
         assertEquals("Le mot de passe ne respecte pas les conditions", ex.getMessage());
     }
 
@@ -133,7 +134,7 @@ class ClientServiceImplTest {
     void ajouterAvecNaissanceNull() {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", "44300", "Nantes");
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", "Pierre", "Pierre", adresseRequestDto, null, List.of(A1));
-        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        UtilisateurException ex = assertThrows(UtilisateurException.class, () -> clientService.ajouter(clientRequestDto));
         assertEquals("La date de naissance est obligatoire", ex.getMessage());
     }
 
@@ -144,7 +145,7 @@ class ClientServiceImplTest {
     void ajouterAvecNaissanceMineur() {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", "44300", "Nantes");
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", "Pierre", "Pierre", adresseRequestDto, LocalDate.of(2023, 12, 12), List.of(A1));
-        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+       UtilisateurException ex = assertThrows(UtilisateurException.class, () -> clientService.ajouter(clientRequestDto));
         assertEquals("Vous devez être majeur pour vous inscrire", ex.getMessage());
     }
 
@@ -155,7 +156,7 @@ class ClientServiceImplTest {
     void ajouterAvecPrenomNull() {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", "44300", "Nantes");
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", "Pierre", null, adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
-        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        UtilisateurException ex = assertThrows(UtilisateurException.class, () -> clientService.ajouter(clientRequestDto));
         assertEquals("Le prenom est obligatoire", ex.getMessage());
     }
 
@@ -166,7 +167,7 @@ class ClientServiceImplTest {
     void ajouterAvecPrenomBlank() {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", "44300", "Nantes");
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", "Pierre", "", adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
-        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        UtilisateurException ex = assertThrows(UtilisateurException.class, () -> clientService.ajouter(clientRequestDto));
         assertEquals("Le prenom est obligatoire", ex.getMessage());
 
     }
@@ -178,7 +179,7 @@ class ClientServiceImplTest {
     void ajouterAvecNomNull() {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", "44300", "Nantes");
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", null, "Pierre", adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
-        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        UtilisateurException ex = assertThrows(UtilisateurException.class, () -> clientService.ajouter(clientRequestDto));
         assertEquals("Le nom est obligatoire", ex.getMessage());
     }
 
@@ -189,7 +190,7 @@ class ClientServiceImplTest {
     void ajouterAvecNomBlank() {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", "44300", "Nantes");
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", " ", "Pierre", adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
-        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        UtilisateurException ex = assertThrows(UtilisateurException.class, () -> clientService.ajouter(clientRequestDto));
         assertEquals("Le nom est obligatoire", ex.getMessage());
     }
 
@@ -199,7 +200,7 @@ class ClientServiceImplTest {
     @Test
     void ajouterAdresseNull() {
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", "Pierre", "Pierre", null, LocalDate.of(1990, 12, 12), List.of(A1));
-        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        UtilisateurException ex = assertThrows(UtilisateurException.class, () -> clientService.ajouter(clientRequestDto));
         assertEquals("L'adresse est obligatoire", ex.getMessage());
     }
 
@@ -210,7 +211,7 @@ class ClientServiceImplTest {
     void ajouterAvecRueNull() {
         AdresseDto adresseRequestDto = new AdresseDto(null, "44300", "Nantes");
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", "Pierre", "Pierre", adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
-        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        UtilisateurException ex = assertThrows(UtilisateurException.class, () -> clientService.ajouter(clientRequestDto));
         assertEquals("La rue est obligatoire", ex.getMessage());
 
     }
@@ -222,7 +223,7 @@ class ClientServiceImplTest {
     void ajouterAvecRueBlank() {
         AdresseDto adresseRequestDto = new AdresseDto("", "44300", "Nantes");
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", "Pierre", "Pierre", adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
-        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        UtilisateurException ex = assertThrows(UtilisateurException.class, () -> clientService.ajouter(clientRequestDto));
         assertEquals("La rue est obligatoire", ex.getMessage());
     }
 
@@ -233,7 +234,7 @@ class ClientServiceImplTest {
     void ajouterAvecCodePostalNull() {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", null, "Nantes");
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", "Pierre", "Pierre", adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
-        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        UtilisateurException ex = assertThrows(UtilisateurException.class, () -> clientService.ajouter(clientRequestDto));
         assertEquals("Le code postal est obligatoire", ex.getMessage());
     }
 
@@ -244,7 +245,7 @@ class ClientServiceImplTest {
     void ajouterAvecCodePostalBlank() {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", "", "Nantes");
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", "Pierre", "Pierre", adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
-        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        UtilisateurException ex = assertThrows(UtilisateurException.class, () -> clientService.ajouter(clientRequestDto));
         assertEquals("Le code postal est obligatoire", ex.getMessage());
     }
 
@@ -255,7 +256,7 @@ class ClientServiceImplTest {
     void ajouterAvecVilleNull() {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", "44300", null);
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", "Pierre", "Pierre", adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
-       ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+       UtilisateurException ex = assertThrows(UtilisateurException.class, () -> clientService.ajouter(clientRequestDto));
        assertEquals("La ville est obligatoire", ex.getMessage());
     }
 
@@ -266,7 +267,7 @@ class ClientServiceImplTest {
     void ajouterAvecVilleBlank() {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", "44300", "");
         ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", "Pierre", "Pierre", adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1));
-        ClientException ex = assertThrows(ClientException.class, () -> clientService.ajouter(clientRequestDto));
+        UtilisateurException ex = assertThrows(UtilisateurException.class, () -> clientService.ajouter(clientRequestDto));
         assertEquals("La ville est obligatoire", ex.getMessage());
     }
 
@@ -319,6 +320,23 @@ class ClientServiceImplTest {
         Mockito.when(clientDAOMock.findById("Pierre@yahoo.fr")).thenReturn(optionalClient);
         Mockito.when(clientMapperMock.toClientResponseDtoForCLient(client)).thenReturn(clientResponseDtoForClient);
         assertSame((clientResponseDtoForClient), clientService.trouverParId("Pierre@yahoo.fr", "Rsgfssfd2@"));
+    }
+
+    @DisplayName("""
+            Verifie la méthode TrouverToutes, renvoie bien une liste de ClientResponse
+            """)
+    @Test
+    void TrouverTous() {
+        Client client1 = creactionClient();
+        Client client2 = creactionClient2();
+        List<Client> liste = List.of(client1, client2);
+        ClientResponseDto clientResponseDto1 = creationClientResponseDto();
+        ClientResponseDto clientResponseDto2 = creationClientResponseDto2();
+        List<ClientResponseDto> listeResponse = List.of(clientResponseDto1, clientResponseDto2);
+        Mockito.when(clientDAOMock.findAll()).thenReturn(liste);
+        Mockito.when(clientMapperMock.toClientResponseDtoForCLient(client1)).thenReturn(clientResponseDto1);
+        Mockito.when(clientMapperMock.toClientResponseDtoForCLient(client2)).thenReturn(clientResponseDto2);
+        assertEquals(listeResponse, clientService.trouverTous());
     }
 
     @DisplayName("""
@@ -395,6 +413,31 @@ class ClientServiceImplTest {
         assertSame(clientResponseDto, clientService.modifier("Pierre@yahoo.fr", "Rsgfssfd2@", clientRequestDto));
         Mockito.verify(clientDAOMock).save(clientAvantEnreg);
     }
+   @DisplayName("""
+          Vérifie si la méthode modifier passe bien par save() si tout se passe bien avec VoitureRequest null
+            """)
+    @Test
+    void modifierSuccessAvecClientRequestNull() {
+        AdresseDto adresseDto = new AdresseDto(null, null, null);
+        ClientRequestDto clientRequestQuiModifie = new ClientRequestDto(null, null, null, null,adresseDto,null,null);
+        Client clientQuiModifie = new Client(null, null, null,null, null);
+        Client clientEnBase = creactionClient();
+        Client clientEnFIn = creactionClient();
+
+        ClientRequestDto clientRequestDto = creationClientRequestDto();
+        AdresseDto adresseResponseDto = new AdresseDto("Lelasseur", "44300", "Nantes");
+        List<Permis> permis = new ArrayList<>();
+        ClientResponseDto clientResponseDto = new ClientResponseDto("Pierre", "Pierre", "Pierre@yahoo.fr", adresseResponseDto, LocalDate.of(1990, 12, 12), LocalDate.of(1990, 12, 12), permis);
+
+        Mockito.when(clientDAOMock.findById("Pierre@yahoo.fr")).thenReturn(Optional.of(clientEnBase));
+        Mockito.when(clientMapperMock.toClient(clientRequestQuiModifie)).thenReturn(clientQuiModifie);
+        Mockito.when(clientMapperMock.toClientRequestDto(clientEnBase)).thenReturn(clientRequestDto);
+        Mockito.when(clientDAOMock.save(clientEnBase)).thenReturn(clientEnFIn);
+        Mockito.when(clientMapperMock.toClientResponseDtoForCLient(clientEnFIn)).thenReturn(clientResponseDto);
+       ClientResponseDto clientResponseDto1 = clientService.modifier("Pierre@yahoo.fr", "Rsgfssfd2@", clientRequestQuiModifie);
+       assertEquals(LocalDate.of(1990, 12, 12), clientResponseDto1.dateDeNaissance());
+        Mockito.verify(clientDAOMock).save(clientEnBase);
+    }
 
 
     private static ClientRequestDto creationClientRequestDto() {
@@ -410,6 +453,13 @@ class ClientServiceImplTest {
         return clientResponseDto;
     }
 
+    private static ClientResponseDto creationClientResponseDto2() {
+        AdresseDto adresseResponseDto = new AdresseDto("Le", "44300", "Nantes");
+        List<Permis> permis = new ArrayList<>();
+        ClientResponseDto clientResponseDto = new ClientResponseDto("Gerard", "Pierre", "Cierre@yahoo.fr", adresseResponseDto, LocalDate.of(1990, 12, 12), LocalDate.of(1990, 12, 12), permis);
+        return clientResponseDto;
+    }
+
 
     private static Client creactionClient() {
         Client clientAvantEnreg = new Client();
@@ -422,6 +472,22 @@ class ClientServiceImplTest {
         clientAvantEnreg.setNom("Pierre");
         clientAvantEnreg.setPrenom("Pierre");
         clientAvantEnreg.setEmail("Pierre@yahoofr");
+        clientAvantEnreg.setPassword("Rsgfssfd2@");
+        clientAvantEnreg.setDesactive(false);
+        return clientAvantEnreg;
+    }
+
+    private static Client creactionClient2() {
+        Client clientAvantEnreg = new Client();
+        Adresse adresse = new Adresse();
+        clientAvantEnreg.setAdresse(adresse);
+        clientAvantEnreg.getAdresse().setCodePostal("44300");
+        clientAvantEnreg.getAdresse().setVille("Nantes");
+        clientAvantEnreg.getAdresse().setId(1);
+        clientAvantEnreg.getAdresse().setRue("Le");
+        clientAvantEnreg.setNom("Gerard");
+        clientAvantEnreg.setPrenom("Pierre");
+        clientAvantEnreg.setEmail("Cierre@yahoofr");
         clientAvantEnreg.setPassword("Rsgfssfd2@");
         clientAvantEnreg.setDesactive(false);
         return clientAvantEnreg;

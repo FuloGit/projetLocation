@@ -60,7 +60,7 @@ class ClientServiceImplTest {
     }
 
     @DisplayName("""
-            Test l'excepetion levée, de la méthode ajouter si l'eamil préciser sert déjà d'id en base
+            Test l'excepetion levée, de la méthode ajouter si l'email préciser sert déjà d'id en base
             """)
     @Test
     void ajouterAvecEmailDejaEnBase() {

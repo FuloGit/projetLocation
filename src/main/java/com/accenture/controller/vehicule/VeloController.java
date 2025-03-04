@@ -1,9 +1,17 @@
 package com.accenture.controller.vehicule;
 
+import com.accenture.service.dto.utilisateur.AdministrateurRequestDto;
 import com.accenture.service.dto.vehicule.VeloRequestDto;
 import com.accenture.service.dto.vehicule.VeloResponseDto;
 import com.accenture.service.vehicule.VeloService;
 import com.accenture.shared.model.FiltreListe;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,11 +25,39 @@ import java.util.List;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/velos")
+@Tag(name = "Gestion des vélos", description = "Interface de gestion des vélos")
 public class VeloController {
     private VeloService veloService;
 
+
+    @Operation(summary = "Ajouter un Vélo")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Vélo ajouté"),
+            @ApiResponse(responseCode = "400", description = "Ajout impossible")
+    })
     @PostMapping
-    ResponseEntity<VeloResponseDto> ajouter(@RequestBody @Valid VeloRequestDto veloRequestDto){
+    ResponseEntity<VeloResponseDto> ajouter(@io.swagger.v3.oas.annotations.parameters.RequestBody(
+            description = "Velo Création", required = true,
+            content = @Content(mediaType = "application/json",
+                    schema = @Schema(implementation = AdministrateurRequestDto.class),
+                    examples = @ExampleObject(value = """
+                            {
+                              "marque": "Decathlon",
+                              "modele": "234",
+                              "couleur": "Noir",
+                              "tarifJournalier": 107,
+                              "kilometrage": 1073,
+                              "actif": true,
+                              "retireDuParc": false,
+                              "tailleDuCadre": 10,
+                              "poids": 10,
+                              "electrique": false,
+                              "autonomie": 1073741824,
+                              "freinADisque": true,
+                              "typeVelo": "ROUTE"
+                            }
+                            """
+                    ))) @RequestBody @Valid VeloRequestDto veloRequestDto) {
         VeloResponseDto veloResponseDto = veloService.ajouterVelo(veloRequestDto);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
@@ -31,25 +67,72 @@ public class VeloController {
         return ResponseEntity.created(location).build();
     }
 
+    @Operation(summary = "Afficher tous les vélos")
     @GetMapping
-    List<VeloResponseDto> rechercherTous(){return  veloService.trouverTous();}
+    List<VeloResponseDto> rechercherTous() {
+        return veloService.trouverTous();
+    }
+
+    @Operation(summary = "Afficher tous les vélos selon leur disponibilité dans le parc")
     @GetMapping("/filtre")
-    List<VeloResponseDto> rechercherParFiltre(@RequestParam FiltreListe filtreListe){
+    List<VeloResponseDto> rechercherParFiltre(@RequestParam FiltreListe filtreListe) {
         return veloService.trouverParFiltre(filtreListe);
     }
+
+    @Operation(summary = "Affiche un vélo")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Velo trouvé"),
+            @ApiResponse(responseCode = "404", description = "Mauvaise Requete"),
+            @ApiResponse(responseCode = "400", description = "Erreur Fonctionnelle"),
+    })
     @GetMapping("/{id}")
-    ResponseEntity<VeloResponseDto> afficher (@PathVariable("id") Long id){
+    ResponseEntity<VeloResponseDto> afficher(@PathVariable("id") Long id) {
         VeloResponseDto veloResponseDto = veloService.trouverParId(id);
         return ResponseEntity.ok(veloResponseDto);
     }
 
+    @Operation(summary = "Supprime un vélo")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Vélo supprimé"),
+            @ApiResponse(responseCode = "404", description = "Vélo introuvable"),
+            @ApiResponse(responseCode = "400", description = "Erreur Fonctionnelle"),
+    })
     @DeleteMapping("/id")
-    ResponseEntity<VeloResponseDto> supprimer (@PathVariable("id") Long id){
+    ResponseEntity<VeloResponseDto> supprimer(@PathVariable("id") Long id) {
         veloService.supprimerParId(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
+
+    @Operation(summary = "Modifie un vélo")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Vélo modifié "),
+            @ApiResponse(responseCode = "404", description = "Vélo Introuvable"),
+            @ApiResponse(responseCode = "400", description = "Erreur Fonctionnelle"),
+    })
     @PatchMapping
-    ResponseEntity<VeloResponseDto> modifier(@RequestBody VeloRequestDto veloRequestDto, @RequestParam Long id){
+    ResponseEntity<VeloResponseDto> modifier(@io.swagger.v3.oas.annotations.parameters.RequestBody(
+            description = "Voiture Création", required = true,
+            content = @Content(mediaType = "application/json",
+                    schema = @Schema(implementation = AdministrateurRequestDto.class),
+                    examples = @ExampleObject(value = """
+                              {
+                              "marque": "Decathlon",
+                              "modele": "234",
+                              "couleur": "Noir",
+                              "tarifJournalier": 107,
+                              "kilometrage": 1073,
+                              "actif": true,
+                              "retireDuParc": false,
+                              "tailleDuCadre": 10,
+                              "poids": 10,
+                              "electrique": false,
+                              "autonomie": 1073741824,
+                              "freinADisque": true,
+                              "typeVelo": "ROUTE"
+                            }
+                            
+                            """
+                    ))) @RequestBody VeloRequestDto veloRequestDto, @RequestParam Long id) {
         VeloResponseDto veloResponseDto = veloService.modifierParId(veloRequestDto, id);
         return ResponseEntity.ok((veloResponseDto));
     }

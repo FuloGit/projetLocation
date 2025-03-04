@@ -1,8 +1,16 @@
 package com.accenture.controller.utilisateur;
 
+import com.accenture.service.dto.utilisateur.AdministrateurRequestDto;
 import com.accenture.service.utilisateur.ClientService;
 import com.accenture.service.dto.utilisateur.ClientRequestDto;
 import com.accenture.service.dto.utilisateur.ClientResponseDto;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +25,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/clients")
+@Tag(name = "Gestions des Clients", description = "Interface de gestion des Clients")
 public class ClientController {
 
     private ClientService clientService;
@@ -25,19 +34,52 @@ public class ClientController {
         this.clientService = clientService;
     }
 
-
+    @Operation(summary = "Affiche un Client")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Administrateur supprimer"),
+            @ApiResponse(responseCode = "404", description = "Mauvaise Requete")
+    })
     @GetMapping("/infos")
     ResponseEntity<ClientResponseDto> afficher(@RequestParam String id, @RequestParam String password) {
         ClientResponseDto trouve = clientService.trouverParId(id, password);
         return ResponseEntity.ok(trouve);
     }
+
+    @Operation(summary = "Affiche les clients en base")
     @GetMapping
-    List<ClientResponseDto> rechercherTous(){
+    List<ClientResponseDto> rechercherTous() {
         return clientService.trouverTous();
     }
 
+
+    @Operation(summary = "Ajouter un Client")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Client ajouté"),
+            @ApiResponse(responseCode = "400", description = "Ajout impossible")
+    })
     @PostMapping
-    ResponseEntity<Void> ajouter(@RequestBody @Valid ClientRequestDto clientRequestDto){
+    ResponseEntity<Void> ajouter(@io.swagger.v3.oas.annotations.parameters.RequestBody(
+            description = "Création Client", required = true,
+            content = @Content(mediaType = "application/json",
+                    schema = @Schema(implementation = AdministrateurRequestDto.class),
+                    examples = @ExampleObject(value = """
+                            {
+                              "email": "Maleck.Dylan@gmail.com",
+                              "password": "FGDGfsdf34sd@",
+                              "nom": "Maleck",
+                              "prenom": "Dylan",
+                              "adresse": {
+                                "rue": "du Marche",
+                                "codePostal": "44000",
+                                "ville": "Nantes"
+                              },
+                              "dateDeNaissance": "1999-02-24",
+                              "permis": [
+                                "AM", "A1"
+                              ]
+                            }
+                            """
+                    ))) @RequestBody @Valid ClientRequestDto clientRequestDto) {
         ClientResponseDto clientEnreg = clientService.ajouter(clientRequestDto);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
@@ -46,16 +88,47 @@ public class ClientController {
                 .toUri();
         return ResponseEntity.created(location).build();
     }
-@DeleteMapping
-    ResponseEntity<ClientResponseDto>  supprimer(@RequestParam String id, String password){
+    @Operation(summary = "Supprime un Client")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Client supprimé"),
+            @ApiResponse(responseCode = "404", description = "Client introuvable"),
+            @ApiResponse(responseCode = "400", description = "Erreur Fonctionnelle"),
+    })
+    @DeleteMapping
+    ResponseEntity<ClientResponseDto> supprimer(@RequestParam String id, String password) {
         //TODO changer une fois la notion de location
-        clientService.supprimerParId(id,  password);
+        clientService.supprimerParId(id, password);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-}
-
-@PatchMapping
-ResponseEntity<ClientResponseDto> modifier(@RequestParam String id, @RequestParam String password, @RequestBody ClientRequestDto clientRequestDto) {
+    }
+    @Operation(summary = "Modifie un Client")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Client modifié"),
+            @ApiResponse(responseCode = "400", description = "modification impossible")
+    })
+    @PatchMapping
+    ResponseEntity<ClientResponseDto> modifier(@RequestParam String id, @RequestParam String password,@io.swagger.v3.oas.annotations.parameters.RequestBody(
+            description = "Modification Client", required = true,
+            content = @Content(mediaType = "application/json",
+                    schema = @Schema(implementation = AdministrateurRequestDto.class),
+                    examples = @ExampleObject(value = """
+                            {
+                              "email": "Maleck.Dylan@gmail.com",
+                              "password": "FGDGfsdf34sd@",
+                              "nom": "Maleck",
+                              "prenom": "Dylan",
+                              "adresse": {
+                                "rue": "du Marche",
+                                "codePostal": "44000",
+                                "ville": "Nantes"
+                              },
+                              "dateDeNaissance": "1999-02-24",
+                              "permis": [
+                                "AM", "A1"
+                              ]
+                            }
+                            """
+                    ))) @RequestBody ClientRequestDto clientRequestDto) {
         ClientResponseDto reponse = clientService.modifier(id, password, clientRequestDto);
         return ResponseEntity.ok(reponse);
-}
+    }
 }

@@ -442,22 +442,21 @@ class ClientServiceImplTest {
 
     private static ClientRequestDto creationClientRequestDto() {
         AdresseDto adresseRequestDto = new AdresseDto("Lelasseur", "44300", "Nantes");
-        ClientRequestDto clientRequestDto = new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", "Pierre", "Pierre", adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1, B1));
-        return clientRequestDto;
+        return  new ClientRequestDto("Pierre@yahoo.fr", "Rsgfssfd2@", "Pierre", "Pierre", adresseRequestDto, LocalDate.of(1990, 12, 12), List.of(A1, B1));
     }
 
     private static ClientResponseDto creationClientResponseDto() {
         AdresseDto adresseResponseDto = new AdresseDto("Lelasseur", "44300", "Nantes");
         List<Permis> permis = new ArrayList<>();
-        ClientResponseDto clientResponseDto = new ClientResponseDto("Pierre", "Pierre", "Pierre@yahoo.fr", adresseResponseDto, LocalDate.of(1990, 12, 12), LocalDate.of(1990, 12, 12), permis);
-        return clientResponseDto;
+        return  new ClientResponseDto("Pierre", "Pierre", "Pierre@yahoo.fr", adresseResponseDto, LocalDate.of(1990, 12, 12), LocalDate.of(1990, 12, 12), permis);
+
     }
 
     private static ClientResponseDto creationClientResponseDto2() {
         AdresseDto adresseResponseDto = new AdresseDto("Le", "44300", "Nantes");
         List<Permis> permis = new ArrayList<>();
-        ClientResponseDto clientResponseDto = new ClientResponseDto("Gerard", "Pierre", "Cierre@yahoo.fr", adresseResponseDto, LocalDate.of(1990, 12, 12), LocalDate.of(1990, 12, 12), permis);
-        return clientResponseDto;
+        return new ClientResponseDto("Gerard", "Pierre", "Cierre@yahoo.fr", adresseResponseDto, LocalDate.of(1990, 12, 12), LocalDate.of(1990, 12, 12), permis);
+
     }
 
 

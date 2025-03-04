@@ -245,7 +245,6 @@ class AdministrateurServiceImplTest {
     @Test
     void supprimerOnlyOneAdmin() {
         List<Administrateur> liste = List.of(gerard());
-        Administrateur administrateur = gerard();
         Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.of(gerard()));
         Mockito.when(administrateurDaoMock.findAll()).thenReturn(liste);
         UtilisateurException ex = assertThrows(UtilisateurException.class, () -> administrateurService.supprimerParid("Gerard@goatmail.com", "fdsfds@Z23"));
@@ -311,8 +310,11 @@ class AdministrateurServiceImplTest {
         Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.of(adminAvantEnreg));
         Mockito.when(administrateurMapperMock.toAdministrateur(administrateurRequestDto)).thenReturn(adminAvantEnreg);
         Mockito.when(administrateurDaoMock.save(adminAvantEnreg)).thenReturn(adminApresEnreg);
+
+
         Mockito.when(administrateurMapperMock.toAdministrateurRequestDto(adminAvantEnreg)).thenReturn(administrateurRequestDto);
         Mockito.when(administrateurMapperMock.toAdministrateurResponseDto(adminApresEnreg)).thenReturn(administrateurResponseDto);
+
         assertSame(administrateurResponseDto, administrateurService.modifier("Gerard@goatmail.com", "fdsfds@Z23", administrateurRequestDto));
         Mockito.verify(administrateurDaoMock).save(adminAvantEnreg);
     }

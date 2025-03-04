@@ -12,6 +12,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,7 @@ import java.util.List;
 /**
  * Gére le mapping pour Clients
  */
+@Slf4j
 @RestController
 @RequestMapping("/clients")
 @Tag(name = "Gestions des Clients", description = "Interface de gestion des Clients")
@@ -42,20 +44,23 @@ public class ClientController {
     @GetMapping("/infos")
     ResponseEntity<ClientResponseDto> afficher(@RequestParam String id, @RequestParam String password) {
         ClientResponseDto trouve = clientService.trouverParId(id, password);
+        log.info("afficher" + trouve);
         return ResponseEntity.ok(trouve);
     }
 
     @Operation(summary = "Affiche les clients en base")
     @GetMapping
     List<ClientResponseDto> rechercherTous() {
-        return clientService.trouverTous();
+        List<ClientResponseDto> liste = clientService.trouverTous();
+        log.info("rechercherTous()");
+        return liste;
     }
 
 
     @Operation(summary = "Ajouter un Client")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Client ajouté"),
-            @ApiResponse(responseCode = "400", description = "Ajout impossible")
+            @ApiResponse(responseCode = "400", description = "Validation erreur")
     })
     @PostMapping
     ResponseEntity<Void> ajouter(@io.swagger.v3.oas.annotations.parameters.RequestBody(
@@ -86,6 +91,7 @@ public class ClientController {
                 .path(("/{id}"))
                 .buildAndExpand(clientEnreg.email())
                 .toUri();
+        log.info("Nouveau client en base : " + clientEnreg);
         return ResponseEntity.created(location).build();
     }
     @Operation(summary = "Supprime un Client")
@@ -98,6 +104,7 @@ public class ClientController {
     ResponseEntity<ClientResponseDto> supprimer(@RequestParam String id, String password) {
         //TODO changer une fois la notion de location
         clientService.supprimerParId(id, password);
+        log.info("Suppression CLient : "+ id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
     @Operation(summary = "Modifie un Client")
@@ -129,6 +136,7 @@ public class ClientController {
                             """
                     ))) @RequestBody ClientRequestDto clientRequestDto) {
         ClientResponseDto reponse = clientService.modifier(id, password, clientRequestDto);
+        log.info("Nouveau client en base : " + reponse);
         return ResponseEntity.ok(reponse);
     }
 }

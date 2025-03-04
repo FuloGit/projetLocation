@@ -15,6 +15,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.persistence.Table;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +27,7 @@ import java.util.List;
 /**
  * Gère les mapping pour Voitures
  */
+@Slf4j
 @AllArgsConstructor
 @RestController
 @RequestMapping("/voitures")
@@ -69,19 +71,26 @@ public class VoitureController {
                 .path(("/{id}"))
                 .buildAndExpand(voitureResponseDto.id())
                 .toUri();
+        log.info("ajouter Voiture : "+ voitureRequestDto);
         return ResponseEntity.created(location).build();
     }
     @Operation(summary = "Afficher toutes les voitures")
     @GetMapping
     List<VoitureResponseDto> rechercherToutes() {
-        return voitureService.TrouverToutes();
+        List<VoitureResponseDto> liste = voitureService.TrouverToutes();
+       log.info("rechercherToutes : " + liste);
+       return liste;
     }
 
     @Operation(summary = "Afficher toutes les voitures selon leur disponibilité dans le parc")
     @GetMapping("/filtre")
     List<VoitureResponseDto> rechercherParFiltre(@RequestParam FiltreListe filtreListe) {
-        return voitureService.trouverParFiltre(filtreListe);
+        List<VoitureResponseDto> list = voitureService.trouverParFiltre(filtreListe);
+        log.info("rechercherParFiltre Voiture : " + filtreListe + ": "+ list);
+        return list;
     }
+
+
     @Operation(summary = "Affiche une voiture")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Voiture trouvée"),
@@ -91,6 +100,7 @@ public class VoitureController {
     @GetMapping("/{id}")
     ResponseEntity<VoitureResponseDto> afficher(@PathVariable("id") Long id) {
         VoitureResponseDto voitureResponseDto = voitureService.trouverParId(id);
+        log.info("Afficher Voiture : "+ voitureResponseDto);
         return ResponseEntity.ok(voitureResponseDto);
     }
 
@@ -104,6 +114,7 @@ public class VoitureController {
     @DeleteMapping("/{id}")
     ResponseEntity<VoitureResponseDto> supprimer(@PathVariable("id") Long id) {
         voitureService.supprimerParId(id);
+        log.info("Supprimer Voiture  : "+ id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
@@ -139,6 +150,7 @@ public class VoitureController {
                             """
                     ))) VoitureRequestDto voitureRequestDto, @RequestParam Long id) {
         VoitureResponseDto voitureResponseDto = voitureService.modifier(voitureRequestDto, id);
+        log.info("modifier Voiture : "+ voitureResponseDto);
         return ResponseEntity.ok(voitureResponseDto);
     }
 

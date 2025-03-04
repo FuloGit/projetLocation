@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +22,7 @@ import java.net.URI;
 /**
  * Gére les mapping pour Administrateurs
  */
+@Slf4j
 @RestController
 @RequestMapping("/administrateurs")
 @Tag(name = "Gestion des Administrateurs", description = "Interface de gestion des Administrateurs")
@@ -59,6 +61,7 @@ public class AdministrateurController {
                 .path(("/{id}"))
                 .buildAndExpand(administrateurResponseDto.email())
                 .toUri();
+        log.info("Ajout Administrateur : " + administrateurResponseDto);
         return ResponseEntity.created(location).build();
     }
 
@@ -72,6 +75,7 @@ public class AdministrateurController {
     @GetMapping("/infos")
     ResponseEntity<AdministrateurResponseDto> afficher(@RequestParam String id,  @RequestParam String password) {
         AdministrateurResponseDto administrateurResponseDto = administrateurService.trouverParId(id, password);
+        log.info("Afficher Administrateur : "+ administrateurResponseDto);
         return ResponseEntity.ok(administrateurResponseDto);
     }
 
@@ -86,6 +90,7 @@ public class AdministrateurController {
     @DeleteMapping
     ResponseEntity<AdministrateurResponseDto> supprimer(@RequestParam String id, String password) {
         administrateurService.supprimerParid(id, password);
+        log.info("Suppression Administrateur : " + id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
@@ -112,6 +117,7 @@ public class AdministrateurController {
                                                          }
                                                          """)))@RequestBody AdministrateurRequestDto administrateurRequestDto) {
         AdministrateurResponseDto reponse = administrateurService.modifier(id, password, administrateurRequestDto);
+        log.info("Modification Administrateur : " + reponse);
         return ResponseEntity.ok(reponse);
     }
 }

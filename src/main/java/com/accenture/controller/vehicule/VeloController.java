@@ -14,6 +14,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
+@Slf4j
 @AllArgsConstructor
 @RestController
 @RequestMapping("/velos")
@@ -64,19 +66,24 @@ public class VeloController {
                 .path(("/{id}"))
                 .buildAndExpand(veloResponseDto.id())
                 .toUri();
+        log.info("Ajout Vélo : "+ veloResponseDto);
         return ResponseEntity.created(location).build();
     }
 
     @Operation(summary = "Afficher tous les vélos")
     @GetMapping
     List<VeloResponseDto> rechercherTous() {
-        return veloService.trouverTous();
+        List<VeloResponseDto> liste = veloService.trouverTous();
+        log.info("RechercherTous Vélo : "+ liste);
+        return liste;
     }
 
     @Operation(summary = "Afficher tous les vélos selon leur disponibilité dans le parc")
     @GetMapping("/filtre")
     List<VeloResponseDto> rechercherParFiltre(@RequestParam FiltreListe filtreListe) {
-        return veloService.trouverParFiltre(filtreListe);
+        List<VeloResponseDto> liste = veloService.trouverParFiltre(filtreListe);
+        log.info("RechercherParFiltre Vélo : " + filtreListe + " :" + liste);
+        return liste;
     }
 
     @Operation(summary = "Affiche un vélo")
@@ -88,6 +95,7 @@ public class VeloController {
     @GetMapping("/{id}")
     ResponseEntity<VeloResponseDto> afficher(@PathVariable("id") Long id) {
         VeloResponseDto veloResponseDto = veloService.trouverParId(id);
+        log.info("afficher Vélo : "+ veloResponseDto);
         return ResponseEntity.ok(veloResponseDto);
     }
 
@@ -100,6 +108,7 @@ public class VeloController {
     @DeleteMapping("/id")
     ResponseEntity<VeloResponseDto> supprimer(@PathVariable("id") Long id) {
         veloService.supprimerParId(id);
+        log.info("supprimer Vélo  : " + id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
@@ -111,7 +120,7 @@ public class VeloController {
     })
     @PatchMapping
     ResponseEntity<VeloResponseDto> modifier(@io.swagger.v3.oas.annotations.parameters.RequestBody(
-            description = "Voiture Création", required = true,
+            description = "Vélo Création", required = true,
             content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = AdministrateurRequestDto.class),
                     examples = @ExampleObject(value = """
@@ -134,7 +143,7 @@ public class VeloController {
                             """
                     ))) @RequestBody VeloRequestDto veloRequestDto, @RequestParam Long id) {
         VeloResponseDto veloResponseDto = veloService.modifierParId(veloRequestDto, id);
+        log.info("modifier Vélo : " + veloRequestDto);
         return ResponseEntity.ok((veloResponseDto));
     }
-
 }

@@ -1,6 +1,7 @@
 package com.accenture.service.dto.utilisateur;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * Sert à l'ajout d'un Admin
@@ -22,5 +23,5 @@ public record AdministrateurRequestDto(
         String prenom,
         @NotBlank(message = "La fonction est obligatoire")
         String fonction
-        ) {
+) {
 }

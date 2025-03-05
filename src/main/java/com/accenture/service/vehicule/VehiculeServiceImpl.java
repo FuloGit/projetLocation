@@ -47,7 +47,7 @@ public class VehiculeServiceImpl implements VehiculeService {
     }
 
     /**
-     * Recherche les véhicules par filtres
+     * Recherche les véhicules par filtre : ACTIF, INACTIF, HORS_PARC, DANS_LE_PARC
      *
      * @param filtreListe
      * @return
@@ -63,14 +63,17 @@ public class VehiculeServiceImpl implements VehiculeService {
     }
 
     /**
-     * Chercher un véhiculeDto par date de locations
+     * Recherche les véhicules selon différents critères entrées en attributs.
      *
-     * @param
+     * @param dateDeDebut
      * @param dateDeFin
+     * @param categorieVehicule
+     * @param typeVoiture
+     * @param typeVelo
      * @return
      */
     @Override
-    public VehiculeDto trouverParDateEtCategorie(LocalDate dateDeDebut, LocalDate dateDeFin, CategorieVehicule categorieVehicule, TypeVoiture typeVoiture, TypeVelo typeVelo) {
+    public VehiculeDto trouverParParametres(LocalDate dateDeDebut, LocalDate dateDeFin, CategorieVehicule categorieVehicule, TypeVoiture typeVoiture, TypeVelo typeVelo) {
         List<Vehicule> vehiculeListe = vehiculeDao.findAll();
         vehiculeListe = filtrerParDispo(vehiculeListe, dateDeDebut, dateDeFin);
         vehiculeListe = filtrerParCategorie(vehiculeListe, categorieVehicule);

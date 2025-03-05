@@ -14,6 +14,6 @@ import java.time.LocalDate;
 public interface VehiculeService {
     VehiculeDto trouverTous();
     VehiculeDto trouverParFiltre(FiltreListe filtreListe);
-    VehiculeDto trouverParDateEtCategorie(LocalDate dateDeDebut, LocalDate dateDeFin, CategorieVehicule categorieVehicule, TypeVoiture typeVehicule, TypeVelo typeVelo);
+    VehiculeDto trouverParParametres(LocalDate dateDeDebut, LocalDate dateDeFin, CategorieVehicule categorieVehicule, TypeVoiture typeVehicule, TypeVelo typeVelo);
 
 }

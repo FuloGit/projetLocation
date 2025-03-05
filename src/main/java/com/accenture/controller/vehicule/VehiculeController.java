@@ -7,6 +7,7 @@ import com.accenture.shared.model.CategorieVehicule;
 import com.accenture.shared.model.FiltreListe;
 import com.accenture.shared.model.TypeVelo;
 import com.accenture.shared.model.TypeVoiture;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 
@@ -26,7 +27,7 @@ import java.time.LocalDate;
 public class VehiculeController {
 
     private VehiculeService vehiculeServiceImpl;
-
+@Operation(summary = "Afficher tous les véhicules")
     @GetMapping
     VehiculeDto rechercherTous() {
         VehiculeDto vehiculeDto = vehiculeServiceImpl.trouverTous();
@@ -34,17 +35,17 @@ public class VehiculeController {
         return vehiculeDto;
 
     }
-
+@Operation(summary = "Afficher selon l'activité ou la présence dans le parc")
     @GetMapping("/filtre")
     VehiculeDto rechercherParFiltre(@RequestParam FiltreListe filtreListe) {
         VehiculeDto vehiculeDto = vehiculeServiceImpl.trouverParFiltre(filtreListe);
         log.info("Rechercher vehicule : {}", filtreListe + " : " + vehiculeDto);
         return vehiculeDto;
     }
-
+@Operation(summary = "Afficher selon les critères de recherches")
     @GetMapping("/search")
     VehiculeDto rechercher(@RequestParam(required = false) LocalDate dateDeDebut, @RequestParam(required = false) LocalDate dateDeFin, @RequestParam(required = false) CategorieVehicule categorieVehicule, @RequestParam(required = false) TypeVoiture typeVoiture, @RequestParam(required = false)TypeVelo typeVelo) {
-        VehiculeDto vehiculeDto = vehiculeServiceImpl.trouverParDateEtCategorie(dateDeDebut, dateDeFin, categorieVehicule, typeVoiture, typeVelo);
+        VehiculeDto vehiculeDto = vehiculeServiceImpl.trouverParParametres(dateDeDebut, dateDeFin, categorieVehicule, typeVoiture, typeVelo);
         log.info("Rechercher disponibles : {}", vehiculeDto);
         return vehiculeDto;
     }

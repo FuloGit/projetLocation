@@ -9,11 +9,10 @@ import com.accenture.service.mapper.VoitureMapper;
 import com.accenture.shared.model.FiltreListe;
 import com.accenture.shared.model.Permis;
 import jakarta.persistence.EntityNotFoundException;
-import jdk.jshell.execution.Util;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,17 +21,18 @@ import java.util.Optional;
  */
 @Service
 @AllArgsConstructor
+@Slf4j
 public class VoitureServiceImpl implements VoitureService {
 
     private VoitureDao voitureDao;
     private VoitureMapper voitureMapper;
 
     /**
-     * Renvoie une VoitureResponseDto après avoir vérifier la requete  et appeler save()
+     * Renvoie une VoitureResponseDto après avoir vérifié la requête et appeler save()
      *
      * @param voitureRequestDto
      * @return
-     * @throws VehiculeException si un champs est null ou blank
+     * @throws VehiculeException si un champ est null ou blank
      */
     @Override
     public VoitureResponseDto ajouterVoiture(VoitureRequestDto voitureRequestDto) throws VehiculeException {
@@ -99,15 +99,21 @@ public class VoitureServiceImpl implements VoitureService {
         //TODO Changer une fois la notion de Location
         if (voitureDao.existsById(id))
             voitureDao.deleteById(id);
-        else
-            throw new EntityNotFoundException("Id non présent");
+        else{
+            EntityNotFoundException entityNotFoundException = new EntityNotFoundException("Id non présent");
+            log.error("SupprimerParId (Long id): {} ", entityNotFoundException.getMessage());
+            throw entityNotFoundException;
+        }
+
     }
 
     @Override
     public VoitureResponseDto modifier(VoitureRequestDto voitureRequestDto, Long id) {
         Voiture voitureEnBase = checkVoiture(id);
         if (voitureEnBase.getRetireDuParc())
-            throw new VehiculeException("Une voiture retirée du parc n'est pas modifiable");
+        { VehiculeException vehiculeException= new VehiculeException("Une voiture retirée du parc n'est pas modifiable");
+            log.error("modifierParId(Long Id) : {}", vehiculeException.getMessage());
+            throw vehiculeException;}
         Voiture voitureQuiModifie = voitureMapper.toVoiture(voitureRequestDto);
         remplacer(voitureQuiModifie, voitureEnBase);
         verifierVoiture(voitureMapper.toVoitureRequestDto(voitureEnBase));
@@ -116,8 +122,12 @@ public class VoitureServiceImpl implements VoitureService {
 
     private Voiture checkVoiture(Long id) {
         Optional<Voiture> optionalVoiture = voitureDao.findById(id);
-        if (optionalVoiture.isEmpty())
-            throw new EntityNotFoundException("Id non présent");
+        if (optionalVoiture.isEmpty()){
+            EntityNotFoundException entityNotFoundException = new EntityNotFoundException("Id non présent");
+            log.error("checkVoiture (Long id) : {} ", entityNotFoundException.getMessage());
+            throw entityNotFoundException;
+        }
+
         return optionalVoiture.get();
     }
 
@@ -155,29 +165,29 @@ public class VoitureServiceImpl implements VoitureService {
 
 
     private void verifierVoiture(VoitureRequestDto voitureRequestDto) {
-        UtilVerificationVehicule.verifierObjectNotNull(voitureRequestDto, "La requête est null");
+        VerificationVehiculeUtil.verifierObjectNotNull(voitureRequestDto, "La requête est null");
         verifierAttributeVehicule(voitureRequestDto);
         verifierAttributeVoiture(voitureRequestDto);
     }
 
     public void verifierAttributeVehicule(VoitureRequestDto voitureRequestDto) {
-        UtilVerificationVehicule.verifierStringNotNullNotEmpty(voitureRequestDto.marque(), "La marque est obligatoire");
-        UtilVerificationVehicule.verifierStringNotNullNotEmpty(voitureRequestDto.modele(), "Le modèle est obligatoire");
-        UtilVerificationVehicule.verifierStringNotNullNotEmpty(voitureRequestDto.couleur(), "La couleur est obligatoire");
-        UtilVerificationVehicule.verifierIntegerNotNullNotZeroOrInferior(voitureRequestDto.tarifJournalier(), "Le tarif Journalier est obligatoire");
-        UtilVerificationVehicule.verifierIntegerNotNullNotZeroOrInferior(voitureRequestDto.kilometrage(), "Le kilomètrage est obligatoire");
-        UtilVerificationVehicule.verifierObjectNotNull(voitureRequestDto.retireDuParc(), "Precisez si le véhicule est retiré du parc");
+        VerificationVehiculeUtil.verifierStringNotNullNotEmpty(voitureRequestDto.marque(), "La marque est obligatoire");
+        VerificationVehiculeUtil.verifierStringNotNullNotEmpty(voitureRequestDto.modele(), "Le modèle est obligatoire");
+        VerificationVehiculeUtil.verifierStringNotNullNotEmpty(voitureRequestDto.couleur(), "La couleur est obligatoire");
+        VerificationVehiculeUtil.verifierIntegerNotNullNotZeroOrInferior(voitureRequestDto.tarifJournalier(), "Le tarif Journalier est obligatoire");
+        VerificationVehiculeUtil.verifierIntegerNotNullNotZeroOrInferior(voitureRequestDto.kilometrage(), "Le kilomètrage est obligatoire");
+        VerificationVehiculeUtil.verifierObjectNotNull(voitureRequestDto.retireDuParc(), "Precisez si le véhicule est retiré du parc");
     }
 
     public void verifierAttributeVoiture(VoitureRequestDto voitureRequestDto) {
-        UtilVerificationVehicule.verifierIntegerNotNullNotZeroOrInferior(voitureRequestDto.nombreDePlaces(),"Le nombre de places est obligatoire");
-        UtilVerificationVehicule.verifierIntegerNotNullNotZeroOrInferior(voitureRequestDto.nombredeBagages(),"Le nombre de bagages est obligatoire" );
-        UtilVerificationVehicule.verifierObjectNotNull(voitureRequestDto.actif(), "Le véhicule doit être actif ou inactif");
-        UtilVerificationVehicule.verifierObjectNotNull(voitureRequestDto.typeVoiture(), "Le type de voiture est obligatoire");
-        UtilVerificationVehicule.verifierObjectNotNull(voitureRequestDto.carburant(), "Le carburant est obligatoire");
-        UtilVerificationVehicule.verifierObjectNotNull(voitureRequestDto.nombresDePortes(), "Le nombre de portes est obligatoire");
-        UtilVerificationVehicule.verifierObjectNotNull(voitureRequestDto.transmission(),"Le type de transmission est obligatoire" );
-        UtilVerificationVehicule.verifierObjectNotNull(voitureRequestDto.climatisation(), "Le statut de la climatisation est obligatoire");
+        VerificationVehiculeUtil.verifierIntegerNotNullNotZeroOrInferior(voitureRequestDto.nombreDePlaces(),"Le nombre de places est obligatoire");
+        VerificationVehiculeUtil.verifierIntegerNotNullNotZeroOrInferior(voitureRequestDto.nombredeBagages(),"Le nombre de bagages est obligatoire" );
+        VerificationVehiculeUtil.verifierObjectNotNull(voitureRequestDto.actif(), "Le véhicule doit être actif ou inactif");
+        VerificationVehiculeUtil.verifierObjectNotNull(voitureRequestDto.typeVoiture(), "Le type de voiture est obligatoire");
+        VerificationVehiculeUtil.verifierObjectNotNull(voitureRequestDto.carburant(), "Le carburant est obligatoire");
+        VerificationVehiculeUtil.verifierObjectNotNull(voitureRequestDto.nombresDePortes(), "Le nombre de portes est obligatoire");
+        VerificationVehiculeUtil.verifierObjectNotNull(voitureRequestDto.transmission(),"Le type de transmission est obligatoire" );
+        VerificationVehiculeUtil.verifierObjectNotNull(voitureRequestDto.climatisation(), "Le statut de la climatisation est obligatoire");
 
     }
 
@@ -186,7 +196,11 @@ public class VoitureServiceImpl implements VoitureService {
             voiture.setPermis(Permis.B);
        else if (voiture.getNombreDePlaces() < 17)
             voiture.setPermis(Permis.D1);
-        else throw new VehiculeException("Le nombre de passages n'est pas adéquat");
+        else {
+          VehiculeException vehiculeException = new VehiculeException("Le nombre de passages n'est pas adéquat");
+          log.error("determinerPermis (Voiture voiture) : {}", vehiculeException.getMessage());
+          throw vehiculeException;
+        }
     }
 
 

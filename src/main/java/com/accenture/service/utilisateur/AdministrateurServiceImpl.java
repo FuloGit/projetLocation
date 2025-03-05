@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-import static com.accenture.service.dto.utilisateur.UtilMessage.*;
+import static com.accenture.service.utilisateur.MessageUtil.*;
 
 /**
  * Implémentation de l'interface Administrateur Service
@@ -22,7 +22,7 @@ import static com.accenture.service.dto.utilisateur.UtilMessage.*;
 @AllArgsConstructor
 @Slf4j
 public class AdministrateurServiceImpl implements AdministrateurService {
-    public static final String VERIFIER_ADMINISTRATEUR_ADMINISTRATEUR_REQUEST_DTO = "verifierAdministrateur (administrateurRequestDto) : {} ";
+    public static final String VERIFIER_ADMINISTRATEUR_ADMINISTRATEUR_REQUEST_DTO = "verifierAdministrateur ( Administrateur administrateurRequestDto) : {} ";
     private AdministrateurDao administrateurDao;
     private AdministrateurMapper administrateurMapper;
 
@@ -151,7 +151,7 @@ public class AdministrateurServiceImpl implements AdministrateurService {
     private Administrateur verifierPasswordAdministrateur(String id, String password) {
         Optional<Administrateur> optionalAdministrateur = administrateurDao.findById(id);
         if (optionalAdministrateur.isEmpty() || !optionalAdministrateur.get().getPassword().equals(password)) {
-            log.error("verifierPasswordAdministrateur : {}" , EMAIL_OU_PASSWORD_ERRONE);
+            log.error("verifierPasswordAdministrateur (String id, String password) : {}" , EMAIL_OU_PASSWORD_ERRONE);
             throw new EntityNotFoundException(EMAIL_OU_PASSWORD_ERRONE);
         }
         return optionalAdministrateur.get();

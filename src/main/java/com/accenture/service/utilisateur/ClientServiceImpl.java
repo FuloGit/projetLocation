@@ -17,7 +17,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
-import static com.accenture.service.dto.utilisateur.UtilMessage.*;
+import static com.accenture.service.utilisateur.MessageUtil.*;
 
 /**
  * Implémentation de l'interface Client service

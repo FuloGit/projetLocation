@@ -52,7 +52,7 @@ public class ClientController {
     @GetMapping
     List<ClientResponseDto> rechercherTous() {
         List<ClientResponseDto> liste = clientService.trouverTous();
-        log.info("rechercherTous()");
+        log.info("rechercherTous() {} ", liste);
         return liste;
     }
 
@@ -91,7 +91,7 @@ public class ClientController {
                 .path(("/{id}"))
                 .buildAndExpand(clientEnreg.email())
                 .toUri();
-        log.info("Nouveau client en base : " + clientEnreg);
+        log.info("Nouveau client en base : {} ", clientEnreg);
         return ResponseEntity.created(location).build();
     }
     @Operation(summary = "Supprime un Client")
@@ -104,7 +104,7 @@ public class ClientController {
     ResponseEntity<ClientResponseDto> supprimer(@RequestParam String id, String password) {
         //TODO changer une fois la notion de location
         clientService.supprimerParId(id, password);
-        log.info("Suppression CLient : "+ id);
+        log.info("Suppression CLient : {} ", id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
     @Operation(summary = "Modifie un Client")
@@ -136,7 +136,7 @@ public class ClientController {
                             """
                     ))) @RequestBody ClientRequestDto clientRequestDto) {
         ClientResponseDto reponse = clientService.modifier(id, password, clientRequestDto);
-        log.info("Nouveau client en base : " + reponse);
+        log.info("Nouveau client en base : {} " , reponse);
         return ResponseEntity.ok(reponse);
     }
 }

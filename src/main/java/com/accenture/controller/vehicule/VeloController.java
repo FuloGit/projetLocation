@@ -35,7 +35,7 @@ public class VeloController {
     @Operation(summary = "Ajouter un Vélo")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Vélo ajouté"),
-            @ApiResponse(responseCode = "400", description = "Ajout impossible")
+            @ApiResponse(responseCode = "400", description = "Validation erreur")
     })
     @PostMapping
     ResponseEntity<VeloResponseDto> ajouter(@io.swagger.v3.oas.annotations.parameters.RequestBody(
@@ -66,7 +66,7 @@ public class VeloController {
                 .path(("/{id}"))
                 .buildAndExpand(veloResponseDto.id())
                 .toUri();
-        log.info("Ajout Vélo : "+ veloResponseDto);
+        log.info("Ajout Vélo : {} ", veloResponseDto);
         return ResponseEntity.created(location).build();
     }
 
@@ -74,7 +74,7 @@ public class VeloController {
     @GetMapping
     List<VeloResponseDto> rechercherTous() {
         List<VeloResponseDto> liste = veloService.trouverTous();
-        log.info("RechercherTous Vélo : "+ liste);
+        log.info("RechercherTous Vélo :{} " , liste);
         return liste;
     }
 
@@ -82,35 +82,35 @@ public class VeloController {
     @GetMapping("/filtre")
     List<VeloResponseDto> rechercherParFiltre(@RequestParam FiltreListe filtreListe) {
         List<VeloResponseDto> liste = veloService.trouverParFiltre(filtreListe);
-        log.info("RechercherParFiltre Vélo : " + filtreListe + " :" + liste);
+        log.info("RechercherParFiltre Vélo : {} ", liste);
         return liste;
     }
 
     @Operation(summary = "Affiche un vélo")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Velo trouvé"),
-            @ApiResponse(responseCode = "404", description = "Mauvaise Requete"),
-            @ApiResponse(responseCode = "400", description = "Erreur Fonctionnelle"),
+            @ApiResponse(responseCode = "404", description = "Vélo introuvable")
+
     })
     @GetMapping("/{id}")
     ResponseEntity<VeloResponseDto> afficher(@PathVariable("id") Long id) {
         VeloResponseDto veloResponseDto = veloService.trouverParId(id);
-        log.info("afficher Vélo : "+ veloResponseDto);
+        log.info("afficher Vélo : {}", veloResponseDto);
         return ResponseEntity.ok(veloResponseDto);
     }
 
     @Operation(summary = "Supprime un vélo")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Vélo supprimé"),
-            @ApiResponse(responseCode = "404", description = "Vélo introuvable"),
-            @ApiResponse(responseCode = "400", description = "Erreur Fonctionnelle"),
+            @ApiResponse(responseCode = "204", description = "Vélo supprimé"),
+            @ApiResponse(responseCode = "404", description = "Mauvaise Requete"),
     })
-    @DeleteMapping("/id")
+    @DeleteMapping("/{id}")
     ResponseEntity<VeloResponseDto> supprimer(@PathVariable("id") Long id) {
         veloService.supprimerParId(id);
-        log.info("supprimer Vélo  : " + id);
+        log.info("supprimer Vélo  : {} ", id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
+
 
     @Operation(summary = "Modifie un vélo")
     @ApiResponses(value = {
@@ -143,7 +143,7 @@ public class VeloController {
                             """
                     ))) @RequestBody VeloRequestDto veloRequestDto, @RequestParam Long id) {
         VeloResponseDto veloResponseDto = veloService.modifierParId(veloRequestDto, id);
-        log.info("modifier Vélo : " + veloRequestDto);
+        log.info("modifier Vélo : {} ", veloRequestDto);
         return ResponseEntity.ok((veloResponseDto));
     }
 }

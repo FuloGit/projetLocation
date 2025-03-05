@@ -38,7 +38,7 @@ public class VoitureController {
     @Operation(summary = "Ajouter une voiture")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Voiture ajoutée"),
-            @ApiResponse(responseCode = "400", description = "Ajout impossible")
+            @ApiResponse(responseCode = "400", description = "Validation Erreur")
     })
     @PostMapping
     ResponseEntity<VoitureResponseDto> ajouter(@RequestBody @Valid @io.swagger.v3.oas.annotations.parameters.RequestBody(
@@ -93,8 +93,7 @@ public class VoitureController {
     @Operation(summary = "Affiche une voiture")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Voiture trouvée"),
-            @ApiResponse(responseCode = "404", description = "Mauvaise Requete"),
-            @ApiResponse(responseCode = "400", description = "Erreur Fonctionnelle"),
+            @ApiResponse(responseCode = "404", description = "Mauvaise Requete")
     })
     @GetMapping("/{id}")
     ResponseEntity<VoitureResponseDto> afficher(@PathVariable("id") Long id) {
@@ -107,8 +106,7 @@ public class VoitureController {
     @Operation(summary = "Supprime une voiture")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Voiture supprimée"),
-            @ApiResponse(responseCode = "404", description = "Voiture introuvable"),
-            @ApiResponse(responseCode = "400", description = "Erreur Fonctionnelle"),
+            @ApiResponse(responseCode = "404", description = "Mauvaise Requete"),
     })
     @DeleteMapping("/{id}")
     ResponseEntity<VoitureResponseDto> supprimer(@PathVariable("id") Long id) {

@@ -1,4 +1,4 @@
-package com.accenture.service;
+package com.accenture.service.utilisateur;
 
 
 import com.accenture.exception.UtilisateurException;
@@ -7,7 +7,6 @@ import com.accenture.repository.entity.utilisateur.Adresse;
 import com.accenture.repository.entity.utilisateur.Client;
 import com.accenture.service.dto.utilisateur.*;
 import com.accenture.service.mapper.ClientMapper;
-import com.accenture.service.utilisateur.ClientServiceImpl;
 import com.accenture.shared.model.Permis;
 import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.DisplayName;

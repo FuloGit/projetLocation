@@ -1,4 +1,4 @@
-package com.accenture.service;
+package com.accenture.service.utilisateur;
 
 import com.accenture.exception.UtilisateurException;
 
@@ -9,8 +9,8 @@ import com.accenture.service.dto.utilisateur.AdministrateurRequestDto;
 import com.accenture.service.dto.utilisateur.AdministrateurResponseDto;
 
 import com.accenture.service.mapper.AdministrateurMapper;
-import com.accenture.service.utilisateur.AdministrateurServiceImpl;
 import jakarta.persistence.EntityNotFoundException;
+import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,6 +18,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springdoc.core.customizers.ActuatorOpenApiCustomizer;
 
 import java.util.List;
 import java.util.Optional;
@@ -314,10 +315,78 @@ class AdministrateurServiceImplTest {
 
         Mockito.when(administrateurMapperMock.toAdministrateurRequestDto(adminAvantEnreg)).thenReturn(administrateurRequestDto);
         Mockito.when(administrateurMapperMock.toAdministrateurResponseDto(adminApresEnreg)).thenReturn(administrateurResponseDto);
-
         assertSame(administrateurResponseDto, administrateurService.modifier("Gerard@goatmail.com", "fdsfds@Z23", administrateurRequestDto));
         Mockito.verify(administrateurDaoMock).save(adminAvantEnreg);
+
     }
+    @DisplayName("""
+            Vérifier que la méthode modifier ne change rien en cas de requestNull
+            """)
+    @Test
+    void modifierNull(){
+        AdministrateurRequestDto administrateurRequestDto = new AdministrateurRequestDto(null, null, null, null, null);
+
+        Administrateur administrateurQuiModifie = new Administrateur(null, null, null, null, null);
+
+        Administrateur vraiAdmin = gerard();
+        Administrateur nouvelAdmin = gerard();
+
+
+        AdministrateurRequestDto administrateurRequestDto1 = gerardRequest();
+        AdministrateurResponseDto administrateurResponseDto = gerardResponse();
+
+        Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.of(vraiAdmin));
+
+        Mockito.when(administrateurMapperMock.toAdministrateur(administrateurRequestDto)).thenReturn(administrateurQuiModifie);
+        Mockito.when(administrateurMapperMock.toAdministrateurRequestDto(vraiAdmin)).thenReturn(administrateurRequestDto1);
+        Mockito.when(administrateurDaoMock.save(vraiAdmin)).thenReturn(nouvelAdmin);
+        Mockito.when(administrateurMapperMock.toAdministrateurResponseDto(nouvelAdmin)).thenReturn(administrateurResponseDto);
+
+        AdministrateurResponseDto administrateurResponseDto1 = administrateurService.modifier("Gerard@goatmail.com", "fdsfds@Z23", administrateurRequestDto);
+        assertEquals("Gerard", administrateurResponseDto1.nom());
+        Mockito.verify(administrateurDaoMock).save(nouvelAdmin);
+    }
+
+
+    @Test
+    void TestModificationNom(){
+
+        AdministrateurRequestDto administrateurRequestDto = new AdministrateurRequestDto(null, null, "Georges", null, null);
+
+        Administrateur nouvelAdministrateur = new Administrateur();
+        nouvelAdministrateur.setNom("Georges");
+
+        Administrateur vraiAdmin = gerard();
+
+        Administrateur adminquiRemplace = gerard();
+        adminquiRemplace.setNom("Georges");
+
+
+        AdministrateurResponseDto administrateurResponseDto = new AdministrateurResponseDto("Gerard@goatmail.com", "Georges", "Gerard", "Hr");
+
+        AdministrateurRequestDto administrateurRequestDto1 = new AdministrateurRequestDto("Gerard@goatmail.com", "fdsfds@Z23", "Georges", "Gerard", "Hr");
+
+        Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.of(vraiAdmin));
+
+        Mockito.when(administrateurMapperMock.toAdministrateur(administrateurRequestDto)).thenReturn(adminquiRemplace);
+
+        Mockito.when(administrateurDaoMock.save(vraiAdmin)).thenReturn(adminquiRemplace);
+
+        Mockito.when(administrateurMapperMock.toAdministrateurResponseDto(adminquiRemplace)).thenReturn(administrateurResponseDto);
+        Mockito.when(administrateurMapperMock.toAdministrateurRequestDto(adminquiRemplace)).thenReturn(administrateurRequestDto1);
+
+        assertEquals("Gerard", vraiAdmin.getNom());
+
+        assertEquals(administrateurResponseDto, administrateurService.modifier("Gerard@goatmail.com", "fdsfds@Z23", administrateurRequestDto));
+
+        Mockito.verify(administrateurDaoMock, Mockito.times(1)).save(vraiAdmin);
+
+        assertEquals("Georges", vraiAdmin.getNom());
+
+    }
+
+
+
 
 
     private Administrateur gerard() {

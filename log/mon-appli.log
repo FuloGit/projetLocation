@@ -402,3 +402,1193 @@
 2025-03-05 15:07:04 [restartedMain] DEBUG c.a.ProjetLocationApplication - Running with Spring Boot v3.4.2, Spring v6.2.2
 2025-03-05 15:07:04 [restartedMain] INFO  c.a.ProjetLocationApplication - No active profile set, falling back to 1 default profile: "default"
 2025-03-05 15:07:05 [restartedMain] INFO  c.a.ProjetLocationApplication - Started ProjetLocationApplication in 0.91 seconds (process running for 447.034)
+2025-03-05 15:53:15 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La requête est null 
+2025-03-05 16:08:07 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de transmission est obligatoire 
+2025-03-05 16:08:07 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 16:08:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 16:08:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de portes est obligatoire 
+2025-03-05 16:08:08 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 16:08:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 16:08:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 16:08:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 16:08:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 16:08:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de voiture est obligatoire 
+2025-03-05 16:08:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La requête est null 
+2025-03-05 16:08:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 16:08:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le véhicule doit être actif ou inactif 
+2025-03-05 16:08:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 16:08:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 16:08:08 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - modifierParId(Long Id) : Une voiture retirée du parc n'est pas modifiable
+2025-03-05 16:08:08 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - determinerPermis (Voiture voiture) : Le nombre de passages n'est pas adéquat
+2025-03-05 16:08:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le carburant est obligatoire 
+2025-03-05 16:08:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 16:08:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Precisez si le véhicule est retiré du parc 
+2025-03-05 16:08:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le statut de la climatisation est obligatoire 
+2025-03-05 16:08:08 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - SupprimerParId (Long id): Id non présent 
+2025-03-05 16:08:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de places est obligatoire 
+2025-03-05 16:08:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 16:08:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 16:08:08 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 16:09:29 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de transmission est obligatoire 
+2025-03-05 16:09:29 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 16:09:29 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 16:09:29 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de portes est obligatoire 
+2025-03-05 16:09:29 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 16:09:29 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 16:09:29 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 16:09:29 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 16:09:29 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 16:09:29 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de voiture est obligatoire 
+2025-03-05 16:09:29 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La requête est null 
+2025-03-05 16:09:29 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 16:09:29 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le véhicule doit être actif ou inactif 
+2025-03-05 16:09:29 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 16:09:29 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 16:09:29 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - modifierParId(Long Id) : Une voiture retirée du parc n'est pas modifiable
+2025-03-05 16:09:29 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - determinerPermis (Voiture voiture) : Le nombre de passages n'est pas adéquat
+2025-03-05 16:09:29 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le carburant est obligatoire 
+2025-03-05 16:09:29 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 16:09:29 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Precisez si le véhicule est retiré du parc 
+2025-03-05 16:09:29 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le statut de la climatisation est obligatoire 
+2025-03-05 16:09:29 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - SupprimerParId (Long id): Id non présent 
+2025-03-05 16:09:29 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de places est obligatoire 
+2025-03-05 16:09:29 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 16:09:29 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 16:09:29 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 16:10:17 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email doit être valide 
+2025-03-05 16:10:17 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email est obligatoire 
+2025-03-05 16:10:17 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le nom est obligatoire 
+2025-03-05 16:10:17 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La fonction est obligatoire 
+2025-03-05 16:10:17 [main] ERROR c.a.s.u.AdministrateurServiceImpl - ajouter (administrateurRequest) : Email déjà utilisé 
+2025-03-05 16:10:17 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:10:17 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:10:17 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email est obligatoire 
+2025-03-05 16:10:17 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La requête est null 
+2025-03-05 16:10:17 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:10:17 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:10:17 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le nom est obligatoire 
+2025-03-05 16:10:17 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:10:17 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:10:17 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La fonction est obligatoire 
+2025-03-05 16:10:17 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:10:17 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:10:17 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:10:17 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:10:17 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:10:17 [main] ERROR c.a.s.u.AdministrateurServiceImpl - supprimerParid() : Vous ne pouvez pas supprimer le dernière administrateur en base. 
+2025-03-05 16:10:38 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse email doit être valide 
+2025-03-05 16:10:38 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse Email est obligatoire 
+2025-03-05 16:10:38 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Vous devez être majeur pour vous inscrire 
+2025-03-05 16:10:38 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le nom est obligatoire 
+2025-03-05 16:10:38 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:10:39 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:10:39 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : Le code postal est obligatoire 
+2025-03-05 16:10:39 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La ville est obligatoire 
+2025-03-05 16:10:39 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La rue est obligatoire 
+2025-03-05 16:10:39 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse Email est obligatoire 
+2025-03-05 16:10:39 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : La date de naissance est obligatoire 
+2025-03-05 16:10:39 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : La requete est null 
+2025-03-05 16:10:39 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:10:39 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:10:39 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le nom est obligatoire 
+2025-03-05 16:10:39 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La ville est obligatoire 
+2025-03-05 16:10:39 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:10:39 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:10:39 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : Le code postal est obligatoire 
+2025-03-05 16:10:39 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:10:39 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - ajouterClient : Email déjà utilisé 
+2025-03-05 16:10:39 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:10:39 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:10:39 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : L'adresse est obligatoire 
+2025-03-05 16:10:39 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La rue est obligatoire 
+2025-03-05 16:10:39 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:10:39 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:10:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse email doit être valide 
+2025-03-05 16:10:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse Email est obligatoire 
+2025-03-05 16:10:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Vous devez être majeur pour vous inscrire 
+2025-03-05 16:10:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le nom est obligatoire 
+2025-03-05 16:10:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:10:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:10:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : Le code postal est obligatoire 
+2025-03-05 16:10:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La ville est obligatoire 
+2025-03-05 16:10:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La rue est obligatoire 
+2025-03-05 16:10:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse Email est obligatoire 
+2025-03-05 16:10:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : La date de naissance est obligatoire 
+2025-03-05 16:10:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : La requete est null 
+2025-03-05 16:10:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:10:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:10:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le nom est obligatoire 
+2025-03-05 16:10:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La ville est obligatoire 
+2025-03-05 16:10:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:10:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:10:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : Le code postal est obligatoire 
+2025-03-05 16:10:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:10:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - ajouterClient : Email déjà utilisé 
+2025-03-05 16:10:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:10:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:10:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : L'adresse est obligatoire 
+2025-03-05 16:10:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La rue est obligatoire 
+2025-03-05 16:10:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:10:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:12:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de transmission est obligatoire 
+2025-03-05 16:12:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 16:12:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 16:12:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de portes est obligatoire 
+2025-03-05 16:12:32 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 16:12:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 16:12:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 16:12:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 16:12:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 16:12:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de voiture est obligatoire 
+2025-03-05 16:12:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La requête est null 
+2025-03-05 16:12:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 16:12:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le véhicule doit être actif ou inactif 
+2025-03-05 16:12:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 16:12:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 16:12:32 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - modifierParId(Long Id) : Une voiture retirée du parc n'est pas modifiable
+2025-03-05 16:12:32 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - determinerPermis (Voiture voiture) : Le nombre de passages n'est pas adéquat
+2025-03-05 16:12:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le carburant est obligatoire 
+2025-03-05 16:12:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 16:12:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Precisez si le véhicule est retiré du parc 
+2025-03-05 16:12:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le statut de la climatisation est obligatoire 
+2025-03-05 16:12:32 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - SupprimerParId (Long id): Id non présent 
+2025-03-05 16:12:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de places est obligatoire 
+2025-03-05 16:12:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 16:12:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 16:12:32 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 16:13:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email doit être valide 
+2025-03-05 16:13:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email est obligatoire 
+2025-03-05 16:13:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le nom est obligatoire 
+2025-03-05 16:13:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La fonction est obligatoire 
+2025-03-05 16:13:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - ajouter (administrateurRequest) : Email déjà utilisé 
+2025-03-05 16:13:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:13:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:13:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email est obligatoire 
+2025-03-05 16:13:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La requête est null 
+2025-03-05 16:13:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:13:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:13:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le nom est obligatoire 
+2025-03-05 16:13:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:13:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:13:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La fonction est obligatoire 
+2025-03-05 16:13:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:13:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:13:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:13:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:13:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:13:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - supprimerParid() : Vous ne pouvez pas supprimer le dernière administrateur en base. 
+2025-03-05 16:15:41 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de transmission est obligatoire 
+2025-03-05 16:15:41 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 16:15:41 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 16:15:41 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de portes est obligatoire 
+2025-03-05 16:15:41 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 16:15:41 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 16:15:41 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 16:15:41 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 16:15:41 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 16:15:41 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de voiture est obligatoire 
+2025-03-05 16:15:41 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La requête est null 
+2025-03-05 16:15:41 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 16:15:41 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le véhicule doit être actif ou inactif 
+2025-03-05 16:15:41 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 16:15:41 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 16:15:41 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - modifierParId(Long Id) : Une voiture retirée du parc n'est pas modifiable
+2025-03-05 16:15:41 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - determinerPermis (Voiture voiture) : Le nombre de passages n'est pas adéquat
+2025-03-05 16:15:41 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le carburant est obligatoire 
+2025-03-05 16:15:41 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 16:15:41 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Precisez si le véhicule est retiré du parc 
+2025-03-05 16:15:41 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le statut de la climatisation est obligatoire 
+2025-03-05 16:15:41 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - SupprimerParId (Long id): Id non présent 
+2025-03-05 16:15:41 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de places est obligatoire 
+2025-03-05 16:15:41 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 16:15:41 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 16:15:41 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 16:16:26 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de transmission est obligatoire 
+2025-03-05 16:16:26 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 16:16:26 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 16:16:26 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de portes est obligatoire 
+2025-03-05 16:16:26 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 16:16:26 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 16:16:26 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 16:16:26 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 16:16:26 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 16:16:26 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de voiture est obligatoire 
+2025-03-05 16:16:26 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La requête est null 
+2025-03-05 16:16:26 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 16:16:26 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le véhicule doit être actif ou inactif 
+2025-03-05 16:16:26 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 16:16:26 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 16:16:26 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - modifierParId(Long Id) : Une voiture retirée du parc n'est pas modifiable
+2025-03-05 16:16:26 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - determinerPermis (Voiture voiture) : Le nombre de passages n'est pas adéquat
+2025-03-05 16:16:26 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le carburant est obligatoire 
+2025-03-05 16:16:26 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 16:16:27 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Precisez si le véhicule est retiré du parc 
+2025-03-05 16:16:27 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le statut de la climatisation est obligatoire 
+2025-03-05 16:16:27 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - SupprimerParId (Long id): Id non présent 
+2025-03-05 16:16:27 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de places est obligatoire 
+2025-03-05 16:16:27 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 16:16:27 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 16:16:27 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 16:16:54 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse email doit être valide 
+2025-03-05 16:16:54 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse Email est obligatoire 
+2025-03-05 16:16:54 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Vous devez être majeur pour vous inscrire 
+2025-03-05 16:16:54 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le nom est obligatoire 
+2025-03-05 16:16:54 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:16:54 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:16:54 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : Le code postal est obligatoire 
+2025-03-05 16:16:54 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La ville est obligatoire 
+2025-03-05 16:16:54 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La rue est obligatoire 
+2025-03-05 16:16:54 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse Email est obligatoire 
+2025-03-05 16:16:54 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : La date de naissance est obligatoire 
+2025-03-05 16:16:54 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : La requete est null 
+2025-03-05 16:16:54 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:16:54 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:16:54 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le nom est obligatoire 
+2025-03-05 16:16:54 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La ville est obligatoire 
+2025-03-05 16:16:54 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:16:54 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:16:54 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : Le code postal est obligatoire 
+2025-03-05 16:16:54 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:16:54 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - ajouterClient : Email déjà utilisé 
+2025-03-05 16:16:54 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:16:54 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:16:54 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : L'adresse est obligatoire 
+2025-03-05 16:16:54 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La rue est obligatoire 
+2025-03-05 16:16:54 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:16:54 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:17:20 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email doit être valide 
+2025-03-05 16:17:20 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email est obligatoire 
+2025-03-05 16:17:20 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le nom est obligatoire 
+2025-03-05 16:17:20 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La fonction est obligatoire 
+2025-03-05 16:17:20 [main] ERROR c.a.s.u.AdministrateurServiceImpl - ajouter (administrateurRequest) : Email déjà utilisé 
+2025-03-05 16:17:20 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:17:20 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:17:20 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email est obligatoire 
+2025-03-05 16:17:20 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La requête est null 
+2025-03-05 16:17:20 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:17:20 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:17:20 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le nom est obligatoire 
+2025-03-05 16:17:20 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:17:20 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:17:20 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La fonction est obligatoire 
+2025-03-05 16:17:20 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:17:20 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:17:20 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:17:20 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:17:20 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:17:20 [main] ERROR c.a.s.u.AdministrateurServiceImpl - supprimerParid() : Vous ne pouvez pas supprimer le dernière administrateur en base. 
+2025-03-05 16:17:21 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de transmission est obligatoire 
+2025-03-05 16:17:21 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 16:17:21 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 16:17:21 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de portes est obligatoire 
+2025-03-05 16:17:21 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 16:17:21 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 16:17:21 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 16:17:21 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 16:17:21 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 16:17:21 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de voiture est obligatoire 
+2025-03-05 16:17:21 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La requête est null 
+2025-03-05 16:17:21 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 16:17:21 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le véhicule doit être actif ou inactif 
+2025-03-05 16:17:21 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 16:17:21 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 16:17:21 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - modifierParId(Long Id) : Une voiture retirée du parc n'est pas modifiable
+2025-03-05 16:17:21 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - determinerPermis (Voiture voiture) : Le nombre de passages n'est pas adéquat
+2025-03-05 16:17:21 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le carburant est obligatoire 
+2025-03-05 16:17:21 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 16:17:21 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Precisez si le véhicule est retiré du parc 
+2025-03-05 16:17:21 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le statut de la climatisation est obligatoire 
+2025-03-05 16:17:21 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - SupprimerParId (Long id): Id non présent 
+2025-03-05 16:17:21 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de places est obligatoire 
+2025-03-05 16:17:21 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 16:17:21 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 16:17:21 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 16:17:22 [main] INFO  c.a.ProjetLocationApplicationTests - Starting ProjetLocationApplicationTests using Java 23.0.1 with PID 26592 (started by florian.bon in C:\Users\florian.bon\Documents\Spring\Projet\projet-location)
+2025-03-05 16:17:22 [main] DEBUG c.a.ProjetLocationApplicationTests - Running with Spring Boot v3.4.2, Spring v6.2.2
+2025-03-05 16:17:22 [main] INFO  c.a.ProjetLocationApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2025-03-05 16:17:30 [main] INFO  c.a.ProjetLocationApplicationTests - Started ProjetLocationApplicationTests in 7.843 seconds (process running for 13.427)
+2025-03-05 16:17:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse email doit être valide 
+2025-03-05 16:17:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse Email est obligatoire 
+2025-03-05 16:17:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Vous devez être majeur pour vous inscrire 
+2025-03-05 16:17:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le nom est obligatoire 
+2025-03-05 16:17:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:17:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:17:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : Le code postal est obligatoire 
+2025-03-05 16:17:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La ville est obligatoire 
+2025-03-05 16:17:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La rue est obligatoire 
+2025-03-05 16:17:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse Email est obligatoire 
+2025-03-05 16:17:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : La date de naissance est obligatoire 
+2025-03-05 16:17:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : La requete est null 
+2025-03-05 16:17:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:17:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:17:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le nom est obligatoire 
+2025-03-05 16:17:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La ville est obligatoire 
+2025-03-05 16:17:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:17:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:17:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : Le code postal est obligatoire 
+2025-03-05 16:17:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:17:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - ajouterClient : Email déjà utilisé 
+2025-03-05 16:17:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:17:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:17:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : L'adresse est obligatoire 
+2025-03-05 16:17:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La rue est obligatoire 
+2025-03-05 16:17:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:17:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:17:45 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email doit être valide 
+2025-03-05 16:17:46 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email est obligatoire 
+2025-03-05 16:17:46 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le nom est obligatoire 
+2025-03-05 16:17:46 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La fonction est obligatoire 
+2025-03-05 16:17:46 [main] ERROR c.a.s.u.AdministrateurServiceImpl - ajouter (administrateurRequest) : Email déjà utilisé 
+2025-03-05 16:17:46 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:17:46 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:17:46 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email est obligatoire 
+2025-03-05 16:17:46 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La requête est null 
+2025-03-05 16:17:46 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:17:46 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:17:46 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le nom est obligatoire 
+2025-03-05 16:17:46 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:17:46 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:17:46 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La fonction est obligatoire 
+2025-03-05 16:17:46 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:17:46 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:17:46 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:17:46 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:17:46 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:17:46 [main] ERROR c.a.s.u.AdministrateurServiceImpl - supprimerParid() : Vous ne pouvez pas supprimer le dernière administrateur en base. 
+2025-03-05 16:17:46 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de transmission est obligatoire 
+2025-03-05 16:17:46 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 16:17:46 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 16:17:46 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de portes est obligatoire 
+2025-03-05 16:17:46 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 16:17:46 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 16:17:46 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 16:17:46 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 16:17:46 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 16:17:46 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de voiture est obligatoire 
+2025-03-05 16:17:46 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La requête est null 
+2025-03-05 16:17:46 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 16:17:46 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le véhicule doit être actif ou inactif 
+2025-03-05 16:17:46 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 16:17:46 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 16:17:46 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - modifierParId(Long Id) : Une voiture retirée du parc n'est pas modifiable
+2025-03-05 16:17:46 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - determinerPermis (Voiture voiture) : Le nombre de passages n'est pas adéquat
+2025-03-05 16:17:46 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le carburant est obligatoire 
+2025-03-05 16:17:46 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 16:17:46 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Precisez si le véhicule est retiré du parc 
+2025-03-05 16:17:46 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le statut de la climatisation est obligatoire 
+2025-03-05 16:17:46 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - SupprimerParId (Long id): Id non présent 
+2025-03-05 16:17:46 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de places est obligatoire 
+2025-03-05 16:17:46 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 16:17:46 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 16:17:46 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 16:17:48 [main] INFO  c.a.ProjetLocationApplicationTests - Starting ProjetLocationApplicationTests using Java 23.0.1 with PID 17180 (started by florian.bon in C:\Users\florian.bon\Documents\Spring\Projet\projet-location)
+2025-03-05 16:17:48 [main] DEBUG c.a.ProjetLocationApplicationTests - Running with Spring Boot v3.4.2, Spring v6.2.2
+2025-03-05 16:17:48 [main] INFO  c.a.ProjetLocationApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2025-03-05 16:17:58 [main] INFO  c.a.ProjetLocationApplicationTests - Started ProjetLocationApplicationTests in 10.571 seconds (process running for 18.573)
+2025-03-05 16:17:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse email doit être valide 
+2025-03-05 16:17:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse Email est obligatoire 
+2025-03-05 16:17:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Vous devez être majeur pour vous inscrire 
+2025-03-05 16:17:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le nom est obligatoire 
+2025-03-05 16:17:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:17:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:17:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : Le code postal est obligatoire 
+2025-03-05 16:17:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La ville est obligatoire 
+2025-03-05 16:17:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La rue est obligatoire 
+2025-03-05 16:17:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse Email est obligatoire 
+2025-03-05 16:17:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : La date de naissance est obligatoire 
+2025-03-05 16:17:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : La requete est null 
+2025-03-05 16:17:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:17:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:17:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le nom est obligatoire 
+2025-03-05 16:17:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La ville est obligatoire 
+2025-03-05 16:17:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:17:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:17:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : Le code postal est obligatoire 
+2025-03-05 16:17:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:17:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - ajouterClient : Email déjà utilisé 
+2025-03-05 16:17:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:17:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:17:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : L'adresse est obligatoire 
+2025-03-05 16:17:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La rue est obligatoire 
+2025-03-05 16:17:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:17:58 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:20:04 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email doit être valide 
+2025-03-05 16:20:04 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email est obligatoire 
+2025-03-05 16:20:04 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le nom est obligatoire 
+2025-03-05 16:20:04 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La fonction est obligatoire 
+2025-03-05 16:20:04 [main] ERROR c.a.s.u.AdministrateurServiceImpl - ajouter (administrateurRequest) : Email déjà utilisé 
+2025-03-05 16:20:04 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:20:04 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:20:04 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email est obligatoire 
+2025-03-05 16:20:04 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La requête est null 
+2025-03-05 16:20:04 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:20:04 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:20:04 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le nom est obligatoire 
+2025-03-05 16:20:04 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:20:04 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:20:04 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La fonction est obligatoire 
+2025-03-05 16:20:04 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:20:04 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:20:04 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:20:04 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:20:04 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:20:04 [main] ERROR c.a.s.u.AdministrateurServiceImpl - supprimerParid() : Vous ne pouvez pas supprimer le dernière administrateur en base. 
+2025-03-05 16:20:04 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de transmission est obligatoire 
+2025-03-05 16:20:04 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 16:20:04 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 16:20:04 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de portes est obligatoire 
+2025-03-05 16:20:04 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 16:20:04 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 16:20:04 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 16:20:04 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 16:20:04 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 16:20:04 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de voiture est obligatoire 
+2025-03-05 16:20:04 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La requête est null 
+2025-03-05 16:20:04 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 16:20:04 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le véhicule doit être actif ou inactif 
+2025-03-05 16:20:04 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 16:20:04 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 16:20:04 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - modifierParId(Long Id) : Une voiture retirée du parc n'est pas modifiable
+2025-03-05 16:20:04 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - determinerPermis (Voiture voiture) : Le nombre de passages n'est pas adéquat
+2025-03-05 16:20:04 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le carburant est obligatoire 
+2025-03-05 16:20:04 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 16:20:04 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Precisez si le véhicule est retiré du parc 
+2025-03-05 16:20:04 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le statut de la climatisation est obligatoire 
+2025-03-05 16:20:04 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - SupprimerParId (Long id): Id non présent 
+2025-03-05 16:20:04 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de places est obligatoire 
+2025-03-05 16:20:04 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 16:20:04 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 16:20:05 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 16:20:07 [main] INFO  c.a.ProjetLocationApplicationTests - Starting ProjetLocationApplicationTests using Java 23.0.1 with PID 26664 (started by florian.bon in C:\Users\florian.bon\Documents\Spring\Projet\projet-location)
+2025-03-05 16:20:07 [main] DEBUG c.a.ProjetLocationApplicationTests - Running with Spring Boot v3.4.2, Spring v6.2.2
+2025-03-05 16:20:07 [main] INFO  c.a.ProjetLocationApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2025-03-05 16:20:17 [main] INFO  c.a.ProjetLocationApplicationTests - Started ProjetLocationApplicationTests in 10.794 seconds (process running for 19.701)
+2025-03-05 16:20:17 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse email doit être valide 
+2025-03-05 16:20:17 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse Email est obligatoire 
+2025-03-05 16:20:17 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Vous devez être majeur pour vous inscrire 
+2025-03-05 16:20:17 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le nom est obligatoire 
+2025-03-05 16:20:17 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:20:17 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:20:17 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : Le code postal est obligatoire 
+2025-03-05 16:20:17 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La ville est obligatoire 
+2025-03-05 16:20:17 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La rue est obligatoire 
+2025-03-05 16:20:17 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse Email est obligatoire 
+2025-03-05 16:20:17 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : La date de naissance est obligatoire 
+2025-03-05 16:20:17 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : La requete est null 
+2025-03-05 16:20:17 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:20:17 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:20:17 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le nom est obligatoire 
+2025-03-05 16:20:17 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La ville est obligatoire 
+2025-03-05 16:20:17 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:20:17 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:20:17 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : Le code postal est obligatoire 
+2025-03-05 16:20:17 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:20:17 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - ajouterClient : Email déjà utilisé 
+2025-03-05 16:20:17 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:20:17 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:20:17 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : L'adresse est obligatoire 
+2025-03-05 16:20:17 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La rue est obligatoire 
+2025-03-05 16:20:17 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:20:17 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:21:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email doit être valide 
+2025-03-05 16:21:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email est obligatoire 
+2025-03-05 16:21:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le nom est obligatoire 
+2025-03-05 16:21:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La fonction est obligatoire 
+2025-03-05 16:21:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - ajouter (administrateurRequest) : Email déjà utilisé 
+2025-03-05 16:21:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:21:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:21:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email est obligatoire 
+2025-03-05 16:21:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La requête est null 
+2025-03-05 16:21:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:21:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:21:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le nom est obligatoire 
+2025-03-05 16:21:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:21:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:21:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La fonction est obligatoire 
+2025-03-05 16:21:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:21:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:21:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:21:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:21:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:21:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - supprimerParid() : Vous ne pouvez pas supprimer le dernière administrateur en base. 
+2025-03-05 16:21:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de transmission est obligatoire 
+2025-03-05 16:21:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 16:21:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 16:21:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de portes est obligatoire 
+2025-03-05 16:21:19 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 16:21:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 16:21:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 16:21:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 16:21:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 16:21:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de voiture est obligatoire 
+2025-03-05 16:21:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La requête est null 
+2025-03-05 16:21:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 16:21:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le véhicule doit être actif ou inactif 
+2025-03-05 16:21:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 16:21:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 16:21:19 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - modifierParId(Long Id) : Une voiture retirée du parc n'est pas modifiable
+2025-03-05 16:21:19 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - determinerPermis (Voiture voiture) : Le nombre de passages n'est pas adéquat
+2025-03-05 16:21:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le carburant est obligatoire 
+2025-03-05 16:21:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 16:21:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Precisez si le véhicule est retiré du parc 
+2025-03-05 16:21:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le statut de la climatisation est obligatoire 
+2025-03-05 16:21:19 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - SupprimerParId (Long id): Id non présent 
+2025-03-05 16:21:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de places est obligatoire 
+2025-03-05 16:21:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 16:21:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 16:21:19 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 16:21:21 [main] INFO  c.a.ProjetLocationApplicationTests - Starting ProjetLocationApplicationTests using Java 23.0.1 with PID 27184 (started by florian.bon in C:\Users\florian.bon\Documents\Spring\Projet\projet-location)
+2025-03-05 16:21:21 [main] DEBUG c.a.ProjetLocationApplicationTests - Running with Spring Boot v3.4.2, Spring v6.2.2
+2025-03-05 16:21:21 [main] INFO  c.a.ProjetLocationApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2025-03-05 16:21:30 [main] INFO  c.a.ProjetLocationApplicationTests - Started ProjetLocationApplicationTests in 9.939 seconds (process running for 17.71)
+2025-03-05 16:21:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse email doit être valide 
+2025-03-05 16:21:31 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse Email est obligatoire 
+2025-03-05 16:21:31 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Vous devez être majeur pour vous inscrire 
+2025-03-05 16:21:31 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le nom est obligatoire 
+2025-03-05 16:21:31 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:21:31 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:21:31 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : Le code postal est obligatoire 
+2025-03-05 16:21:31 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La ville est obligatoire 
+2025-03-05 16:21:31 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La rue est obligatoire 
+2025-03-05 16:21:31 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse Email est obligatoire 
+2025-03-05 16:21:31 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : La date de naissance est obligatoire 
+2025-03-05 16:21:31 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : La requete est null 
+2025-03-05 16:21:31 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:21:31 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:21:31 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le nom est obligatoire 
+2025-03-05 16:21:31 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La ville est obligatoire 
+2025-03-05 16:21:31 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:21:31 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:21:31 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : Le code postal est obligatoire 
+2025-03-05 16:21:31 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:21:31 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - ajouterClient : Email déjà utilisé 
+2025-03-05 16:21:31 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:21:31 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:21:31 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : L'adresse est obligatoire 
+2025-03-05 16:21:31 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La rue est obligatoire 
+2025-03-05 16:21:31 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:21:31 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:22:32 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email doit être valide 
+2025-03-05 16:22:32 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email est obligatoire 
+2025-03-05 16:22:32 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le nom est obligatoire 
+2025-03-05 16:22:32 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La fonction est obligatoire 
+2025-03-05 16:22:32 [main] ERROR c.a.s.u.AdministrateurServiceImpl - ajouter (administrateurRequest) : Email déjà utilisé 
+2025-03-05 16:22:32 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:22:32 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:22:32 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email est obligatoire 
+2025-03-05 16:22:32 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La requête est null 
+2025-03-05 16:22:32 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:22:32 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:22:32 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le nom est obligatoire 
+2025-03-05 16:22:32 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:22:32 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:22:32 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La fonction est obligatoire 
+2025-03-05 16:22:32 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:22:32 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:22:32 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:22:32 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:22:32 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:22:32 [main] ERROR c.a.s.u.AdministrateurServiceImpl - supprimerParid() : Vous ne pouvez pas supprimer le dernière administrateur en base. 
+2025-03-05 16:22:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de transmission est obligatoire 
+2025-03-05 16:22:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 16:22:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 16:22:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de portes est obligatoire 
+2025-03-05 16:22:32 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 16:22:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 16:22:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 16:22:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 16:22:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 16:22:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de voiture est obligatoire 
+2025-03-05 16:22:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La requête est null 
+2025-03-05 16:22:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 16:22:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le véhicule doit être actif ou inactif 
+2025-03-05 16:22:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 16:22:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 16:22:32 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - modifierParId(Long Id) : Une voiture retirée du parc n'est pas modifiable
+2025-03-05 16:22:32 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - determinerPermis (Voiture voiture) : Le nombre de passages n'est pas adéquat
+2025-03-05 16:22:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le carburant est obligatoire 
+2025-03-05 16:22:32 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 16:22:33 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Precisez si le véhicule est retiré du parc 
+2025-03-05 16:22:33 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le statut de la climatisation est obligatoire 
+2025-03-05 16:22:33 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - SupprimerParId (Long id): Id non présent 
+2025-03-05 16:22:33 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de places est obligatoire 
+2025-03-05 16:22:33 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 16:22:33 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 16:22:33 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 16:22:35 [main] INFO  c.a.ProjetLocationApplicationTests - Starting ProjetLocationApplicationTests using Java 23.0.1 with PID 25364 (started by florian.bon in C:\Users\florian.bon\Documents\Spring\Projet\projet-location)
+2025-03-05 16:22:35 [main] DEBUG c.a.ProjetLocationApplicationTests - Running with Spring Boot v3.4.2, Spring v6.2.2
+2025-03-05 16:22:35 [main] INFO  c.a.ProjetLocationApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2025-03-05 16:22:45 [main] INFO  c.a.ProjetLocationApplicationTests - Started ProjetLocationApplicationTests in 10.859 seconds (process running for 19.256)
+2025-03-05 16:22:45 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse email doit être valide 
+2025-03-05 16:22:45 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse Email est obligatoire 
+2025-03-05 16:22:45 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Vous devez être majeur pour vous inscrire 
+2025-03-05 16:22:45 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le nom est obligatoire 
+2025-03-05 16:22:45 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:22:45 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:22:45 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : Le code postal est obligatoire 
+2025-03-05 16:22:45 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La ville est obligatoire 
+2025-03-05 16:22:45 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La rue est obligatoire 
+2025-03-05 16:22:45 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse Email est obligatoire 
+2025-03-05 16:22:45 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : La date de naissance est obligatoire 
+2025-03-05 16:22:45 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : La requete est null 
+2025-03-05 16:22:45 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:22:45 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:22:45 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le nom est obligatoire 
+2025-03-05 16:22:45 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La ville est obligatoire 
+2025-03-05 16:22:45 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:22:45 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:22:45 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : Le code postal est obligatoire 
+2025-03-05 16:22:45 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:22:45 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - ajouterClient : Email déjà utilisé 
+2025-03-05 16:22:45 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:22:45 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:22:45 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : L'adresse est obligatoire 
+2025-03-05 16:22:45 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La rue est obligatoire 
+2025-03-05 16:22:45 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:22:45 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:38:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email doit être valide 
+2025-03-05 16:38:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email est obligatoire 
+2025-03-05 16:38:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le nom est obligatoire 
+2025-03-05 16:38:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La fonction est obligatoire 
+2025-03-05 16:38:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - ajouter (administrateurRequest) : Email déjà utilisé 
+2025-03-05 16:38:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:38:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:38:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email est obligatoire 
+2025-03-05 16:38:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La requête est null 
+2025-03-05 16:38:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:38:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:38:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le nom est obligatoire 
+2025-03-05 16:38:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:38:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:38:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La fonction est obligatoire 
+2025-03-05 16:38:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:38:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:38:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:38:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:38:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 16:38:10 [main] ERROR c.a.s.u.AdministrateurServiceImpl - supprimerParid() : Vous ne pouvez pas supprimer le dernière administrateur en base. 
+2025-03-05 16:38:11 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de transmission est obligatoire 
+2025-03-05 16:38:11 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 16:38:11 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 16:38:11 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de portes est obligatoire 
+2025-03-05 16:38:11 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 16:38:11 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 16:38:11 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 16:38:11 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 16:38:11 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 16:38:11 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de voiture est obligatoire 
+2025-03-05 16:38:11 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La requête est null 
+2025-03-05 16:38:11 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 16:38:11 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le véhicule doit être actif ou inactif 
+2025-03-05 16:38:11 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 16:38:11 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 16:38:11 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - modifierParId(Long Id) : Une voiture retirée du parc n'est pas modifiable
+2025-03-05 16:38:11 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - determinerPermis (Voiture voiture) : Le nombre de passages n'est pas adéquat
+2025-03-05 16:38:11 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le carburant est obligatoire 
+2025-03-05 16:38:11 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 16:38:11 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Precisez si le véhicule est retiré du parc 
+2025-03-05 16:38:11 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le statut de la climatisation est obligatoire 
+2025-03-05 16:38:11 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - SupprimerParId (Long id): Id non présent 
+2025-03-05 16:38:11 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de places est obligatoire 
+2025-03-05 16:38:11 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 16:38:11 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 16:38:11 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 16:38:13 [main] INFO  c.a.ProjetLocationApplicationTests - Starting ProjetLocationApplicationTests using Java 23.0.1 with PID 25504 (started by florian.bon in C:\Users\florian.bon\Documents\Spring\Projet\projet-location)
+2025-03-05 16:38:13 [main] DEBUG c.a.ProjetLocationApplicationTests - Running with Spring Boot v3.4.2, Spring v6.2.2
+2025-03-05 16:38:13 [main] INFO  c.a.ProjetLocationApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2025-03-05 16:38:23 [main] INFO  c.a.ProjetLocationApplicationTests - Started ProjetLocationApplicationTests in 10.912 seconds (process running for 19.687)
+2025-03-05 16:38:23 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse email doit être valide 
+2025-03-05 16:38:23 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse Email est obligatoire 
+2025-03-05 16:38:23 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Vous devez être majeur pour vous inscrire 
+2025-03-05 16:38:23 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le nom est obligatoire 
+2025-03-05 16:38:23 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:38:23 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:38:23 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : Le code postal est obligatoire 
+2025-03-05 16:38:23 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La ville est obligatoire 
+2025-03-05 16:38:23 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La rue est obligatoire 
+2025-03-05 16:38:23 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse Email est obligatoire 
+2025-03-05 16:38:23 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : La date de naissance est obligatoire 
+2025-03-05 16:38:23 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : La requete est null 
+2025-03-05 16:38:23 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:38:23 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:38:23 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le nom est obligatoire 
+2025-03-05 16:38:23 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La ville est obligatoire 
+2025-03-05 16:38:23 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:38:23 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le prenom est obligatoire 
+2025-03-05 16:38:23 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : Le code postal est obligatoire 
+2025-03-05 16:38:23 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:38:23 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - ajouterClient : Email déjà utilisé 
+2025-03-05 16:38:23 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 16:38:23 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:38:23 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : L'adresse est obligatoire 
+2025-03-05 16:38:23 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La rue est obligatoire 
+2025-03-05 16:38:23 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 16:38:23 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:10:07 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email doit être valide 
+2025-03-05 17:10:08 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email est obligatoire 
+2025-03-05 17:10:08 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le nom est obligatoire 
+2025-03-05 17:10:08 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La fonction est obligatoire 
+2025-03-05 17:10:08 [main] ERROR c.a.s.u.AdministrateurServiceImpl - ajouter (administrateurRequest) : Email déjà utilisé 
+2025-03-05 17:10:08 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:10:08 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:10:08 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email est obligatoire 
+2025-03-05 17:10:08 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La requête est null 
+2025-03-05 17:10:08 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le prenom est obligatoire 
+2025-03-05 17:10:08 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:10:08 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le nom est obligatoire 
+2025-03-05 17:10:08 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le prenom est obligatoire 
+2025-03-05 17:10:08 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:10:08 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La fonction est obligatoire 
+2025-03-05 17:10:08 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:10:08 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:10:08 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:10:08 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:10:08 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:10:08 [main] ERROR c.a.s.u.AdministrateurServiceImpl - supprimerParid() : Vous ne pouvez pas supprimer le dernière administrateur en base. 
+2025-03-05 17:10:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de transmission est obligatoire 
+2025-03-05 17:10:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 17:10:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 17:10:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de portes est obligatoire 
+2025-03-05 17:10:08 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 17:10:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 17:10:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 17:10:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 17:10:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 17:10:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de voiture est obligatoire 
+2025-03-05 17:10:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La requête est null 
+2025-03-05 17:10:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 17:10:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le véhicule doit être actif ou inactif 
+2025-03-05 17:10:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 17:10:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 17:10:08 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - modifierParId(Long Id) : Une voiture retirée du parc n'est pas modifiable
+2025-03-05 17:10:08 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - determinerPermis (Voiture voiture) : Le nombre de passages n'est pas adéquat
+2025-03-05 17:10:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le carburant est obligatoire 
+2025-03-05 17:10:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 17:10:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Precisez si le véhicule est retiré du parc 
+2025-03-05 17:10:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le statut de la climatisation est obligatoire 
+2025-03-05 17:10:08 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - SupprimerParId (Long id): Id non présent 
+2025-03-05 17:10:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de places est obligatoire 
+2025-03-05 17:10:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 17:10:08 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 17:10:08 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 17:10:10 [main] INFO  c.a.ProjetLocationApplicationTests - Starting ProjetLocationApplicationTests using Java 23.0.1 with PID 26248 (started by florian.bon in C:\Users\florian.bon\Documents\Spring\Projet\projet-location)
+2025-03-05 17:10:10 [main] DEBUG c.a.ProjetLocationApplicationTests - Running with Spring Boot v3.4.2, Spring v6.2.2
+2025-03-05 17:10:10 [main] INFO  c.a.ProjetLocationApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2025-03-05 17:10:21 [main] INFO  c.a.ProjetLocationApplicationTests - Started ProjetLocationApplicationTests in 11.393 seconds (process running for 22.389)
+2025-03-05 17:10:21 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse email doit être valide 
+2025-03-05 17:10:21 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse Email est obligatoire 
+2025-03-05 17:10:21 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Vous devez être majeur pour vous inscrire 
+2025-03-05 17:10:21 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le nom est obligatoire 
+2025-03-05 17:10:21 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:10:21 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:10:21 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : Le code postal est obligatoire 
+2025-03-05 17:10:21 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La ville est obligatoire 
+2025-03-05 17:10:21 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La rue est obligatoire 
+2025-03-05 17:10:21 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse Email est obligatoire 
+2025-03-05 17:10:21 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : La date de naissance est obligatoire 
+2025-03-05 17:10:21 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : La requete est null 
+2025-03-05 17:10:21 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le prenom est obligatoire 
+2025-03-05 17:10:21 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:10:21 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le nom est obligatoire 
+2025-03-05 17:10:21 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La ville est obligatoire 
+2025-03-05 17:10:21 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:10:21 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le prenom est obligatoire 
+2025-03-05 17:10:21 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : Le code postal est obligatoire 
+2025-03-05 17:10:21 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:10:21 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - ajouterClient : Email déjà utilisé 
+2025-03-05 17:10:21 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:10:21 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:10:21 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : L'adresse est obligatoire 
+2025-03-05 17:10:21 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La rue est obligatoire 
+2025-03-05 17:10:21 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:10:21 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:11:04 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email doit être valide 
+2025-03-05 17:11:04 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email est obligatoire 
+2025-03-05 17:11:05 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le nom est obligatoire 
+2025-03-05 17:11:05 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La fonction est obligatoire 
+2025-03-05 17:11:05 [main] ERROR c.a.s.u.AdministrateurServiceImpl - ajouter (administrateurRequest) : Email déjà utilisé 
+2025-03-05 17:11:05 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:11:05 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:11:05 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email est obligatoire 
+2025-03-05 17:11:05 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La requête est null 
+2025-03-05 17:11:05 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le prenom est obligatoire 
+2025-03-05 17:11:05 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:11:05 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le nom est obligatoire 
+2025-03-05 17:11:05 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le prenom est obligatoire 
+2025-03-05 17:11:05 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:11:05 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La fonction est obligatoire 
+2025-03-05 17:11:05 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:11:05 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:11:05 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:11:05 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:11:05 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:11:05 [main] ERROR c.a.s.u.AdministrateurServiceImpl - supprimerParid() : Vous ne pouvez pas supprimer le dernière administrateur en base. 
+2025-03-05 17:11:05 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de transmission est obligatoire 
+2025-03-05 17:11:05 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 17:11:05 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 17:11:05 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de portes est obligatoire 
+2025-03-05 17:11:05 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 17:11:05 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 17:11:05 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 17:11:05 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 17:11:05 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 17:11:05 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de voiture est obligatoire 
+2025-03-05 17:11:05 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La requête est null 
+2025-03-05 17:11:05 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 17:11:05 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le véhicule doit être actif ou inactif 
+2025-03-05 17:11:05 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 17:11:05 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 17:11:05 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - modifierParId(Long Id) : Une voiture retirée du parc n'est pas modifiable
+2025-03-05 17:11:05 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - determinerPermis (Voiture voiture) : Le nombre de passages n'est pas adéquat
+2025-03-05 17:11:05 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le carburant est obligatoire 
+2025-03-05 17:11:05 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 17:11:05 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Precisez si le véhicule est retiré du parc 
+2025-03-05 17:11:05 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le statut de la climatisation est obligatoire 
+2025-03-05 17:11:05 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - SupprimerParId (Long id): Id non présent 
+2025-03-05 17:11:05 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de places est obligatoire 
+2025-03-05 17:11:05 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 17:11:05 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 17:11:05 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 17:11:07 [main] INFO  c.a.ProjetLocationApplicationTests - Starting ProjetLocationApplicationTests using Java 23.0.1 with PID 1124 (started by florian.bon in C:\Users\florian.bon\Documents\Spring\Projet\projet-location)
+2025-03-05 17:11:07 [main] DEBUG c.a.ProjetLocationApplicationTests - Running with Spring Boot v3.4.2, Spring v6.2.2
+2025-03-05 17:11:07 [main] INFO  c.a.ProjetLocationApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2025-03-05 17:11:18 [main] INFO  c.a.ProjetLocationApplicationTests - Started ProjetLocationApplicationTests in 11.482 seconds (process running for 20.477)
+2025-03-05 17:11:18 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse email doit être valide 
+2025-03-05 17:11:18 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse Email est obligatoire 
+2025-03-05 17:11:18 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Vous devez être majeur pour vous inscrire 
+2025-03-05 17:11:18 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le nom est obligatoire 
+2025-03-05 17:11:18 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:11:18 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:11:18 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : Le code postal est obligatoire 
+2025-03-05 17:11:18 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La ville est obligatoire 
+2025-03-05 17:11:18 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La rue est obligatoire 
+2025-03-05 17:11:18 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse Email est obligatoire 
+2025-03-05 17:11:18 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : La date de naissance est obligatoire 
+2025-03-05 17:11:18 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : La requete est null 
+2025-03-05 17:11:18 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le prenom est obligatoire 
+2025-03-05 17:11:18 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:11:18 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le nom est obligatoire 
+2025-03-05 17:11:18 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La ville est obligatoire 
+2025-03-05 17:11:18 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:11:18 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le prenom est obligatoire 
+2025-03-05 17:11:18 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : Le code postal est obligatoire 
+2025-03-05 17:11:18 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:11:18 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - ajouterClient : Email déjà utilisé 
+2025-03-05 17:11:18 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:11:18 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:11:18 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : L'adresse est obligatoire 
+2025-03-05 17:11:18 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La rue est obligatoire 
+2025-03-05 17:11:18 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:11:18 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:12:18 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email doit être valide 
+2025-03-05 17:12:18 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email est obligatoire 
+2025-03-05 17:12:18 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le nom est obligatoire 
+2025-03-05 17:12:18 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La fonction est obligatoire 
+2025-03-05 17:12:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - ajouter (administrateurRequest) : Email déjà utilisé 
+2025-03-05 17:12:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:12:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:12:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email est obligatoire 
+2025-03-05 17:12:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La requête est null 
+2025-03-05 17:12:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le prenom est obligatoire 
+2025-03-05 17:12:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:12:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le nom est obligatoire 
+2025-03-05 17:12:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le prenom est obligatoire 
+2025-03-05 17:12:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:12:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La fonction est obligatoire 
+2025-03-05 17:12:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:12:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:12:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:12:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:12:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:12:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - supprimerParid() : Vous ne pouvez pas supprimer le dernière administrateur en base. 
+2025-03-05 17:12:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de transmission est obligatoire 
+2025-03-05 17:12:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 17:12:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 17:12:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de portes est obligatoire 
+2025-03-05 17:12:19 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 17:12:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 17:12:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 17:12:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 17:12:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 17:12:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de voiture est obligatoire 
+2025-03-05 17:12:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La requête est null 
+2025-03-05 17:12:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 17:12:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le véhicule doit être actif ou inactif 
+2025-03-05 17:12:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 17:12:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 17:12:19 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - modifierParId(Long Id) : Une voiture retirée du parc n'est pas modifiable
+2025-03-05 17:12:19 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - determinerPermis (Voiture voiture) : Le nombre de passages n'est pas adéquat
+2025-03-05 17:12:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le carburant est obligatoire 
+2025-03-05 17:12:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 17:12:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Precisez si le véhicule est retiré du parc 
+2025-03-05 17:12:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le statut de la climatisation est obligatoire 
+2025-03-05 17:12:19 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - SupprimerParId (Long id): Id non présent 
+2025-03-05 17:12:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de places est obligatoire 
+2025-03-05 17:12:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 17:12:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 17:12:19 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 17:12:21 [main] INFO  c.a.ProjetLocationApplicationTests - Starting ProjetLocationApplicationTests using Java 23.0.1 with PID 25256 (started by florian.bon in C:\Users\florian.bon\Documents\Spring\Projet\projet-location)
+2025-03-05 17:12:21 [main] DEBUG c.a.ProjetLocationApplicationTests - Running with Spring Boot v3.4.2, Spring v6.2.2
+2025-03-05 17:12:21 [main] INFO  c.a.ProjetLocationApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2025-03-05 17:12:32 [main] INFO  c.a.ProjetLocationApplicationTests - Started ProjetLocationApplicationTests in 11.751 seconds (process running for 20.92)
+2025-03-05 17:12:32 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse email doit être valide 
+2025-03-05 17:12:32 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse Email est obligatoire 
+2025-03-05 17:12:32 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Vous devez être majeur pour vous inscrire 
+2025-03-05 17:12:32 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le nom est obligatoire 
+2025-03-05 17:12:32 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:12:32 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:12:32 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : Le code postal est obligatoire 
+2025-03-05 17:12:32 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La ville est obligatoire 
+2025-03-05 17:12:32 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La rue est obligatoire 
+2025-03-05 17:12:32 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse Email est obligatoire 
+2025-03-05 17:12:32 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : La date de naissance est obligatoire 
+2025-03-05 17:12:32 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : La requete est null 
+2025-03-05 17:12:32 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le prenom est obligatoire 
+2025-03-05 17:12:32 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:12:32 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le nom est obligatoire 
+2025-03-05 17:12:32 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La ville est obligatoire 
+2025-03-05 17:12:32 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:12:32 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le prenom est obligatoire 
+2025-03-05 17:12:32 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : Le code postal est obligatoire 
+2025-03-05 17:12:32 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:12:32 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - ajouterClient : Email déjà utilisé 
+2025-03-05 17:12:32 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:12:32 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:12:33 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : L'adresse est obligatoire 
+2025-03-05 17:12:33 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La rue est obligatoire 
+2025-03-05 17:12:33 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:12:33 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:13:18 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email doit être valide 
+2025-03-05 17:13:18 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email est obligatoire 
+2025-03-05 17:13:18 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le nom est obligatoire 
+2025-03-05 17:13:18 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La fonction est obligatoire 
+2025-03-05 17:13:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - ajouter (administrateurRequest) : Email déjà utilisé 
+2025-03-05 17:13:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:13:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:13:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email est obligatoire 
+2025-03-05 17:13:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La requête est null 
+2025-03-05 17:13:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le prenom est obligatoire 
+2025-03-05 17:13:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:13:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le nom est obligatoire 
+2025-03-05 17:13:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le prenom est obligatoire 
+2025-03-05 17:13:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:13:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La fonction est obligatoire 
+2025-03-05 17:13:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:13:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:13:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:13:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:13:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:13:19 [main] ERROR c.a.s.u.AdministrateurServiceImpl - supprimerParid() : Vous ne pouvez pas supprimer le dernière administrateur en base. 
+2025-03-05 17:13:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de transmission est obligatoire 
+2025-03-05 17:13:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 17:13:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 17:13:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de portes est obligatoire 
+2025-03-05 17:13:19 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 17:13:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 17:13:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 17:13:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 17:13:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 17:13:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de voiture est obligatoire 
+2025-03-05 17:13:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La requête est null 
+2025-03-05 17:13:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 17:13:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le véhicule doit être actif ou inactif 
+2025-03-05 17:13:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 17:13:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 17:13:19 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - modifierParId(Long Id) : Une voiture retirée du parc n'est pas modifiable
+2025-03-05 17:13:19 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - determinerPermis (Voiture voiture) : Le nombre de passages n'est pas adéquat
+2025-03-05 17:13:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le carburant est obligatoire 
+2025-03-05 17:13:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 17:13:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Precisez si le véhicule est retiré du parc 
+2025-03-05 17:13:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le statut de la climatisation est obligatoire 
+2025-03-05 17:13:19 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - SupprimerParId (Long id): Id non présent 
+2025-03-05 17:13:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de places est obligatoire 
+2025-03-05 17:13:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 17:13:19 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 17:13:19 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 17:13:21 [main] INFO  c.a.ProjetLocationApplicationTests - Starting ProjetLocationApplicationTests using Java 23.0.1 with PID 19960 (started by florian.bon in C:\Users\florian.bon\Documents\Spring\Projet\projet-location)
+2025-03-05 17:13:21 [main] DEBUG c.a.ProjetLocationApplicationTests - Running with Spring Boot v3.4.2, Spring v6.2.2
+2025-03-05 17:13:21 [main] INFO  c.a.ProjetLocationApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2025-03-05 17:13:30 [main] INFO  c.a.ProjetLocationApplicationTests - Started ProjetLocationApplicationTests in 9.936 seconds (process running for 18.627)
+2025-03-05 17:13:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse email doit être valide 
+2025-03-05 17:13:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse Email est obligatoire 
+2025-03-05 17:13:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Vous devez être majeur pour vous inscrire 
+2025-03-05 17:13:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le nom est obligatoire 
+2025-03-05 17:13:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:13:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:13:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : Le code postal est obligatoire 
+2025-03-05 17:13:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La ville est obligatoire 
+2025-03-05 17:13:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La rue est obligatoire 
+2025-03-05 17:13:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse Email est obligatoire 
+2025-03-05 17:13:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : La date de naissance est obligatoire 
+2025-03-05 17:13:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : La requete est null 
+2025-03-05 17:13:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le prenom est obligatoire 
+2025-03-05 17:13:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:13:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le nom est obligatoire 
+2025-03-05 17:13:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La ville est obligatoire 
+2025-03-05 17:13:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:13:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le prenom est obligatoire 
+2025-03-05 17:13:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : Le code postal est obligatoire 
+2025-03-05 17:13:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:13:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - ajouterClient : Email déjà utilisé 
+2025-03-05 17:13:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:13:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:13:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : L'adresse est obligatoire 
+2025-03-05 17:13:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La rue est obligatoire 
+2025-03-05 17:13:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:13:30 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:34:49 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email doit être valide 
+2025-03-05 17:34:49 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email est obligatoire 
+2025-03-05 17:34:49 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le nom est obligatoire 
+2025-03-05 17:34:49 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La fonction est obligatoire 
+2025-03-05 17:34:50 [main] ERROR c.a.s.u.AdministrateurServiceImpl - ajouter (administrateurRequest) : Email déjà utilisé 
+2025-03-05 17:34:50 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:34:50 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:34:50 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email est obligatoire 
+2025-03-05 17:34:50 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La requête est null 
+2025-03-05 17:34:50 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le prenom est obligatoire 
+2025-03-05 17:34:50 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:34:50 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le nom est obligatoire 
+2025-03-05 17:34:50 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le prenom est obligatoire 
+2025-03-05 17:34:50 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:34:50 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La fonction est obligatoire 
+2025-03-05 17:34:50 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:34:50 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:34:50 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:34:50 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:34:50 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:34:50 [main] ERROR c.a.s.u.AdministrateurServiceImpl - supprimerParid() : Vous ne pouvez pas supprimer le dernière administrateur en base. 
+2025-03-05 17:34:50 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de transmission est obligatoire 
+2025-03-05 17:34:50 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 17:34:50 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 17:34:50 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de portes est obligatoire 
+2025-03-05 17:34:50 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 17:34:50 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 17:34:50 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 17:34:50 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 17:34:50 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 17:34:50 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de voiture est obligatoire 
+2025-03-05 17:34:50 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La requête est null 
+2025-03-05 17:34:50 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 17:34:50 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le véhicule doit être actif ou inactif 
+2025-03-05 17:34:50 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 17:34:50 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 17:34:50 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - modifierParId(Long Id) : Une voiture retirée du parc n'est pas modifiable
+2025-03-05 17:34:50 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - determinerPermis (Voiture voiture) : Le nombre de passages n'est pas adéquat
+2025-03-05 17:34:50 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le carburant est obligatoire 
+2025-03-05 17:34:50 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 17:34:50 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Precisez si le véhicule est retiré du parc 
+2025-03-05 17:34:50 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le statut de la climatisation est obligatoire 
+2025-03-05 17:34:50 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - SupprimerParId (Long id): Id non présent 
+2025-03-05 17:34:50 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de places est obligatoire 
+2025-03-05 17:34:50 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 17:34:50 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 17:34:50 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 17:34:52 [main] INFO  c.a.ProjetLocationApplicationTests - Starting ProjetLocationApplicationTests using Java 23.0.1 with PID 12496 (started by florian.bon in C:\Users\florian.bon\Documents\Spring\Projet\projet-location)
+2025-03-05 17:34:52 [main] DEBUG c.a.ProjetLocationApplicationTests - Running with Spring Boot v3.4.2, Spring v6.2.2
+2025-03-05 17:34:52 [main] INFO  c.a.ProjetLocationApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2025-03-05 17:35:03 [main] INFO  c.a.ProjetLocationApplicationTests - Started ProjetLocationApplicationTests in 11.208 seconds (process running for 21.224)
+2025-03-05 17:35:03 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse email doit être valide 
+2025-03-05 17:35:03 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse Email est obligatoire 
+2025-03-05 17:35:03 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Vous devez être majeur pour vous inscrire 
+2025-03-05 17:35:03 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le nom est obligatoire 
+2025-03-05 17:35:03 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:35:03 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:35:03 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : Le code postal est obligatoire 
+2025-03-05 17:35:03 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La ville est obligatoire 
+2025-03-05 17:35:03 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La rue est obligatoire 
+2025-03-05 17:35:03 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse Email est obligatoire 
+2025-03-05 17:35:03 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : La date de naissance est obligatoire 
+2025-03-05 17:35:03 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : La requete est null 
+2025-03-05 17:35:03 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le prenom est obligatoire 
+2025-03-05 17:35:03 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:35:03 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le nom est obligatoire 
+2025-03-05 17:35:03 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La ville est obligatoire 
+2025-03-05 17:35:03 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:35:03 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le prenom est obligatoire 
+2025-03-05 17:35:03 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : Le code postal est obligatoire 
+2025-03-05 17:35:03 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:35:03 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - ajouterClient : Email déjà utilisé 
+2025-03-05 17:35:03 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:35:03 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:35:03 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : L'adresse est obligatoire 
+2025-03-05 17:35:03 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La rue est obligatoire 
+2025-03-05 17:35:03 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:35:03 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:37:01 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email doit être valide 
+2025-03-05 17:37:01 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email est obligatoire 
+2025-03-05 17:37:01 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le nom est obligatoire 
+2025-03-05 17:37:01 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La fonction est obligatoire 
+2025-03-05 17:37:01 [main] ERROR c.a.s.u.AdministrateurServiceImpl - ajouter (administrateurRequest) : Email déjà utilisé 
+2025-03-05 17:37:01 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:37:01 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:37:01 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : L'adresse email est obligatoire 
+2025-03-05 17:37:01 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La requête est null 
+2025-03-05 17:37:01 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le prenom est obligatoire 
+2025-03-05 17:37:01 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:37:01 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le nom est obligatoire 
+2025-03-05 17:37:01 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le prenom est obligatoire 
+2025-03-05 17:37:01 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:37:01 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : La fonction est obligatoire 
+2025-03-05 17:37:01 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:37:01 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:37:01 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierAdministrateur ( Administrateur administrateurRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:37:01 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:37:01 [main] ERROR c.a.s.u.AdministrateurServiceImpl - verifierPasswordAdministrateur (String id, String password) : Email ou password erroné
+2025-03-05 17:37:01 [main] ERROR c.a.s.u.AdministrateurServiceImpl - supprimerParid() : Vous ne pouvez pas supprimer le dernière administrateur en base. 
+2025-03-05 17:37:01 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de transmission est obligatoire 
+2025-03-05 17:37:01 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 17:37:01 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 17:37:01 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de portes est obligatoire 
+2025-03-05 17:37:01 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 17:37:01 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 17:37:01 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de bagages est obligatoire 
+2025-03-05 17:37:01 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 17:37:01 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le tarif Journalier est obligatoire 
+2025-03-05 17:37:01 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le type de voiture est obligatoire 
+2025-03-05 17:37:01 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La requête est null 
+2025-03-05 17:37:01 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 17:37:01 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le véhicule doit être actif ou inactif 
+2025-03-05 17:37:01 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La couleur est obligatoire 
+2025-03-05 17:37:01 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le modèle est obligatoire 
+2025-03-05 17:37:01 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - modifierParId(Long Id) : Une voiture retirée du parc n'est pas modifiable
+2025-03-05 17:37:01 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - determinerPermis (Voiture voiture) : Le nombre de passages n'est pas adéquat
+2025-03-05 17:37:01 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le carburant est obligatoire 
+2025-03-05 17:37:01 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : La marque est obligatoire 
+2025-03-05 17:37:01 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Precisez si le véhicule est retiré du parc 
+2025-03-05 17:37:01 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le statut de la climatisation est obligatoire 
+2025-03-05 17:37:01 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - SupprimerParId (Long id): Id non présent 
+2025-03-05 17:37:01 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le nombre de places est obligatoire 
+2025-03-05 17:37:01 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 17:37:01 [main] ERROR c.a.s.v.VerificationVehiculeUtil - vérifier Véhicule : Le kilomètrage est obligatoire 
+2025-03-05 17:37:01 [main] ERROR c.a.s.vehicule.VoitureServiceImpl - checkVoiture (Long id) : Id non présent 
+2025-03-05 17:37:03 [main] INFO  c.a.ProjetLocationApplicationTests - Starting ProjetLocationApplicationTests using Java 23.0.1 with PID 9244 (started by florian.bon in C:\Users\florian.bon\Documents\Spring\Projet\projet-location)
+2025-03-05 17:37:03 [main] DEBUG c.a.ProjetLocationApplicationTests - Running with Spring Boot v3.4.2, Spring v6.2.2
+2025-03-05 17:37:03 [main] INFO  c.a.ProjetLocationApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2025-03-05 17:37:12 [main] INFO  c.a.ProjetLocationApplicationTests - Started ProjetLocationApplicationTests in 9.403 seconds (process running for 15.148)
+2025-03-05 17:37:12 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse email doit être valide 
+2025-03-05 17:37:12 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse Email est obligatoire 
+2025-03-05 17:37:12 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Vous devez être majeur pour vous inscrire 
+2025-03-05 17:37:12 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le nom est obligatoire 
+2025-03-05 17:37:12 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:37:12 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:37:12 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : Le code postal est obligatoire 
+2025-03-05 17:37:12 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La ville est obligatoire 
+2025-03-05 17:37:12 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La rue est obligatoire 
+2025-03-05 17:37:12 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : L'adresse Email est obligatoire 
+2025-03-05 17:37:12 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : La date de naissance est obligatoire 
+2025-03-05 17:37:12 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : La requete est null 
+2025-03-05 17:37:12 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le prenom est obligatoire 
+2025-03-05 17:37:12 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:37:12 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le nom est obligatoire 
+2025-03-05 17:37:12 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La ville est obligatoire 
+2025-03-05 17:37:12 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:37:12 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le prenom est obligatoire 
+2025-03-05 17:37:12 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : Le code postal est obligatoire 
+2025-03-05 17:37:12 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:37:12 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - ajouterClient : Email déjà utilisé 
+2025-03-05 17:37:12 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 
+2025-03-05 17:37:12 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:37:12 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : L'adresse est obligatoire 
+2025-03-05 17:37:12 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierAdresse (adresseDto) : La rue est obligatoire 
+2025-03-05 17:37:12 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierClient (clientRequestDto) : Le mot de passe ne respecte pas les conditions 
+2025-03-05 17:37:12 [main] ERROR c.a.s.utilisateur.ClientServiceImpl - verifierPasswordClient : Email ou password erroné 

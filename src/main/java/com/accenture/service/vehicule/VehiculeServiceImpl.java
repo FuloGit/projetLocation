@@ -39,7 +39,7 @@ public class VehiculeServiceImpl implements VehiculeService {
     /**
      * Remonte les véhicules
      *
-     * @return
+     * @return VehiculeDto
      */
     @Override
     public VehiculeDto trouverTous() {
@@ -50,7 +50,7 @@ public class VehiculeServiceImpl implements VehiculeService {
      * Recherche les véhicules par filtre : ACTIF, INACTIF, HORS_PARC, DANS_LE_PARC
      *
      * @param filtreListe
-     * @return
+     * @return VehiculeDto
      */
     public VehiculeDto trouverParFiltre(FiltreListe filtreListe) {
         List<Vehicule> liste = switch (filtreListe) {
@@ -70,7 +70,7 @@ public class VehiculeServiceImpl implements VehiculeService {
      * @param categorieVehicule
      * @param typeVoiture
      * @param typeVelo
-     * @return
+     * @return VehiculeDto
      */
     @Override
     public VehiculeDto trouverParParametres(LocalDate dateDeDebut, LocalDate dateDeFin, CategorieVehicule categorieVehicule, TypeVoiture typeVoiture, TypeVelo typeVelo) {

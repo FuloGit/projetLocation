@@ -28,7 +28,7 @@ public class AdministrateurServiceImpl implements AdministrateurService {
 
 
     /**
-     * Renvoie un administrateurResponseDto après avoir vérifier la requete et appeler save()
+     * Renvoie un administrateurResponseDto après avoir vérifié la requete et appeler save()
      *
      * @param adminRequestDto
      * @return Remonte le client enregistré sous forme de ResponseDto

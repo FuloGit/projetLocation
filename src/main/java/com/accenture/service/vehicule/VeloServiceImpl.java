@@ -14,9 +14,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
-import static com.accenture.shared.model.FiltreListe.*;
-
 @Service
 @AllArgsConstructor
 public class VeloServiceImpl implements VeloService {

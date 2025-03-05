@@ -1,14 +1,19 @@
 package com.accenture.service.vehicule;
 
-import com.accenture.repository.entity.vehicule.Vehicule;
 import com.accenture.service.dto.vehicule.VehiculeDto;
+import com.accenture.shared.model.CategorieVehicule;
 import com.accenture.shared.model.FiltreListe;
+import com.accenture.shared.model.TypeVelo;
+import com.accenture.shared.model.TypeVoiture;
 
 import java.time.LocalDate;
-import java.util.List;
 
+/**
+ * Interface pour l'implémentation de Vehicule service
+ */
 public interface VehiculeService {
     VehiculeDto trouverTous();
     VehiculeDto trouverParFiltre(FiltreListe filtreListe);
-    VehiculeDto trouverParDate(LocalDate dateDedebut, LocalDate dateDeFin);
+    VehiculeDto trouverParDateEtCategorie(LocalDate dateDeDebut, LocalDate dateDeFin, CategorieVehicule categorieVehicule, TypeVoiture typeVehicule, TypeVelo typeVelo);
+
 }

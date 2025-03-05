@@ -61,7 +61,7 @@ public class AdministrateurController {
                 .path(("/{id}"))
                 .buildAndExpand(administrateurResponseDto.email())
                 .toUri();
-        log.info("Ajout Administrateur : " + administrateurResponseDto);
+        log.info("Ajout Administrateur : {} " , administrateurResponseDto);
         return ResponseEntity.created(location).build();
     }
 
@@ -69,13 +69,12 @@ public class AdministrateurController {
     @Operation(summary = "Affiche un Administrateur")
 @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Administrateur trouvé"),
-        @ApiResponse(responseCode = "404", description = "Mauvaise Requete"),
         @ApiResponse(responseCode = "400", description = "Erreur Fonctionnelle"),
 })
     @GetMapping("/infos")
     ResponseEntity<AdministrateurResponseDto> afficher(@RequestParam String id,  @RequestParam String password) {
         AdministrateurResponseDto administrateurResponseDto = administrateurService.trouverParId(id, password);
-        log.info("Afficher Administrateur : "+ administrateurResponseDto);
+        log.info("Afficher Administrateur : {} ", administrateurResponseDto);
         return ResponseEntity.ok(administrateurResponseDto);
     }
 
@@ -84,13 +83,12 @@ public class AdministrateurController {
     @Operation(summary = "Supprime un administrateur")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Administrateur supprimé"),
-            @ApiResponse(responseCode = "404", description = "Administrateur introuvable"),
             @ApiResponse(responseCode = "400", description = "Erreur Fonctionnelle"),
     })
     @DeleteMapping
     ResponseEntity<AdministrateurResponseDto> supprimer(@RequestParam String id, String password) {
         administrateurService.supprimerParid(id, password);
-        log.info("Suppression Administrateur : " + id);
+        log.info("Suppression Administrateur : {} " , id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
@@ -99,7 +97,6 @@ public class AdministrateurController {
     @Operation(summary = "Modifie un administrateur")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Administrateur modifié"),
-            @ApiResponse(responseCode = "404", description = "Administrateur Introuvable"),
             @ApiResponse(responseCode = "400", description = "Erreur Fonctionnelle"),
     })
     @PatchMapping
@@ -117,7 +114,7 @@ public class AdministrateurController {
                                                          }
                                                          """)))@RequestBody AdministrateurRequestDto administrateurRequestDto) {
         AdministrateurResponseDto reponse = administrateurService.modifier(id, password, administrateurRequestDto);
-        log.info("Modification Administrateur : " + reponse);
+        log.info("Modification Administrateur : {} ", reponse);
         return ResponseEntity.ok(reponse);
     }
 }

@@ -12,7 +12,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.persistence.Table;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -60,7 +59,7 @@ public class VoitureController {
                               "tarifJournalier": 40,
                               "kilometrage": 107000,
                               "actif": true,
-                              "retireDuParc": true,
+                              "retireDuParc": false,
                             "typeVoiture": "CITADINE"
                             }
                             """
@@ -144,7 +143,7 @@ public class VoitureController {
                               "tarifJournalier": 40,
                               "kilometrage": 107000,
                               "actif": true,
-                              "retireDuParc": true,
+                              "retireDuParc": false,
                             "typeVoiture": "CITADINE"
                             }
                             """

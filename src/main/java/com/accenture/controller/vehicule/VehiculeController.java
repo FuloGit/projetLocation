@@ -3,7 +3,10 @@ package com.accenture.controller.vehicule;
 import com.accenture.service.dto.vehicule.VehiculeDto;
 
 import com.accenture.service.vehicule.VehiculeService;
+import com.accenture.shared.model.CategorieVehicule;
 import com.accenture.shared.model.FiltreListe;
+import com.accenture.shared.model.TypeVelo;
+import com.accenture.shared.model.TypeVoiture;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 
@@ -27,7 +30,7 @@ public class VehiculeController {
     @GetMapping
     VehiculeDto rechercherTous() {
         VehiculeDto vehiculeDto = vehiculeServiceImpl.trouverTous();
-        log.info("Rechercher véhicule : " + vehiculeDto);
+        log.info("Rechercher véhicule : {} " , vehiculeDto);
         return vehiculeDto;
 
     }
@@ -35,16 +38,17 @@ public class VehiculeController {
     @GetMapping("/filtre")
     VehiculeDto rechercherParFiltre(@RequestParam FiltreListe filtreListe) {
         VehiculeDto vehiculeDto = vehiculeServiceImpl.trouverParFiltre(filtreListe);
-        log.info("Rechercher vehicule : " + filtreListe + " : " + vehiculeDto);
+        log.info("Rechercher vehicule : {}", filtreListe + " : " + vehiculeDto);
         return vehiculeDto;
     }
 
-    @GetMapping("/disponible")
-    VehiculeDto rechercherParDisponibilite(@RequestParam LocalDate dateDeDebut, @RequestParam LocalDate dateDeFin) {
-        VehiculeDto vehiculeDto = vehiculeServiceImpl.trouverParDate(dateDeDebut, dateDeFin);
-        log.info("Rechercher disponibles : debut : " + dateDeDebut + "fin : " + dateDeFin + " : " + vehiculeDto);
+    @GetMapping("/search")
+    VehiculeDto rechercher(@RequestParam(required = false) LocalDate dateDeDebut, @RequestParam(required = false) LocalDate dateDeFin, @RequestParam(required = false) CategorieVehicule categorieVehicule, @RequestParam(required = false) TypeVoiture typeVoiture, @RequestParam(required = false)TypeVelo typeVelo) {
+        VehiculeDto vehiculeDto = vehiculeServiceImpl.trouverParDateEtCategorie(dateDeDebut, dateDeFin, categorieVehicule, typeVoiture, typeVelo);
+        log.info("Rechercher disponibles : {}", vehiculeDto);
         return vehiculeDto;
     }
+
 }
 
 

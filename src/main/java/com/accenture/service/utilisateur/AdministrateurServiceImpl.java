@@ -22,6 +22,7 @@ import static com.accenture.service.dto.utilisateur.UtilMessage.*;
 @AllArgsConstructor
 @Slf4j
 public class AdministrateurServiceImpl implements AdministrateurService {
+    public static final String VERIFIER_ADMINISTRATEUR_ADMINISTRATEUR_REQUEST_DTO = "verifierAdministrateur (administrateurRequestDto) : {} ";
     private AdministrateurDao administrateurDao;
     private AdministrateurMapper administrateurMapper;
 
@@ -37,8 +38,10 @@ public class AdministrateurServiceImpl implements AdministrateurService {
     public AdministrateurResponseDto ajouter(AdministrateurRequestDto adminRequestDto) {
         verifierAdministrateur(adminRequestDto);
         Optional<Administrateur> optionalAdministrateur = administrateurDao.findById(adminRequestDto.email());
-        if (optionalAdministrateur.isPresent())
-            throw new UtilisateurException("Email déjà utilisé");
+        if (optionalAdministrateur.isPresent()){
+            UtilisateurException utilisateurException = new UtilisateurException("Email déjà utilisé");
+            log.error("ajouter (administrateurRequest) : {} ", utilisateurException.getMessage());
+            throw utilisateurException;}
         return administrateurMapper.toAdministrateurResponseDto(administrateurDao.save(administrateurMapper.toAdministrateur(adminRequestDto)));
     }
 
@@ -56,7 +59,7 @@ public class AdministrateurServiceImpl implements AdministrateurService {
     }
 
     /**
-     * Appel la méthode deleteParId(id)  après vérification de la requete
+     * Appel la méthode deleteParId (id) après vérification de la requete
      *
      * @param id
      * @param password
@@ -68,7 +71,7 @@ public class AdministrateurServiceImpl implements AdministrateurService {
 
         if (administrateurDao.findAll().size() == 1) {
             UtilisateurException utilisateurException = new UtilisateurException("Vous ne pouvez pas supprimer le dernière administrateur en base.");
-            log.error("supprimerParid() : " + utilisateurException.getMessage());
+            log.error("supprimerParid() : {} ",utilisateurException.getMessage());
             throw utilisateurException;
         }
         administrateurDao.deleteById(id);
@@ -109,37 +112,37 @@ public class AdministrateurServiceImpl implements AdministrateurService {
     private void verifierAdministrateur(AdministrateurRequestDto administrateurRequestDto) {
         if (administrateurRequestDto == null) {
             UtilisateurException utilisateurException = new UtilisateurException("La requête est null");
-            log.error("verifierAdministrateur : " + "La requête est null");
+            log.error(VERIFIER_ADMINISTRATEUR_ADMINISTRATEUR_REQUEST_DTO, utilisateurException.getMessage());
             throw utilisateurException;
         }
         if (administrateurRequestDto.email() == null || administrateurRequestDto.email().isBlank()) {
             UtilisateurException utilisateurException = new UtilisateurException("L'adresse email est obligatoire");
-            log.error("verifierAdministrateur : " + "L'adresse email est obligatoire");
+            log.error(VERIFIER_ADMINISTRATEUR_ADMINISTRATEUR_REQUEST_DTO, utilisateurException.getMessage());
             throw utilisateurException;
         }
         if (administrateurRequestDto.nom() == null || administrateurRequestDto.nom().isBlank()) {
             UtilisateurException utilisateurException = new UtilisateurException("Le nom est obligatoire");
-            log.error("verifierAdministrateur : " + "Le nom est obligatoire");
+            log.error(VERIFIER_ADMINISTRATEUR_ADMINISTRATEUR_REQUEST_DTO, utilisateurException.getMessage());
             throw utilisateurException;
         }
         if (administrateurRequestDto.prenom() == null || administrateurRequestDto.prenom().isBlank()) {
             UtilisateurException utilisateurException = new UtilisateurException("Le prenom est obligatoire");
-            log.error("verifierAdministrateur : " + "Le prenom est obligatoire");
+            log.error(VERIFIER_ADMINISTRATEUR_ADMINISTRATEUR_REQUEST_DTO, utilisateurException.getMessage());
             throw utilisateurException;
         }
         if ((!administrateurRequestDto.email().matches(EMAIL_REGEX))) {
             UtilisateurException utilisateurException = new UtilisateurException("L'adresse email doit être valide");
-            log.error("verifierAdministrateur : " +"L'adresse email doit être valide") ;
+            log.error(VERIFIER_ADMINISTRATEUR_ADMINISTRATEUR_REQUEST_DTO, utilisateurException.getMessage());
             throw utilisateurException;
         }
         if (administrateurRequestDto.password() == null || administrateurRequestDto.password().isBlank() || (!administrateurRequestDto.password().matches(PASSWORD_REGEX))) {
             UtilisateurException utilisateurException = new UtilisateurException("Le mot de passe ne respecte pas les conditions");
-        log.error("verifierAdministrateur : " +"Le mot de passe ne respecte pas les conditions") ;
+            log.error(VERIFIER_ADMINISTRATEUR_ADMINISTRATEUR_REQUEST_DTO, utilisateurException.getMessage());
         throw utilisateurException;
         }
         if (administrateurRequestDto.fonction() == null || administrateurRequestDto.fonction().isBlank())
         {UtilisateurException utilisateurException = new UtilisateurException("La fonction est obligatoire");
-        log.error("verifierAdministrateur : " +"La fonction est obligatoire") ;
+            log.error(VERIFIER_ADMINISTRATEUR_ADMINISTRATEUR_REQUEST_DTO, utilisateurException.getMessage());
         throw utilisateurException;}
     }
 
@@ -148,7 +151,7 @@ public class AdministrateurServiceImpl implements AdministrateurService {
     private Administrateur verifierPasswordAdministrateur(String id, String password) {
         Optional<Administrateur> optionalAdministrateur = administrateurDao.findById(id);
         if (optionalAdministrateur.isEmpty() || !optionalAdministrateur.get().getPassword().equals(password)) {
-            log.error("verifierPasswordAdministrateur" + EMAIL_OU_PASSWORD_ERRONE);
+            log.error("verifierPasswordAdministrateur : {}" , EMAIL_OU_PASSWORD_ERRONE);
             throw new EntityNotFoundException(EMAIL_OU_PASSWORD_ERRONE);
         }
         return optionalAdministrateur.get();

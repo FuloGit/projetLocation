@@ -1,9 +1,7 @@
 package com.accenture.service.dto.vehicule;
 
-import com.accenture.shared.model.Permis;
 import com.accenture.shared.model.TypeVelo;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import com.accenture.shared.model.TypeVoiture;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 

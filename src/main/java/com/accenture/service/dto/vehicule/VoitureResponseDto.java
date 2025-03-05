@@ -2,8 +2,6 @@ package com.accenture.service.dto.vehicule;
 
 import com.accenture.shared.model.*;
 
-import java.lang.reflect.Type;
-
 public record VoitureResponseDto(
         Long id,
         String marque,

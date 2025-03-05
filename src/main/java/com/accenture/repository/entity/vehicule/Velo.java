@@ -1,5 +1,6 @@
 package com.accenture.repository.entity.vehicule;
 import com.accenture.shared.model.TypeVelo;
+import com.accenture.shared.model.TypeVoiture;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,7 @@ public class Velo extends Vehicule {
     private Boolean freinADisque;
     @Enumerated(value = EnumType.STRING)
     private TypeVelo typeVelo;
+
     public Velo(Long id, String marque, String modele, String couleur, Integer tarifJournalier, Integer kilometrage, Boolean actif, Boolean retireDuParc, Integer tailleDuCadre, Integer poids, Boolean electrique, Integer autonomie, Boolean freinADisque, TypeVelo typeVelo) {
         super(id, marque, modele, couleur, tarifJournalier, kilometrage, actif, retireDuParc);
         this.tailleDuCadre = tailleDuCadre;

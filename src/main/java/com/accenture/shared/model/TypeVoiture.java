@@ -6,6 +6,5 @@ public enum TypeVoiture {
     SUV,
     FAMILIALE,
     ELECTRIQUE,
-    LUXE
-
+    LUXE,
 }

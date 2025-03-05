@@ -27,6 +27,8 @@ import static com.accenture.service.dto.utilisateur.UtilMessage.*;
 @Slf4j
 public class ClientServiceImpl implements ClientService {
 
+    public static final String VERIFIER_ADRESSE_ADRESSE_DTO = "verifierAdresse (adresseDto) : {} ";
+    public static final String VERIFIER_CLIENT_CLIENT_REQUEST_DTO = "verifierClient (clientRequestDto) : {} ";
     ClientMapper clientMapper;
     private ClientDao clientDAO;
 
@@ -44,7 +46,7 @@ public class ClientServiceImpl implements ClientService {
         Optional<Client> optionalClient = clientDAO.findById(clientRequestDto.email());
         if (optionalClient.isPresent()) {
             UtilisateurException utilisateurException = new UtilisateurException("Email déjà utilisé");
-            log.error("Erreur : " + utilisateurException.getMessage());
+            log.error("ajouterClient : {} ",  utilisateurException.getMessage());
             throw utilisateurException;
         }
 
@@ -60,8 +62,7 @@ public class ClientServiceImpl implements ClientService {
      */
     @Override
     public ClientResponseDto trouverParId(String id, String password) throws UtilisateurException {
-        Optional<Client> optionalClient = verifierPasswordClient(id, password);
-        return clientMapper.toClientResponseDtoForCLient(optionalClient.get());
+        return clientMapper.toClientResponseDtoForCLient(verifierPasswordClient(id, password));
     }
 
 
@@ -89,8 +90,7 @@ public class ClientServiceImpl implements ClientService {
      */
     @Override
     public ClientResponseDto modifier(String id, String password, ClientRequestDto clientRequestDto) throws UtilisateurException {
-        Optional<Client> optionalClient = verifierPasswordClient(id, password);
-        Client clientEnBase = optionalClient.get();
+        Client clientEnBase = verifierPasswordClient(id, password);
         Client clientModifier = clientMapper.toClient(clientRequestDto);
         remplace(clientModifier, clientEnBase);
         verifierClient(clientMapper.toClientRequestDto(clientEnBase));
@@ -130,76 +130,74 @@ public class ClientServiceImpl implements ClientService {
     private static void verifierAdresse(AdresseDto adresse) {
         if (adresse == null) {
             UtilisateurException utilisateurException = new UtilisateurException("L'adresse est obligatoire");
-            log.error("verifierClient : " + "L'adresse est obligatoire");
+            log.error(VERIFIER_ADRESSE_ADRESSE_DTO, utilisateurException.getMessage());
             throw utilisateurException;
         }
         if (adresse.rue() == null || adresse.rue().isBlank())
         {UtilisateurException utilisateurException = new UtilisateurException("La rue est obligatoire");
-        log.error("verifierClient : " + "La rue est obligatoire");
+            log.error(VERIFIER_ADRESSE_ADRESSE_DTO, utilisateurException.getMessage());
         throw utilisateurException;}
         if (adresse.ville() == null || adresse.ville().isBlank())
         {UtilisateurException utilisateurException = new UtilisateurException("La ville est obligatoire");
-            log.error("verifierClient : " + "La ville est obligatoire");
+            log.error(VERIFIER_ADRESSE_ADRESSE_DTO, utilisateurException.getMessage());
             throw utilisateurException;}
         if (adresse.codePostal() == null || adresse.codePostal().isBlank())
         {UtilisateurException utilisateurException = new UtilisateurException("Le code postal est obligatoire");
-            log.error("verifierClient : " + "Le code postal est obligatoire");
+            log.error(VERIFIER_ADRESSE_ADRESSE_DTO, utilisateurException.getMessage());
             throw utilisateurException;}
     }
 
 
     private static void verifierClient(ClientRequestDto clientRequestDto) {
-
         if (clientRequestDto == null) {
             UtilisateurException utilisateurException = new UtilisateurException("La requete est null");
-            log.error("verifierClient : " + "La requete est null");
+            log.error(VERIFIER_CLIENT_CLIENT_REQUEST_DTO, utilisateurException.getMessage());
             throw utilisateurException;
         }
         if (clientRequestDto.email() == null || clientRequestDto.email().isBlank()) {
             UtilisateurException utilisateurException = new UtilisateurException("L'adresse Email est obligatoire");
-            log.error("verifierClient : " + "L'adresse Email est obligatoire");
+            log.error(VERIFIER_CLIENT_CLIENT_REQUEST_DTO, utilisateurException.getMessage());
             throw utilisateurException;
         }
         if (clientRequestDto.nom() == null || clientRequestDto.nom().isBlank()) {
             UtilisateurException utilisateurException = new UtilisateurException("Le nom est obligatoire");
-            log.error("verifierClient : " + "Le nom est obligatoire");
+            log.error(VERIFIER_CLIENT_CLIENT_REQUEST_DTO, utilisateurException.getMessage());
             throw utilisateurException;
         }
         if (clientRequestDto.prenom() == null || clientRequestDto.prenom().isBlank()) {
             UtilisateurException utilisateurException = new UtilisateurException("Le prenom est obligatoire");
-            log.error("verifierCLient : " + "Le prenom est obligatoire");
+            log.error(VERIFIER_CLIENT_CLIENT_REQUEST_DTO, utilisateurException.getMessage());
             throw utilisateurException;
         }
         if (clientRequestDto.dateDeNaissance() == null) {
             UtilisateurException utilisateurException = new UtilisateurException("La date de naissance est obligatoire");
-            log.error("verifierCLient : " + "La date de naissance est obligatoire");
+            log.error(VERIFIER_CLIENT_CLIENT_REQUEST_DTO, utilisateurException.getMessage());
             throw utilisateurException;
         }
         if ((clientRequestDto.dateDeNaissance().plusYears(18).isAfter(LocalDate.now()))) {
             UtilisateurException utilisateurException = new UtilisateurException("Vous devez être majeur pour vous inscrire");
-            log.error("verifierCLient : " + "Vous devez être majeur pour vous inscrire");
+            log.error(VERIFIER_CLIENT_CLIENT_REQUEST_DTO, utilisateurException.getMessage());
             throw utilisateurException;
         }
-
         if ((!clientRequestDto.email().matches(EMAIL_REGEX))) {
             UtilisateurException utilisateurException = new UtilisateurException("L'adresse email doit être valide");
-            log.error("verifierClient : " + "L'adresse email doit être valide");
+            log.error(VERIFIER_CLIENT_CLIENT_REQUEST_DTO, utilisateurException.getMessage());
             throw utilisateurException;
         }
         if (clientRequestDto.password() == null || clientRequestDto.password().isBlank() || (!clientRequestDto.password().matches(PASSWORD_REGEX))) {
             UtilisateurException utilisateurException = new UtilisateurException("Le mot de passe ne respecte pas les conditions");
-            log.error("verifierClient : " + "Le mot de passe ne respecte pas les conditions");
+            log.error(VERIFIER_CLIENT_CLIENT_REQUEST_DTO, utilisateurException.getMessage());
             throw utilisateurException;
         }
         verifierAdresse(clientRequestDto.adresse());
     }
 
-    private Optional<Client> verifierPasswordClient(String id, String password) {
+    private Client verifierPasswordClient(String id, String password) {
         Optional<Client> optionalClient = clientDAO.findById(id);
         if (optionalClient.isEmpty() || !optionalClient.get().getPassword().equals(password)) {
-            log.error("verifierPasswordClient" + EMAIL_OU_PASSWORD_ERRONE);
+            log.error("verifierPasswordClient : {} ", EMAIL_OU_PASSWORD_ERRONE);
             throw new EntityNotFoundException(EMAIL_OU_PASSWORD_ERRONE);
         }
-        return optionalClient;
+        return optionalClient.get();
     }
 }

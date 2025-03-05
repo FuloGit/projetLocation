@@ -8,7 +8,6 @@ import java.util.List;
 public interface VoitureDao extends JpaRepository<Voiture, Long> {
    List<Voiture> findByActifTrue();
    List<Voiture> findByActifFalse();
-
    List<Voiture> findByRetireDuParcFalse();
    List<Voiture> findByRetireDuParcTrue();
 

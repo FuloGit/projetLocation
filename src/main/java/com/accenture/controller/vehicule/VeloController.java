@@ -89,7 +89,7 @@ public class VeloController {
         return liste;
     }
 
-    @Operation(summary = "Affiche un vélo")
+    @Operation(summary = "Afficher un vélo")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Velo trouvé"),
             @ApiResponse(responseCode = "404", description = "Vélo introuvable")
@@ -102,7 +102,7 @@ public class VeloController {
         return ResponseEntity.ok(veloResponseDto);
     }
 
-    @Operation(summary = "Supprime un vélo")
+    @Operation(summary = "Supprimer un vélo")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "204", description = "Vélo supprimé"),
             @ApiResponse(responseCode = "404", description = "Mauvaise Requete"),
@@ -115,7 +115,7 @@ public class VeloController {
     }
 
 
-    @Operation(summary = "Modifie un vélo")
+    @Operation(summary = "Modifier un vélo")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Vélo modifié "),
             @ApiResponse(responseCode = "404", description = "Vélo Introuvable"),

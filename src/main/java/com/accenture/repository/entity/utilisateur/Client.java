@@ -22,6 +22,7 @@ import java.util.List;
 @Data
 @Table(name= "clients")
 public class Client extends UtilisateurConnecte {
+
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn
     private Adresse adresse;

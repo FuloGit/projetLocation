@@ -67,7 +67,7 @@ public class VehiculeServiceImpl implements VehiculeService {
      * Puis transformer avec la méthode toVéhiculeDto
      *
      * @param dateDeDebut       pour la méthode filtrerParDate, récupère la liste de location et exclus les véhicules dont la location n'est pas finis à la date de début
-     * @param dateDeFin         pour la méthode filtrerParDate, récupère la liste de location et exclus les véhicules dont la location commence avec la date de fin rentrée
+     * @param dateDeFin         pour la méthode filtrerParDate, récupère la liste de location et exclus les véhicules dont la location commence avant la date de fin entrée
      * @param categorieVehicule Sert à l'appel d'un switch dans la méthode filtrerParCategorie
      * @param typeVoiture       filtre utilisé dans la méthode filtrerParType
      * @param typeVelo          filtrer utilisé dans la méthode filtrerParType

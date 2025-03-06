@@ -1,10 +1,25 @@
 package com.accenture.service.dto.vehicule;
 
 import com.accenture.shared.model.TypeVelo;
-import com.accenture.shared.model.TypeVoiture;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+/**
+ * Classe requête pour Velo.class
+ * @param marque
+ * @param modele
+ * @param couleur
+ * @param tarifJournalier
+ * @param kilometrage
+ * @param actif
+ * @param retireDuParc
+ * @param tailleDuCadre
+ * @param poids
+ * @param electrique
+ * @param autonomie
+ * @param freinADisque
+ * @param typeVelo
+ */
 public record VeloRequestDto(
         @NotBlank(message = "La marque est obligatoire")
         String marque,

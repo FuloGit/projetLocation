@@ -4,11 +4,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 /**
- *entity des Administrateurs qui ont les droits sur la base de données
+ * Entity des Administrateurs qui ont les droits sur la base de données.
+ * Ajoute la fonction de l'administrateur par rapport à UtilisateurConnecté
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
 @AllArgsConstructor

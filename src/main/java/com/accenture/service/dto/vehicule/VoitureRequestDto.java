@@ -7,6 +7,23 @@ import com.accenture.shared.model.TypeVoiture;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+/**
+ *
+ * @param marque
+ * @param modele
+ * @param couleur
+ * @param nombreDePlaces
+ * @param carburant
+ * @param typeVoiture
+ * @param nombresDePortes
+ * @param transmission
+ * @param climatisation
+ * @param nombredeBagages
+ * @param tarifJournalier
+ * @param kilometrage
+ * @param actif
+ * @param retireDuParc
+ */
 public record VoitureRequestDto(
         @NotBlank (message = "La marque est obligatoire")
         String marque,

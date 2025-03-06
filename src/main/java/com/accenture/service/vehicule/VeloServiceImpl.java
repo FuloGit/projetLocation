@@ -1,8 +1,7 @@
 package com.accenture.service.vehicule;
 
 import com.accenture.exception.VehiculeException;
-import com.accenture.repository.VeloDao;
-import com.accenture.repository.entity.vehicule.Vehicule;
+import com.accenture.repository.vehicule.VeloDao;
 import com.accenture.repository.entity.vehicule.Velo;
 import com.accenture.service.dto.vehicule.VeloRequestDto;
 import com.accenture.service.dto.vehicule.VeloResponseDto;
@@ -28,17 +27,17 @@ public class VeloServiceImpl implements VeloService {
 
 
     /**
-     * Renvoie une VeloResponseDto après avoir vérifier la requete  et appeler save()
+     * Renvoie une VeloResponseDto après avoir vérifié la requete et appeler save()
      *
      * @param veloRequestDto
      * @return
-     * @throws VehiculeException si un champs est null ou blank
+     * @throws VehiculeException si un champ est null ou blank
      */
     @Override
     public VeloResponseDto ajouterVelo(VeloRequestDto veloRequestDto) {
         verifierVelo(veloRequestDto);
         Velo velo = veloMapper.toVelo(veloRequestDto);
-        if (!velo.getElectrique()) {
+        if (velo.getElectrique() != null && !velo.getElectrique()) {
             velo.setAutonomie(0);
         }
         return veloMapper.toVeloResponseDto(veloDao.save(velo));
@@ -115,7 +114,7 @@ public class VeloServiceImpl implements VeloService {
     @Override
     public VeloResponseDto modifierParId(VeloRequestDto veloRequestDto, Long id) {
         Velo veloEnBase = checkVelo(id);
-        if (veloEnBase.getRetireDuParc()) {
+        if (veloEnBase.getRetireDuParc() != null && veloEnBase.getRetireDuParc()) {
             VehiculeException vehiculeException= new VehiculeException("Une voiture retirée du parc n'est pas modifiable");
             log.error("modifierParId(Long Id) : {}", vehiculeException.getMessage());
             throw vehiculeException;

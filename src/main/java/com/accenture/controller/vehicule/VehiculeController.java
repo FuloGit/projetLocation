@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
 
+/**
+ * Gère le mapping et les End point pour la classe mère Véhicule, sert principalement à la recherche de véhicule : rechercherTous, rechercherParFiltre, rechercher (paramètres).
+ */
 @Slf4j
 @RestController
 @RequestMapping("/vehicules")

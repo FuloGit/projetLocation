@@ -20,7 +20,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 
 /**
- * Gére les mapping pour Administrateurs
+ * Gére les mapping et les end point pour Administrateurs, inclus les méthodes ajouter, afficher, supprimer, modifier
  */
 @Slf4j
 @RestController
@@ -33,6 +33,8 @@ public class AdministrateurController {
     public AdministrateurController(AdministrateurService administrateurService) {
         this.administrateurService = administrateurService;
     }
+
+
 
     @Operation(summary = "Ajouter un Administrateur")
     @ApiResponses(value = {
@@ -66,7 +68,7 @@ public class AdministrateurController {
     }
 
 
-    @Operation(summary = "Affiche un Administrateur")
+    @Operation(summary = "Afficher un Administrateur")
 @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Administrateur trouvé"),
         @ApiResponse(responseCode = "400", description = "Erreur Fonctionnelle"),
@@ -80,7 +82,7 @@ public class AdministrateurController {
 
 
 
-    @Operation(summary = "Supprime un administrateur")
+    @Operation(summary = "Supprimer un administrateur")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Administrateur supprimé"),
             @ApiResponse(responseCode = "400", description = "Erreur Fonctionnelle"),
@@ -94,7 +96,7 @@ public class AdministrateurController {
 
 
 
-    @Operation(summary = "Modifie un administrateur")
+    @Operation(summary = "Modifier un administrateur")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Administrateur modifié"),
             @ApiResponse(responseCode = "400", description = "Erreur Fonctionnelle"),

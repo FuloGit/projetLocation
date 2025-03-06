@@ -4,6 +4,7 @@ import com.accenture.shared.model.Permis;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
@@ -12,8 +13,9 @@ import java.util.List;
 /**
  * Le client qui utilisera le service de location.
  * La date d'inscription est générée automatiquement,
- * Le desactivé est automatiquement false, le compte est actif à sa création mais il pourra être désactiver plus tard.
+ * Le désactivé est automatiquement false, le compte est actif à sa création, mais il pourra être désactivé plus tard.
  */
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -29,10 +31,4 @@ public class Client extends UtilisateurConnecte {
     private List<Permis> permis;
     private Boolean desactive = false;
 
-    public Client(String mail, String password, String nom, String prenom, Adresse adresse, LocalDate dateDeNaissance, List<Permis> permis) {
-        super(mail, password, nom, prenom);
-        this.adresse = adresse;
-        this.dateDeNaissance = dateDeNaissance;
-        this.permis = permis;
-    }
 }

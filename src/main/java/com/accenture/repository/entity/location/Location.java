@@ -1,4 +1,4 @@
-package com.accenture.repository.entity;
+package com.accenture.repository.entity.location;
 
 import com.accenture.repository.entity.utilisateur.Client;
 import com.accenture.repository.entity.vehicule.Vehicule;
@@ -9,6 +9,9 @@ import lombok.Data;
 
 import java.time.LocalDate;
 
+/**
+ * Location
+ */
 @Entity
 @Table (name  ="locations")
 @Data
@@ -28,14 +31,4 @@ public class Location {
     private LocalDate dateDeValidation;
     private EtatLocation etatLocation;
 
-    public Location(Long id, Client client, Vehicule vehicule, LocalDate dateDeDebut, LocalDate dateDeFin, Long kilometreParcouru, LocalDate dateDeValidation, EtatLocation etatLocation) {
-        this.id = id;
-        this.client = client;
-        this.vehicule = vehicule;
-        this.dateDeDebut = dateDeDebut;
-        this.dateDeFin = dateDeFin;
-        this.kilometreParcouru = kilometreParcouru;
-        this.dateDeValidation = dateDeValidation;
-        this.etatLocation = etatLocation;
-    }
 }

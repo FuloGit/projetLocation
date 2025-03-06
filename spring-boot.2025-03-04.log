@@ -936,7 +936,7 @@ Consider defining a bean of type 'com.accenture.service.vehicule.VehiculeService
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
 2025-03-04 16:58:19 [restartedMain] INFO  o.h.id.enhanced.TableGenerator - HHH000398: Explicit segment value for id generator [hibernate_sequences.sequence_name] suggested; using default [default]
-2025-03-04 16:58:20 [restartedMain] INFO  o.h.m.i.EntityInstantiatorPojoStandard - HHH000182: No default (no-argument) constructor for class: com.accenture.repository.entity.Location (class must be instantiated by Interceptor)
+2025-03-04 16:58:20 [restartedMain] INFO  o.h.m.i.EntityInstantiatorPojoStandard - HHH000182: No default (no-argument) constructor for class: com.accenture.repository.entity.location.Location (class must be instantiated by Interceptor)
 2025-03-04 16:58:20 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
 2025-03-04 16:58:20 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
 2025-03-04 16:58:20 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
@@ -966,7 +966,7 @@ Consider defining a bean of type 'com.accenture.service.vehicule.VehiculeService
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
 2025-03-04 17:06:13 [restartedMain] INFO  o.h.id.enhanced.TableGenerator - HHH000398: Explicit segment value for id generator [hibernate_sequences.sequence_name] suggested; using default [default]
-2025-03-04 17:06:13 [restartedMain] INFO  o.h.m.i.EntityInstantiatorPojoStandard - HHH000182: No default (no-argument) constructor for class: com.accenture.repository.entity.Location (class must be instantiated by Interceptor)
+2025-03-04 17:06:13 [restartedMain] INFO  o.h.m.i.EntityInstantiatorPojoStandard - HHH000182: No default (no-argument) constructor for class: com.accenture.repository.entity.location.Location (class must be instantiated by Interceptor)
 2025-03-04 17:06:14 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
 2025-03-04 17:06:14 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
 2025-03-04 17:06:14 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning

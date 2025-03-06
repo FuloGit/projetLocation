@@ -22,7 +22,7 @@ import java.net.URI;
 import java.util.List;
 
 /**
- * Gére le mapping pour Clients
+ * Gére le mapping et les end point pour Clients, inclus les méthodes ajouter, afficher, rechercherTous, modifier, supprimer
  */
 @Slf4j
 @RestController
@@ -36,7 +36,7 @@ public class ClientController {
         this.clientService = clientService;
     }
 
-    @Operation(summary = "Affiche un Client")
+    @Operation(summary = "Afficher un Client par email")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Administrateur supprimer"),
             @ApiResponse(responseCode = "404", description = "Mauvaise Requete")
@@ -48,7 +48,7 @@ public class ClientController {
         return ResponseEntity.ok(trouve);
     }
 
-    @Operation(summary = "Affiche les clients en base")
+    @Operation(summary = "Afficher les clients en base")
     @GetMapping
     List<ClientResponseDto> rechercherTous() {
         List<ClientResponseDto> liste = clientService.trouverTous();
@@ -94,7 +94,7 @@ public class ClientController {
         log.info("Nouveau client en base : {} ", clientEnreg);
         return ResponseEntity.created(location).build();
     }
-    @Operation(summary = "Supprime un Client")
+    @Operation(summary = "Supprimer un Client")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Client supprimé"),
             @ApiResponse(responseCode = "404", description = "Client introuvable"),
@@ -102,12 +102,11 @@ public class ClientController {
     })
     @DeleteMapping
     ResponseEntity<ClientResponseDto> supprimer(@RequestParam String id, String password) {
-        //TODO changer une fois la notion de location
         clientService.supprimerParId(id, password);
         log.info("Suppression CLient : {} ", id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-    @Operation(summary = "Modifie un Client")
+    @Operation(summary = "Modifier un Client")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Client modifié"),
             @ApiResponse(responseCode = "400", description = "modification impossible")

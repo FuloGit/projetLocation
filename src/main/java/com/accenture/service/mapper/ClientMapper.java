@@ -9,6 +9,6 @@ import org.mapstruct.Mapper;
 public interface ClientMapper {
 
     Client toClient (ClientRequestDto clientRequestDto);
-    ClientResponseDto toClientResponseDtoForCLient (Client client);
+    ClientResponseDto toClientResponseDto(Client client);
     ClientRequestDto toClientRequestDto (Client client);
 }

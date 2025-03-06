@@ -2,7 +2,7 @@ package com.accenture.service.vehicule;
 
 import com.accenture.exception.VehiculeException;
 import com.accenture.repository.entity.vehicule.Voiture;
-import com.accenture.repository.VoitureDao;
+import com.accenture.repository.vehicule.VoitureDao;
 import com.accenture.service.dto.vehicule.VoitureRequestDto;
 import com.accenture.service.dto.vehicule.VoitureResponseDto;
 import com.accenture.service.mapper.VoitureMapper;
@@ -248,8 +248,12 @@ class VoitureServiceImplTest {
     @Test
     void TestAjouterOKPermisD1() {
         VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 10, Carburant.DIESEL, TypeVoiture.ELECTRIQUE, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
-        Voiture voitureAvant = new Voiture(1L, "Volvo", "Multiplat", "rouge ", 10, 100040, true, false, TypeVoiture.ELECTRIQUE, 10, Carburant.DIESEL, NombresDePortes.TROIS, Transmission.AUTO, true, 3);
-        Voiture voitureApres = new Voiture(1L, "Volvo", "Multiplat", "rouge ", 10, 100040, true, false, TypeVoiture.ELECTRIQUE, 10, Carburant.DIESEL, NombresDePortes.TROIS, Transmission.AUTO, true, 3);
+        Voiture voitureAvant = creerVoiture();
+        voitureAvant.setNombreDePlaces(10);
+
+        Voiture voitureApres = creerVoiture();
+        voitureApres.setNombreDePlaces(10);
+
         VoitureResponseDto voitureResponseDto = new VoitureResponseDto(1L, "Volvo", "Multiplat", "rouge ", 10, Carburant.DIESEL, TypeVoiture.ELECTRIQUE, NombresDePortes.TROIS, Transmission.AUTO, true, 3, D1);
         Mockito.when(voitureMapperMock.toVoiture(voitureRequestDto)).thenReturn(voitureAvant);
         Mockito.when(voitureDaoMock.save(voitureAvant)).thenReturn(voitureApres);
@@ -264,8 +268,10 @@ class VoitureServiceImplTest {
     @Test
     void TestAjouterOKPermisB() {
         VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 5, Carburant.DIESEL, TypeVoiture.ELECTRIQUE, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
-        Voiture voitureAvant = new Voiture(1L, "Volvo", "Multiplat", "rouge ", 10, 100040, true, false, TypeVoiture.ELECTRIQUE, 5, Carburant.DIESEL, NombresDePortes.TROIS, Transmission.AUTO, true, 3);
-        Voiture voitureApres = new Voiture(1L, "Volvo", "Multiplat", "rouge ", 10, 100040, true, false, TypeVoiture.ELECTRIQUE, 5, Carburant.DIESEL, NombresDePortes.TROIS, Transmission.AUTO, true, 3);
+        Voiture voitureAvant = creerVoiture();
+
+        Voiture voitureApres = creerVoiture();
+
         VoitureResponseDto voitureResponseDto = new VoitureResponseDto(1L, "Volvo", "Multiplat", "rouge ", 5, Carburant.DIESEL, TypeVoiture.ELECTRIQUE, NombresDePortes.TROIS, Transmission.AUTO, true, 3, D1);
         Mockito.when(voitureMapperMock.toVoiture(voitureRequestDto)).thenReturn(voitureAvant);
         Mockito.when(voitureDaoMock.save(voitureAvant)).thenReturn(voitureApres);
@@ -296,7 +302,8 @@ class VoitureServiceImplTest {
     @Test
     void TestAjouterNombreDePassagerSupp17() {
         VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Volvo", "Multiplat", "rouge ", 20, Carburant.DIESEL, TypeVoiture.ELECTRIQUE, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
-        Voiture voitureAvant = new Voiture(1L, "Volvo", "Multiplat", "rouge ", 10, 100040, true, false, TypeVoiture.ELECTRIQUE, 20, Carburant.DIESEL, NombresDePortes.TROIS, Transmission.AUTO, true, 3);
+        Voiture voitureAvant = creerVoiture();
+        voitureAvant.setNombreDePlaces(20);
         Mockito.when(voitureMapperMock.toVoiture(voitureRequestDto)).thenReturn(voitureAvant);
         VehiculeException voitureException = assertThrows(VehiculeException.class, () -> voitureService.ajouterVoiture(voitureRequestDto));
         assertEquals("Le nombre de passages n'est pas adéquat", voitureException.getMessage());
@@ -316,7 +323,7 @@ class VoitureServiceImplTest {
         Mockito.when(voitureDaoMock.findAll()).thenReturn(liste);
         Mockito.when(voitureMapperMock.toVoitureResponseDto(voiture1)).thenReturn(voitureResponseDto1);
         Mockito.when(voitureMapperMock.toVoitureResponseDto(voiture2)).thenReturn(voitureResponseDto2);
-        assertEquals(listeResponse, voitureService.TrouverToutes());
+        assertEquals(listeResponse, voitureService.trouverToutes());
     }
 
     @DisplayName("""
@@ -437,7 +444,8 @@ class VoitureServiceImplTest {
             """)
     @Test
     void modifierAvecVoitureRetireDUParc() {
-        Voiture voiture = new Voiture(1L, "Volvo", "Multiplat", "rouge ", 5, 100040, true, true, TypeVoiture.ELECTRIQUE, 5, Carburant.DIESEL, NombresDePortes.TROIS, Transmission.AUTO, true, 3);
+        Voiture voiture = creerVoiture();
+        voiture.setRetireDuParc(true);
         Mockito.when(voitureDaoMock.findById(1L)).thenReturn(Optional.of(voiture));
         VoitureRequestDto voitureRequestDto = creerRequest();
         VehiculeException exception = assertThrows(VehiculeException.class, () -> voitureService.modifier(voitureRequestDto, 1L));
@@ -479,14 +487,14 @@ class VoitureServiceImplTest {
     @Test
     void modifierSuccessAvecVoitureRequestNull() {
         VoitureRequestDto voitureRequestQuiModifie = new VoitureRequestDto(null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        Voiture QuiModifie = new Voiture(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+        Voiture quiModifie = new Voiture();
 
         Voiture voitureEnBase = creerVoiture();
         Voiture voitureEnFin = creerVoiture();
         VoitureRequestDto voitureRequest = creerRequest();
         VoitureResponseDto voitureResponseDto = creerResponse();
         Mockito.when(voitureDaoMock.findById(1L)).thenReturn(Optional.of(voitureEnBase));
-        Mockito.when(voitureMapperMock.toVoiture(voitureRequestQuiModifie)).thenReturn(QuiModifie);
+        Mockito.when(voitureMapperMock.toVoiture(voitureRequestQuiModifie)).thenReturn(quiModifie);
         Mockito.when(voitureMapperMock.toVoitureRequestDto(voitureEnBase)).thenReturn(voitureRequest);
         Mockito.when(voitureDaoMock.save(voitureEnBase)).thenReturn(voitureEnFin);
         Mockito.when(voitureMapperMock.toVoitureResponseDto(voitureEnFin)).thenReturn(voitureResponseDto);
@@ -499,38 +507,36 @@ class VoitureServiceImplTest {
             On modifie la marque de la voiture, on save les changements et un voitureResponseDto avec la marque modifiée est renvoyé""")
     @Test
     void TestModificationMarque() {
-        // On crée une nouvelle voitureRequestDto où on initialise tout à nul sauf la marque (ce qu'on souhaite changer)
+
         VoitureRequestDto requestDto  = new VoitureRequestDto("Peugeot", null,null,null, null, null, null,null, null, null,null,null,null,null);
-        // On crée une nouvelle voiture (nécessaire de créer un objet voiture pour > responsedto) où on set la marque
+
         Voiture nouvelleVoiture = new Voiture();
         nouvelleVoiture.setMarque("Peugeot");
-        // On crée l'objet vraieVoiture qui est la voiture avant modif
+
         Voiture vraieVoiture = creerVoiture();
-        // On crée voitureRemplace avec le changement de marque
+
         Voiture voitureRemplace = creerVoiture();
         voitureRemplace.setMarque("Peugeot");
-        //On crée la voiture response dto avec tout, et la marque changée
+
         VoitureResponseDto responseDto = new VoitureResponseDto(1L, "Peugeot", "Multiplat", "rouge ", 5, Carburant.DIESEL, TypeVoiture.ELECTRIQUE, NombresDePortes.TROIS, Transmission.AUTO, true, 3, B);
-        //VoitureRequestmodifier pour la verification
+
         VoitureRequestDto voitureRequestDto = new VoitureRequestDto("Peugeot", "Multiplat", "rouge ", 5, Carburant.DIESEL, TypeVoiture.ELECTRIQUE, NombresDePortes.TROIS, Transmission.AUTO, true, 3, 10, 100040, true, false);
-        // STUBBING
-        // FindById qui retourne un optional de vraieVoiture
+
         Mockito.when(voitureDaoMock.findById(1L)).thenReturn(Optional.of(vraieVoiture));
-        //Depuis requestdto, on renvoie la nouvelleVoiture (vide avec juste la marque de changée)
+
         Mockito.when(voitureMapperMock.toVoiture(requestDto)).thenReturn(nouvelleVoiture);
-        //On test
+
         Mockito.when(voitureDaoMock.save(vraieVoiture)).thenReturn(voitureRemplace);
         Mockito.when(voitureMapperMock.toVoitureResponseDto(voitureRemplace)).thenReturn(responseDto);
         Mockito.when(voitureMapperMock.toVoitureRequestDto(voitureRemplace)).thenReturn(voitureRequestDto);
-        //On vérifie si vraieVoiture a toujours la marque maserati, avant changement
+
         assertEquals("Volvo", vraieVoiture.getMarque());
 
-        // Appel d'assertEquals qui compare si responseDto & requestDto sont identiques.
-        // Appel de la méthode modifier
+
         assertEquals(responseDto, voitureService.modifier( requestDto, 1L));
-        // On vérifie si la méthode save fonctionne et passe bien vraieVoiture en base
+
         Mockito.verify(voitureDaoMock, Mockito.times(1)).save(vraieVoiture);
-        // On vérifie si vraieVoiture possède désormais la marque Peugeot
+
         assertEquals("Peugeot", vraieVoiture.getMarque());}
 
 
@@ -549,11 +555,43 @@ class VoitureServiceImplTest {
     }
 
     private Voiture creerVoiture() {
-        return new Voiture(1L, "Volvo", "Multiplat", "rouge ", 5, 100040, true, false, TypeVoiture.ELECTRIQUE, 5, Carburant.DIESEL, NombresDePortes.TROIS, Transmission.AUTO, true, 3);
+        Voiture voiture = new Voiture();
+voiture.setId(1L);
+voiture.setMarque("Volvo");
+voiture.setModele("Multiplat");
+voiture.setCouleur("rouge ");
+voiture.setTarifJournalier(5);
+voiture.setKilometrage(100040);
+voiture.setActif(true);
+voiture.setRetireDuParc(false);
+voiture.setTypeVoiture(TypeVoiture.ELECTRIQUE);
+voiture.setNombreDePlaces(5);
+voiture.setCarburant(Carburant.DIESEL);
+voiture.setNombresDePortes(NombresDePortes.TROIS);
+voiture.setTransmission(Transmission.AUTO);
+voiture.setClimatisation(true);
+voiture.setNombredeBagages(3);
+return voiture;
     }
 
     private Voiture creerVoiture2() {
-        return new Voiture(1L, "Honda", "Multiplat", "rouge ", 5, 100040, true, false, TypeVoiture.ELECTRIQUE, 5, Carburant.DIESEL, NombresDePortes.TROIS, Transmission.AUTO, true, 3);
+        Voiture voiture = new Voiture();
+        voiture.setId(1L);
+        voiture.setMarque("Honda");
+        voiture.setModele("Multiplat");
+        voiture.setCouleur("rouge ");
+        voiture.setTarifJournalier(5);
+        voiture.setKilometrage(100040);
+        voiture.setActif(true);
+        voiture.setRetireDuParc(false);
+        voiture.setTypeVoiture(TypeVoiture.ELECTRIQUE);
+        voiture.setNombreDePlaces(5);
+        voiture.setCarburant(Carburant.DIESEL);
+        voiture.setNombresDePortes(NombresDePortes.TROIS);
+        voiture.setTransmission(Transmission.AUTO);
+        voiture.setClimatisation(true);
+        voiture.setNombredeBagages(3);
+        return voiture;
     }}
 
 

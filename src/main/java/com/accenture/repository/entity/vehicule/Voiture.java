@@ -6,14 +6,17 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 /**
  * Entity Voiture pour la base de donnée
+ * Le permis est déterminé automatiquement selon le nombre de places.
  */
+
+@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
-
 @Entity
 @Table(name = "voitures")
 public class Voiture extends Vehicule {
@@ -31,15 +34,4 @@ public class Voiture extends Vehicule {
     @Enumerated(value = EnumType.STRING)
     private Permis permis;
 
-
-    public Voiture(Long id, String marque, String modele, String couleur, Integer tarifJournalier, Integer kilometrage, Boolean actif, Boolean retireDuParc, TypeVoiture typeVoiture, Integer nombreDePlaces, Carburant carburant, NombresDePortes nombresDePortes, Transmission transmission, Boolean climatisation, Integer nombredeBagages) {
-        super(id, marque, modele, couleur, tarifJournalier, kilometrage, actif, retireDuParc);
-        this.typeVoiture = typeVoiture;
-        this.nombreDePlaces = nombreDePlaces;
-        this.carburant = carburant;
-        this.nombresDePortes = nombresDePortes;
-        this.transmission = transmission;
-        this.climatisation = climatisation;
-        this.nombredeBagages = nombredeBagages;
-    }
 }

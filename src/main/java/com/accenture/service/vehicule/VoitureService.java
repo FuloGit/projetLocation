@@ -13,7 +13,7 @@ import java.util.List;
 public interface VoitureService {
 
    VoitureResponseDto ajouterVoiture(VoitureRequestDto voitureRequestDto) throws VehiculeException;
-   List<VoitureResponseDto> TrouverToutes();
+   List<VoitureResponseDto> trouverToutes();
    List<VoitureResponseDto> trouverParFiltre(FiltreListe filtreListe);
 
    VoitureResponseDto trouverParId(Long id);

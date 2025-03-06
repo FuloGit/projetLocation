@@ -24,7 +24,7 @@ import java.net.URI;
 import java.util.List;
 
 /**
- * Gère les mapping pour Voitures
+ * Gére le mapping et les end point pour la classe vélo, inclus, l'ajout, la modification, rechercherParId, rechercherTous, rechercherParFiltre, supprimer.
  */
 @Slf4j
 @AllArgsConstructor
@@ -76,7 +76,7 @@ public class VoitureController {
     @Operation(summary = "Afficher toutes les voitures")
     @GetMapping
     List<VoitureResponseDto> rechercherToutes() {
-        List<VoitureResponseDto> liste = voitureService.TrouverToutes();
+        List<VoitureResponseDto> liste = voitureService.trouverToutes();
        log.info("rechercherToutes : " + liste);
        return liste;
     }

@@ -23,6 +23,9 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
+/**
+ * Gére le mapping et les end point pour la classe vélo, inclus, l'ajout, la modification, rechercherParId, rechercherTous, rechercherParFiltre, supprimer.
+ */
 @Slf4j
 @AllArgsConstructor
 @RestController

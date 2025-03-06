@@ -1,14 +1,20 @@
 package com.accenture.repository.entity.vehicule;
 import com.accenture.shared.model.TypeVelo;
-import com.accenture.shared.model.TypeVoiture;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+/**
+ * Entity Velo pour la base de donnée
+ */
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "velos")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Velo extends Vehicule {
 
     private Integer tailleDuCadre;
@@ -19,13 +25,4 @@ public class Velo extends Vehicule {
     @Enumerated(value = EnumType.STRING)
     private TypeVelo typeVelo;
 
-    public Velo(Long id, String marque, String modele, String couleur, Integer tarifJournalier, Integer kilometrage, Boolean actif, Boolean retireDuParc, Integer tailleDuCadre, Integer poids, Boolean electrique, Integer autonomie, Boolean freinADisque, TypeVelo typeVelo) {
-        super(id, marque, modele, couleur, tarifJournalier, kilometrage, actif, retireDuParc);
-        this.tailleDuCadre = tailleDuCadre;
-        this.poids = poids;
-        this.electrique = electrique;
-        this.autonomie = autonomie;
-        this.freinADisque = freinADisque;
-        this.typeVelo = typeVelo;
-    }
 }

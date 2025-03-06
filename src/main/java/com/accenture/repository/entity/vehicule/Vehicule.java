@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Classe mère pour les véhicules qui contient les données communes à Client et Administrateur
+ * Classe mère pour les Véhicules qui contient les données communes aux différents véhicules.
  */
 @Data
 @Entity

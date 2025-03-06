@@ -2,7 +2,7 @@ package com.accenture.service.vehicule;
 
 import com.accenture.exception.VehiculeException;
 import com.accenture.repository.entity.vehicule.Voiture;
-import com.accenture.repository.VoitureDao;
+import com.accenture.repository.vehicule.VoitureDao;
 import com.accenture.service.dto.vehicule.VoitureRequestDto;
 import com.accenture.service.dto.vehicule.VoitureResponseDto;
 import com.accenture.service.mapper.VoitureMapper;
@@ -48,7 +48,7 @@ public class VoitureServiceImpl implements VoitureService {
      * @return liste de voitureResponseDto
      */
     @Override
-    public List<VoitureResponseDto> TrouverToutes() {
+    public List<VoitureResponseDto> trouverToutes() {
         return voitureDao.findAll().stream()
                 .map(voiture -> voitureMapper.toVoitureResponseDto(voiture)).toList();
     }
@@ -96,7 +96,6 @@ public class VoitureServiceImpl implements VoitureService {
      */
     @Override
     public void supprimerParId(Long id) {
-        //TODO Changer une fois la notion de Location
         if (voitureDao.existsById(id))
             voitureDao.deleteById(id);
         else{
@@ -110,7 +109,7 @@ public class VoitureServiceImpl implements VoitureService {
     @Override
     public VoitureResponseDto modifier(VoitureRequestDto voitureRequestDto, Long id) {
         Voiture voitureEnBase = checkVoiture(id);
-        if (voitureEnBase.getRetireDuParc())
+        if (voitureEnBase.getRetireDuParc() != null && voitureEnBase.getRetireDuParc())
         { VehiculeException vehiculeException= new VehiculeException("Une voiture retirée du parc n'est pas modifiable");
             log.error("modifierParId(Long Id) : {}", vehiculeException.getMessage());
             throw vehiculeException;}

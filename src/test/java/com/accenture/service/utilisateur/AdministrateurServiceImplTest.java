@@ -2,7 +2,7 @@ package com.accenture.service.utilisateur;
 
 import com.accenture.exception.UtilisateurException;
 
-import com.accenture.repository.AdministrateurDao;
+import com.accenture.repository.utilisateur.AdministrateurDao;
 import com.accenture.repository.entity.utilisateur.Administrateur;
 
 import com.accenture.service.dto.utilisateur.AdministrateurRequestDto;
@@ -10,7 +10,6 @@ import com.accenture.service.dto.utilisateur.AdministrateurResponseDto;
 
 import com.accenture.service.mapper.AdministrateurMapper;
 import jakarta.persistence.EntityNotFoundException;
-import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,7 +17,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springdoc.core.customizers.ActuatorOpenApiCustomizer;
 
 import java.util.List;
 import java.util.Optional;
@@ -79,7 +77,7 @@ class AdministrateurServiceImplTest {
     @Test
     void ajouterAvecEmailEnBase() {
 
-        Administrateur administrateur = gerard();
+        Administrateur administrateur = gerardAdministrateur();
         AdministrateurRequestDto administrateurRequestDto = gerardRequest();
         Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.of(administrateur));
         UtilisateurException ex = assertThrows(UtilisateurException.class, () -> administrateurService.ajouter(administrateurRequestDto));
@@ -185,8 +183,8 @@ class AdministrateurServiceImplTest {
     @Test
     void ajouterIsOk() {
         AdministrateurRequestDto administrateurRequestDto = new AdministrateurRequestDto("Gerard@goatmail.com", "fdsfds@Z23", "Gerard", "Gerard", "Hr");
-        Administrateur adminAvantEnreg = gerard();
-        Administrateur adminApresEnreg = gerard();
+        Administrateur adminAvantEnreg = gerardAdministrateur();
+        Administrateur adminApresEnreg = gerardAdministrateur();
         AdministrateurResponseDto administrateurResponseDto = new AdministrateurResponseDto("Gerard@goatmail.com", "Gerard", "Gerard", "Hr");
         Mockito.when(administrateurMapperMock.toAdministrateur(administrateurRequestDto)).thenReturn(adminAvantEnreg);
         Mockito.when(administrateurDaoMock.save(adminAvantEnreg)).thenReturn(adminApresEnreg);
@@ -210,7 +208,7 @@ class AdministrateurServiceImplTest {
             """)
     @Test
     void trouverParIdPassWordInvalid() {
-        Administrateur administrateur = gerard();
+        Administrateur administrateur = gerardAdministrateur();
         Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.of(administrateur));
         EntityNotFoundException ex = assertThrows(EntityNotFoundException.class, () -> administrateurService.trouverParId("Gerard@goatmail.com", "fdsfds23"));
         assertEquals("Email ou password erroné", ex.getMessage());
@@ -222,11 +220,11 @@ class AdministrateurServiceImplTest {
             """)
     @Test
     void trouverExiste() {
-        Administrateur administrateur = gerard();
+        Administrateur administrateur = gerardAdministrateur();
         Optional<Administrateur> optionalAdministrateur = Optional.of(administrateur);
         AdministrateurResponseDto administrateurResponseDto = gerardResponse();
         Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(optionalAdministrateur);
-        Mockito.when(administrateurMapperMock.toAdministrateurResponseDto(gerard())).thenReturn(administrateurResponseDto);
+        Mockito.when(administrateurMapperMock.toAdministrateurResponseDto(gerardAdministrateur())).thenReturn(administrateurResponseDto);
         assertSame(administrateurResponseDto, administrateurService.trouverParId("Gerard@goatmail.com", "fdsfds@Z23"));
     }
 
@@ -245,8 +243,8 @@ class AdministrateurServiceImplTest {
             """)
     @Test
     void supprimerOnlyOneAdmin() {
-        List<Administrateur> liste = List.of(gerard());
-        Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.of(gerard()));
+        List<Administrateur> liste = List.of(gerardAdministrateur());
+        Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.of(gerardAdministrateur()));
         Mockito.when(administrateurDaoMock.findAll()).thenReturn(liste);
         UtilisateurException ex = assertThrows(UtilisateurException.class, () -> administrateurService.supprimerParid("Gerard@goatmail.com", "fdsfds@Z23"));
         assertEquals("Vous ne pouvez pas supprimer le dernière administrateur en base.", ex.getMessage());
@@ -257,7 +255,7 @@ class AdministrateurServiceImplTest {
             """)
     @Test
     void supprimerPassWordInvalid() {
-        Administrateur administrateur = gerard();
+        Administrateur administrateur = gerardAdministrateur();
         Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.of(administrateur));
         EntityNotFoundException ex = assertThrows(EntityNotFoundException.class, () -> administrateurService.supprimerParid("Gerard@goatmail.com", "fdsfds23"));
         assertSame("Email ou password erroné", ex.getMessage());
@@ -268,9 +266,9 @@ class AdministrateurServiceImplTest {
             """)
     @Test
     void supprimerOk() {
-        List<Administrateur> liste = List.of(gerard(), gerard());
+        List<Administrateur> liste = List.of(gerardAdministrateur(), gerardAdministrateur());
         Mockito.when(administrateurDaoMock.findAll()).thenReturn(liste);
-        Administrateur administrateur = gerard();
+        Administrateur administrateur = gerardAdministrateur();
         Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.of(administrateur));
         administrateurService.supprimerParid("Gerard@goatmail.com", "fdsfds@Z23");
         Mockito.verify(administrateurDaoMock).deleteById("Gerard@goatmail.com");
@@ -293,7 +291,7 @@ class AdministrateurServiceImplTest {
     @Test
     void modifierAvecPasswordInvalid() {
         AdministrateurRequestDto administrateurRequestDto = gerardRequest();
-        Administrateur administrateur = gerard();
+        Administrateur administrateur = gerardAdministrateur();
         Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.of(administrateur));
         EntityNotFoundException ex = assertThrows(EntityNotFoundException.class, () -> administrateurService.modifier("Gerard@goatmail.com", "fdsfZ23", administrateurRequestDto));
         assertSame("Email ou password erroné", ex.getMessage());
@@ -304,9 +302,10 @@ class AdministrateurServiceImplTest {
             """)
     @Test
     void modifierSuccess() {
+
         AdministrateurRequestDto administrateurRequestDto = gerardRequest();
-        Administrateur adminAvantEnreg = new Administrateur("Gerard@goatmail.com", "fdsfds@Z23", "Gerard", "Gerard", "Hr");
-        Administrateur adminApresEnreg = gerard();
+        Administrateur adminAvantEnreg = gerardAdministrateur();
+        Administrateur adminApresEnreg = gerardAdministrateur();
         AdministrateurResponseDto administrateurResponseDto = new AdministrateurResponseDto("Gerard@goatmail.com", "Gerard", "Gerard", "Hr");
         Mockito.when(administrateurDaoMock.findById("Gerard@goatmail.com")).thenReturn(Optional.of(adminAvantEnreg));
         Mockito.when(administrateurMapperMock.toAdministrateur(administrateurRequestDto)).thenReturn(adminAvantEnreg);
@@ -326,10 +325,10 @@ class AdministrateurServiceImplTest {
     void modifierNull(){
         AdministrateurRequestDto administrateurRequestDto = new AdministrateurRequestDto(null, null, null, null, null);
 
-        Administrateur administrateurQuiModifie = new Administrateur(null, null, null, null, null);
+        Administrateur administrateurQuiModifie = new Administrateur();
 
-        Administrateur vraiAdmin = gerard();
-        Administrateur nouvelAdmin = gerard();
+        Administrateur vraiAdmin = gerardAdministrateur();
+        Administrateur nouvelAdmin = gerardAdministrateur();
 
 
         AdministrateurRequestDto administrateurRequestDto1 = gerardRequest();
@@ -356,9 +355,9 @@ class AdministrateurServiceImplTest {
         Administrateur nouvelAdministrateur = new Administrateur();
         nouvelAdministrateur.setNom("Georges");
 
-        Administrateur vraiAdmin = gerard();
+        Administrateur vraiAdmin = gerardAdministrateur();
 
-        Administrateur adminquiRemplace = gerard();
+        Administrateur adminquiRemplace = gerardAdministrateur();
         adminquiRemplace.setNom("Georges");
 
 
@@ -389,8 +388,14 @@ class AdministrateurServiceImplTest {
 
 
 
-    private Administrateur gerard() {
-        return new Administrateur("Gerard@goatmail.com", "fdsfds@Z23", "Gerard", "Gerard", "Hr");
+    private Administrateur gerardAdministrateur() {
+        Administrateur gerard = new Administrateur();
+        gerard.setNom("Gerard");
+        gerard.setPrenom("Gerard");
+        gerard.setEmail("Gerard@goatmail.com");
+        gerard.setPassword("fdsfds@Z23");
+        gerard.setFonction("Hr");
+        return gerard;
     }
 
     private AdministrateurResponseDto gerardResponse() {

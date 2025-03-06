@@ -1,8 +1,25 @@
 package com.accenture.service.dto.vehicule;
 
 import com.accenture.shared.model.TypeVelo;
-import com.accenture.shared.model.TypeVoiture;
 
+
+/**
+ *
+ * @param id
+ * @param marque
+ * @param modele
+ * @param couleur
+ * @param tarifJournalier
+ * @param kilometrage
+ * @param actif
+ * @param retireDuParc
+ * @param tailleDuCadre
+ * @param poids
+ * @param electrique
+ * @param autonomie
+ * @param freinADisque
+ * @param typeVelo
+ */
 public record VeloResponseDto(
         Long id,
         String marque,

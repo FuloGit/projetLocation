@@ -26,7 +26,7 @@ import java.time.LocalDate;
 @RestController
 @RequestMapping("/vehicules")
 @AllArgsConstructor
-@Tag(name = "Gestion du parc de véhicule", description = "Interface de Gestion")
+@Tag(name = "Gestion du parc de véhicule", description = "Interface de Gestion des véhicules")
 public class VehiculeController {
 
     private VehiculeService vehiculeServiceImpl;

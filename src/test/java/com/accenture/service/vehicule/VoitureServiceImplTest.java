@@ -37,6 +37,7 @@ class VoitureServiceImplTest {
             Test la méthode ajouter si null lui est passé""")
     @Test
     void ajouterNull() {
+
         assertThrows(VehiculeException.class, () -> voitureService.ajouterVoiture(null));
     }
 
@@ -223,7 +224,7 @@ class VoitureServiceImplTest {
     }
 
     @DisplayName("""
-            Test l'exception levée de laMéthode ajouter si l'attribut Actif est null
+            Test l'exception levée de la Méthode ajouter si l'attribut Actif est null
             """)
     @Test
     void ajouterAvecActifNull() {

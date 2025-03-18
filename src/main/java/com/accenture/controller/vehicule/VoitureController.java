@@ -90,11 +90,12 @@ public class VoitureController {
     }
 
 
-    @Operation(summary = "Affiche une voiture")
+    @Operation(summary = "Afficher une voiture")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Voiture trouvée"),
             @ApiResponse(responseCode = "404", description = "Mauvaise Requete")
     })
+    @CrossOrigin
     @GetMapping("/{id}")
     ResponseEntity<VoitureResponseDto> afficher(@PathVariable("id") Long id) {
         VoitureResponseDto voitureResponseDto = voitureService.trouverParId(id);
@@ -103,7 +104,7 @@ public class VoitureController {
     }
 
 
-    @Operation(summary = "Supprime une voiture")
+    @Operation(summary = "Supprimer une voiture")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Voiture supprimée"),
             @ApiResponse(responseCode = "404", description = "Mauvaise Requete"),
@@ -116,7 +117,7 @@ public class VoitureController {
     }
 
 
-    @Operation(summary = "Modifie une voiture")
+    @Operation(summary = "Modifier une voiture")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Voiture modifié "),
             @ApiResponse(responseCode = "404", description = "Voiture Introuvable"),
